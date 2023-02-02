@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.ReportController">
+   <children>
+      <AnchorPane layoutX="46.0" layoutY="27.0" prefHeight="930.0" prefWidth="1554.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="93.0" layoutY="315.0" onAction="#attendanceOnAction" prefHeight="174.0" prefWidth="355.0" style="-fx-background-radius: 20;">
+               <graphic>
+                  <ImageView fitHeight="241.0" fitWidth="264.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/employee-attendance-concept-icon-vector-33927581-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label layoutX="514.0" layoutY="14.0" text="check report">
+               <font>
+                  <Font name="Algerian" size="75.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.8398058252427184" startX="0.9951456310679612" startY="0.06310679611650485">
+                     <stops>
+                        <Stop color="#1353d3" />
+                        <Stop color="BLACK" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="147.0" layoutY="133.0" prefHeight="30.0" prefWidth="293.0" text="Reports" textFill="#00ff11">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="110.0" fitWidth="108.0" layoutX="39.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/report2.png" />
+               </image>
+            </ImageView>
+            <Separator layoutX="64.0" layoutY="195.0" prefHeight="0.0" prefWidth="1003.0" />
+            <JFXButton buttonType="RAISED" layoutX="504.0" layoutY="325.0" onAction="#phoneStock" prefHeight="174.0" prefWidth="355.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="126.0" fitWidth="149.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/download-removebg-preview%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="619.0" layoutY="499.0" text="Phone Stock" textFill="#4d00ff" />
+            <JFXButton buttonType="RAISED" layoutX="907.0" layoutY="336.0" onAction="#repairOnAction" prefHeight="174.0" prefWidth="355.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="149.0" fitWidth="153.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/png-transparent-phone-repair-logo-iphone-samsung-galaxy-telephone-maintenance-smartphone-repair-gadget-electronics-repair-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="994.0" layoutY="500.0" text="Phone Repair Detail" textFill="#4d00ff" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

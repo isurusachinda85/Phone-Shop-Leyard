@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.RepairManageController">
+   <children>
+      <AnchorPane layoutX="31.0" layoutY="14.0" prefHeight="966.0" prefWidth="1573.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="450.0" layoutY="14.0" text="mobile repairing">
+               <font>
+                  <Font name="Algerian" size="76.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.8398058252427184" startX="0.9951456310679612" startY="0.06310679611650485">
+                     <stops>
+                        <Stop color="#1353d3" />
+                        <Stop color="BLACK" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="58.0" layoutY="340.0" text="Customer Name">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="58.0" layoutY="286.0" text="Customer Id">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="59.0" layoutY="393.0" text="Phone No ">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="232.0" text="Repair No">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblRepair" layoutX="34.0" layoutY="673.0" prefHeight="279.0" prefWidth="1502.0">
+              <columns>
+                <TableColumn fx:id="colNo" prefWidth="94.0" text="Repair No" />
+                <TableColumn fx:id="colName" prefWidth="136.0" text="Customer Name" />
+                  <TableColumn fx:id="colPhone" prefWidth="135.0" text="Phone No" />
+                  <TableColumn fx:id="colDiviceName" prefWidth="154.0" text="Device Name" />
+                  <TableColumn fx:id="colProblem" prefWidth="255.0" text="Device Problem" />
+                  <TableColumn fx:id="colPrice" prefWidth="159.0" text="Price" />
+                  <TableColumn fx:id="colPay" prefWidth="107.0" text="Pay" />
+                  <TableColumn fx:id="colDue" prefWidth="135.0" text="Due" />
+                  <TableColumn fx:id="colState" prefWidth="143.0" text="State" />
+                  <TableColumn fx:id="colAction" prefWidth="186.0" text="Action" />
+              </columns>
+            </TableView>
+            <Label layoutX="59.0" layoutY="446.0" text="Item Code">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="59.0" layoutY="496.0" text="Device Name">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="547.0" text="Device Problem">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="178.0" text="Rapairing Information" textFill="#002fff">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Separator layoutX="41.0" layoutY="213.0" prefHeight="3.0" prefWidth="288.0" style="-fx-background-color: #002fff;" />
+            <JFXComboBox fx:id="cmbCusId" layoutX="246.0" layoutY="279.0" onAction="#customerIdOnAction" prefHeight="31.0" prefWidth="155.0" promptText="Select None" />
+            <JFXButton buttonType="RAISED" layoutX="431.0" layoutY="270.0" onAction="#newCustomerOnAction" prefHeight="31.0" prefWidth="161.0" style="-fx-background-color: #2ecc71;" text="NEW CUSTOMER" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/create.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="txtCustomerName" layoutX="246.0" layoutY="324.0" prefHeight="31.0" prefWidth="316.0" text=" ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtCusMobil" layoutX="246.0" layoutY="377.0" prefHeight="39.0" prefWidth="316.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtDiviceName" layoutX="248.0" layoutY="480.0" prefHeight="39.0" prefWidth="155.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXComboBox fx:id="cmbItemCode" layoutX="246.0" layoutY="440.0" onAction="#itemCodeOnAction" prefHeight="31.0" prefWidth="155.0" promptText="Select None" />
+            <TextArea fx:id="txtProblem" layoutX="248.0" layoutY="547.0" prefHeight="109.0" prefWidth="297.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextArea>
+            <Label layoutX="870.0" layoutY="177.0" text="Bill Information" textFill="#002fff">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Separator layoutX="857.0" layoutY="212.0" prefHeight="3.0" prefWidth="213.0" style="-fx-background-color: #002fff;" />
+            <Label layoutX="881.0" layoutY="248.0" text="Repair Price">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="881.0" layoutY="311.0" text="Amount">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtPrice" layoutX="1038.0" layoutY="232.0" prefHeight="39.0" prefWidth="169.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtAmount" layoutX="1037.0" layoutY="296.0" onKeyReleased="#amountOnKeReleased" prefHeight="31.0" prefWidth="169.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="880.0" layoutY="367.0" text="Due">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDue" layoutX="1036.0" layoutY="367.0" prefHeight="32.0" prefWidth="169.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="880.0" layoutY="435.0" text="State">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbState" layoutX="1037.0" layoutY="427.0" prefHeight="31.0" prefWidth="169.0" />
+            <JFXButton buttonType="RAISED" layoutX="889.0" layoutY="597.0" onAction="#repairOnAction" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #6FEEFF; -fx-background-radius: 6;" text="Repair">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="596.0" onAction="#clearTextOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #EAF55C; -fx-background-radius: 6;" text="Clear Text">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="1444.0" layoutY="594.0" prefHeight="49.0" prefWidth="57.0" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField layoutX="1275.0" layoutY="600.0" promptText="Search" />
+            <JFXTextField fx:id="txtRepairNo" layoutX="243.0" layoutY="225.0" onAction="#txtSearch" prefHeight="39.0" prefWidth="161.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="1275.0" layoutY="118.0" text="Date : ">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="1352.0" layoutY="119.0" textFill="#0d00ff">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="1275.0" layoutY="195.0" text="Time : ">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" layoutX="1368.0" layoutY="196.0" textFill="#0d00ff">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="1148.0" layoutY="596.0" onAction="#updateOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2ecc71; -fx-background-radius: 6;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Label layoutX="126.0" layoutY="118.0" prefHeight="30.0" prefWidth="135.0" text="Repair Phone" textFill="#00ff11">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="59.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/kissclipart-phone-repair-icon-clipart-emmecumxy-communications-2480ee4559ac38d8-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="64.0" layoutY="160.0" prefHeight="0.0" prefWidth="1003.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Repair" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c8dca6d5-f4f6-49e2-ba5e-f3b0d734a8ac">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report"/>
+	<queryString language="SQL">
+		<![CDATA[select repId,customerName,phoneNo,devicename,problem,repairprice,state,date from repair]]>
+	</queryString>
+	<field name="repId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="repId"/>
+		<property name="com.jaspersoft.studio.field.label" value="repId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<field name="customerName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="customerName"/>
+		<property name="com.jaspersoft.studio.field.label" value="customerName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<field name="phoneNo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="phoneNo"/>
+		<property name="com.jaspersoft.studio.field.label" value="phoneNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<field name="devicename" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="devicename"/>
+		<property name="com.jaspersoft.studio.field.label" value="devicename"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<field name="problem" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="problem"/>
+		<property name="com.jaspersoft.studio.field.label" value="problem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<field name="repairprice" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="repairprice"/>
+		<property name="com.jaspersoft.studio.field.label" value="repairprice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<field name="state" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="state"/>
+		<property name="com.jaspersoft.studio.field.label" value="state"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+	</field>
+	<group name="repId">
+		<groupExpression><![CDATA[$F{repId}]]></groupExpression>
+	</group>
+	<group name="customerName">
+		<groupExpression><![CDATA[$F{customerName}]]></groupExpression>
+	</group>
+	<group name="phoneNo">
+		<groupExpression><![CDATA[$F{phoneNo}]]></groupExpression>
+	</group>
+	<group name="devicename">
+		<groupExpression><![CDATA[$F{devicename}]]></groupExpression>
+	</group>
+	<group name="problem">
+		<groupExpression><![CDATA[$F{problem}]]></groupExpression>
+	</group>
+	<group name="repairprice">
+		<groupExpression><![CDATA[$F{repairprice}]]></groupExpression>
+	</group>
+	<group name="state">
+		<groupExpression><![CDATA[$F{state}]]></groupExpression>
+	</group>
+	<group name="date">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="142" y="0" width="270" height="60" uuid="f26a95ef-4587-4ea2-baed-d1d757428739"/>
+				<textElement>
+					<font size="42" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rapair Datail]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-9" y="0" width="34" height="30" uuid="bc050eca-7c69-4f3c-a7fc-9f7cce52b9c5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="afd53059-448c-4b95-b01c-3dd09b094a54"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="0" width="64" height="30" uuid="7efdc2ac-e3d6-4fcc-9f66-ba0605147214">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="29dc0d27-512d-488f-957d-62e5cd034d47"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="1" width="70" height="30" uuid="d73c89d6-0954-4577-8f7a-2f8308be109f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21a57da0-9b33-4797-8c1d-cee57ca8a4b1"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="0" width="71" height="30" uuid="d84741d6-30df-49bf-835e-055e112947fe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="164b92ce-6473-421c-b41c-2f7fd41cfc00"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Device ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="0" width="63" height="30" uuid="14890c59-2431-409c-8a8b-d6a2441694fa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0384a3d-73c7-49ad-bf3f-dbc1f5ab61d0"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Problem]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="0" width="83" height="30" uuid="a60f732e-3937-492f-8323-b942ad98324a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5904dba1-913f-4699-bb74-4256984c3676"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Repair Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="0" width="42" height="30" uuid="711722d7-7e90-453a-8e01-3b69b7b3e864">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e65aa7a-94b3-4655-a8d1-9cdf57da5867"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[State]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="507" y="0" width="51" height="30" uuid="05f8a2ca-b262-45cb-a938-a56ae7581ba0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2a2900cc-cfa1-4bd3-a641-c84df71461ce"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="-12" y="0" width="47" height="30" uuid="cc64f1da-4643-41c4-8242-61d7bd62192a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="afd53059-448c-4b95-b01c-3dd09b094a54"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{repId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="0" width="90" height="30" uuid="a8893cbb-a4df-42eb-8d2e-1cfa2453f6dd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="29dc0d27-512d-488f-957d-62e5cd034d47"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="70" height="30" uuid="41887274-755b-4194-aef6-695897c761b8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21a57da0-9b33-4797-8c1d-cee57ca8a4b1"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{phoneNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="0" width="71" height="30" uuid="a6aed8f7-a3d7-4cbe-aaeb-54bb21009505">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="164b92ce-6473-421c-b41c-2f7fd41cfc00"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{devicename}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="0" width="63" height="30" uuid="867de1a4-e50c-4fbd-ae22-4c0ded2abec7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0384a3d-73c7-49ad-bf3f-dbc1f5ab61d0"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{problem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="364" y="0" width="83" height="30" uuid="7b3c7d86-179e-4834-bade-df24161e45d7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5904dba1-913f-4699-bb74-4256984c3676"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{repairprice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="57" height="30" uuid="3bddbfad-ec42-4ef7-9247-d2cd236ee607">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e65aa7a-94b3-4655-a8d1-9cdf57da5867"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="507" y="0" width="51" height="30" uuid="55f7bbf4-da8c-4ec5-b4f3-55e76935fa9e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2a2900cc-cfa1-4bd3-a641-c84df71461ce"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

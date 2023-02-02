@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="stockPane" prefHeight="1000.0" prefWidth="1645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.StockManage3Controller">
+   <children>
+      <AnchorPane layoutX="49.0" layoutY="31.0" prefHeight="966.0" prefWidth="1573.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+      <Label layoutX="609.0" layoutY="34.0" text="Stock details">
+         <font>
+            <Font name="Algerian" size="75.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.8398058252427184" startX="0.9951456310679612" startY="0.06310679611650485">
+               <stops>
+                  <Stop color="#1353d3" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TableView fx:id="tblPhoneParts" layoutX="179.0" layoutY="432.0" prefHeight="504.0" prefWidth="1255.0">
+         <columns>
+            <TableColumn fx:id="colItemCode" prefWidth="93.00006103515625" style="-fx-alignment: center;" text="Item Code" />
+            <TableColumn fx:id="colBrand" prefWidth="143.99996948242188" style="-fx-alignment: center;" text="Brand" />
+            <TableColumn fx:id="colModalNo" prefWidth="151.0" style="-fx-alignment: center;" text="Modal No" />
+            <TableColumn fx:id="colName" prefWidth="164.0" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="colPrice" prefWidth="164.0" style="-fx-alignment: center;" text="Price" />
+            <TableColumn fx:id="colWarranty" prefWidth="207.0" style="-fx-alignment: center;" text="Warrenty Period" />
+            <TableColumn fx:id="colQty" prefWidth="145.0" style="-fx-alignment: center;" text="Qty" />
+            <TableColumn fx:id="colCategory" prefWidth="189.0" style="-fx-alignment: center;" text="Category" />
+         </columns>
+      </TableView>
+      <JFXButton layoutX="1379.0" layoutY="364.0" prefHeight="49.0" prefWidth="57.0" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField layoutX="1210.0" layoutY="370.0" promptText="Search" />
+      <Separator layoutX="85.0" layoutY="228.0" prefHeight="2.0" prefWidth="816.0" />
+      <Label layoutX="136.0" layoutY="166.0" prefHeight="30.0" prefWidth="293.0" text="Phone Parts Stock" textFill="#00ff11">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="71.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/306-3061829_png-file-mobile-repair-png-icon-clipart-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="63.0" layoutY="38.0" onAction="#backOnAction" prefHeight="31.0" prefWidth="65.0" style="-fx-background-radius: 10;" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/backArrow.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

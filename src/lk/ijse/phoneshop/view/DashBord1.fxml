@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="dashBordPane" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.DashBord1Controller">
+   <children>
+      <VBox prefHeight="1000.0" prefWidth="275.0" style="-fx-background-color: #1096C6; -fx-background-radius: 20;">
+         <children>
+            <ImageView fitHeight="225.0" fitWidth="264.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../image/Admin-Profile-Vector-PNG-Image-removebg-preview.png" />
+               </image></ImageView>
+            <Label text="Welcom Admin">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="dashBord" alignment="BOTTOM_LEFT" buttonType="RAISED" onAction="#dashBoardOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Dash Board" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="226.0" onAction="#orderOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Place Order" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Pay.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="275.0" onAction="#customerOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Customer Manage" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/customer.png" />
+                     </image></ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="295.0" onAction="#employeeMana" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Employee Manage" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/employy1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="373.0" onAction="#employeeAtten" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Employee Attendance" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/3589030-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="324.0" onAction="#itemOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Item Manage" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/20221013_1665640447_698101-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="177.0" onAction="#stockOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Chek Stock" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/360_F_421455125_uq2szZSTeL8LoFZ6QJPBt95Hz8xDgECQ-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="422.0" onAction="#reportOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Reports" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/report.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="471.0" onAction="#returnOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Return Item" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/1440524-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="682.0" onAction="#repairOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Repair Phone" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/png-clipart-smartphone-repair-illustration-smartphone-samsung-galaxy-computer-mobile-repair-electronics-gadget-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="422.0" onAction="#signOutOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Sign Out" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <AnchorPane fx:id="overViewPane" layoutX="275.0" prefHeight="1000.0" prefWidth="1645.0">
+         <children>
+            <ImageView fitHeight="1000.0" fitWidth="1645.0" layoutY="-2.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../image/CwCFbeQS9JeCC6WunpFgYD.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="241.0" layoutY="284.0" text="Welcome">
+               <font>
+                  <Font name="Algerian" size="70.0" />
+               </font>
+            </Label>
+            <Label layoutX="1126.0" layoutY="580.0" text="mobile">
+               <font>
+                  <Font name="Algerian" size="70.0" />
+               </font>
+            </Label>
+            <Label layoutX="669.0" layoutY="512.0" text="Thecno">
+               <font>
+                  <Font name="Algerian" size="70.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
