@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="backItemPane" prefHeight="1000.0" prefWidth="1645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.ItemManage2Controller">
+   <children>
+      <AnchorPane layoutX="31.0" layoutY="10.0" prefHeight="974.0" prefWidth="1573.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="538.0" layoutY="14.0" text="item Manage">
+               <font>
+                  <Font name="Algerian" size="75.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.8398058252427184" startX="0.9951456310679612" startY="0.06310679611650485">
+                     <stops>
+                        <Stop color="#1353d3" />
+                        <Stop color="BLACK" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="108.0" layoutY="107.0" prefHeight="30.0" prefWidth="293.0" text="Add Phone Accessories Detail" textFill="#00ff11">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="43.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Phone-Accessories-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Separator layoutX="55.0" layoutY="161.0" prefHeight="0.0" prefWidth="1003.0" />
+            <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="14.0" onAction="#backOnAction" prefHeight="31.0" prefWidth="65.0" style="-fx-background-radius: 10;" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/backArrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label layoutX="565.0" layoutY="343.0" text="QTY">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtQty" layoutX="769.0" layoutY="323.0" onAction="#qtyOnAction" prefHeight="31.0" prefWidth="155.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="564.0" layoutY="406.0" text="Category">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbCategory" layoutX="768.0" layoutY="397.0" prefHeight="31.0" prefWidth="155.0" promptText="Select None" />
+            <Label layoutX="561.0" layoutY="209.0" text="Price">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtPrice" layoutX="767.0" layoutY="192.0" onAction="#priceOnAction" prefHeight="39.0" prefWidth="155.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="561.0" layoutY="276.0" text="Warrenty Period">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbWarranty" layoutX="768.0" layoutY="267.0" onAction="#warrantyOnAction" prefHeight="31.0" prefWidth="155.0" promptText="Select None" />
+            <Label layoutX="40.0" layoutY="408.0" text="Name">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtName" layoutX="198.0" layoutY="392.0" onAction="#nameOnAction" prefHeight="31.0" prefWidth="189.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtBrand" layoutX="199.0" layoutY="259.0" onAction="#brandOnAction" prefHeight="31.0" prefWidth="189.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="40.0" layoutY="273.0" text="Brand">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtModalNo" layoutX="199.0" layoutY="326.0" onAction="#modalOnAction" prefHeight="31.0" prefWidth="189.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="39.0" layoutY="338.0" text="Modal No">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtItemCode" layoutX="198.0" layoutY="192.0" onAction="#codeOnAction" prefHeight="31.0" prefWidth="189.0" promptText="EX : A001">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <Label layoutX="72.0" layoutY="214.0" text="Item Code">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="1084.0" layoutY="474.0" onAction="#clearOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #EAF55C; -fx-background-radius: 6;" text="Clear Text">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="945.0" layoutY="474.0" onAction="#saveOnActin" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #6FEEFF; -fx-background-radius: 6;" text="Save">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="1398.0" layoutY="472.0" prefHeight="49.0" prefWidth="57.0" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField layoutX="1229.0" layoutY="478.0" promptText="Search" />
+      <TableView fx:id="tblAccessories" layoutX="125.0" layoutY="563.0" prefHeight="400.0" prefWidth="1396.0">
+         <columns>
+            <TableColumn fx:id="colItemCode" prefWidth="93.00006103515625" style="-fx-alignment: center;" text="Item Code" />
+            <TableColumn fx:id="colBrand" prefWidth="143.99996948242188" style="-fx-alignment: center;" text="Brand" />
+            <TableColumn fx:id="colModalNo" prefWidth="151.0" style="-fx-alignment: center;" text="Modal No" />
+            <TableColumn fx:id="colName" prefWidth="164.0" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="colPrice" prefWidth="164.0" style="-fx-alignment: center;" text="Price" />
+            <TableColumn fx:id="colWarranty" prefWidth="207.0" style="-fx-alignment: center;" text="Warrenty Period" />
+            <TableColumn fx:id="colQty" prefWidth="145.0" style="-fx-alignment: center;" text="Qty" />
+            <TableColumn fx:id="colCategory" prefWidth="164.0" style="-fx-alignment: center;" text="Category" />
+            <TableColumn fx:id="colAction" prefWidth="162.0" style="-fx-alignment: center;" text="Action" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

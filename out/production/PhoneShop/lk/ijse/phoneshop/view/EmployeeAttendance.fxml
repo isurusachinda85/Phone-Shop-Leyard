@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.EmployeeAttendanceController">
+   <children>
+      <AnchorPane layoutX="31.0" layoutY="13.0" prefHeight="966.0" prefWidth="1573.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Label fx:id="lblAttenId" layoutX="324.0" layoutY="200.0" prefHeight="27.0" prefWidth="169.0" textFill="#010eff">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblName" layoutX="327.0" layoutY="324.0" prefHeight="21.0" prefWidth="346.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <Label layoutX="389.0" layoutY="14.0" text="Employee attendance">
+         <font>
+            <Font name="Algerian" size="75.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.8398058252427184" startX="0.9951456310679612" startY="0.06310679611650485">
+               <stops>
+                  <Stop color="#1353d3" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="121.0" layoutY="216.0" text="Attendance Id:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="121.0" layoutY="337.0" text="Employee Name:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="398.0" prefHeight="32.0" prefWidth="169.0" text="Date:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="849.0" layoutY="338.0" text="Out Time:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="850.0" layoutY="276.0" text="In Time:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXDatePicker fx:id="txtDate" layoutX="353.0" layoutY="391.0" onAction="#dateOnAction" />
+      <JFXTimePicker fx:id="txtInTime" layoutX="985.0" layoutY="268.0" />
+      <JFXTimePicker fx:id="txtOutTime" layoutX="986.0" layoutY="327.0" />
+      <Label layoutX="852.0" layoutY="216.0" text="State:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbState" layoutX="987.0" layoutY="209.0" onAction="#stateOnAction" prefHeight="31.0" prefWidth="169.0" promptText="Select None" />
+      <Label layoutX="121.0" layoutY="276.0" text="Employee Id:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbEmployeeId" layoutX="353.0" layoutY="267.0" onAction="#employeeIdOnAction" prefHeight="31.0" prefWidth="155.0" promptText="Select None" />
+      <TableView fx:id="tblAttendance" layoutX="130.0" layoutY="526.0" prefHeight="419.0" prefWidth="1396.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="128.0" style="-fx-alignment: center;" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="211.0" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="colDate" prefWidth="156.0" style="-fx-alignment: center;" text="Date" />
+            <TableColumn fx:id="colInTime" prefWidth="204.0" style="-fx-alignment: center;" text="In Time" />
+            <TableColumn fx:id="colOutTime" prefWidth="179.0" style="-fx-alignment: center;" text="Out Time" />
+            <TableColumn fx:id="colState" prefWidth="157.0" style="-fx-alignment: center;" text="State" />
+            <TableColumn fx:id="colEmployeeId" prefWidth="170.0" style="-fx-alignment: center;" text="Employee ID" />
+            <TableColumn fx:id="colAction" prefWidth="190.0" style="-fx-alignment: center;" text="Action" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="1034.0" layoutY="463.0" onAction="#attendanceSaveOnAction" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #6FEEFF; -fx-background-radius: 6;" text="Save">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1166.0" layoutY="463.0" onAction="#clearTextOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #EAF55C; -fx-background-radius: 6;" text="Clear Text">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="1477.0" layoutY="465.0" prefHeight="49.0" prefWidth="57.0" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField layoutX="1307.0" layoutY="471.0" promptText="Search" />
+      <Label layoutX="110.0" layoutY="114.0" text="Add Employee Attendance" textFill="#00ff11">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="45.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Calander2.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="57.0" layoutY="168.0" prefHeight="0.0" prefWidth="1003.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.ReturnDetailController">
+   <children>
+      <AnchorPane layoutX="38.0" layoutY="23.0" prefHeight="966.0" prefWidth="1573.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="76.0" layoutY="273.0" text="Customer Id">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbCusId" layoutX="274.0" layoutY="266.0" prefHeight="31.0" prefWidth="155.0" promptText="Select None" />
+            <Label layoutX="76.0" layoutY="338.0" text="Customer Name">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtCusName" layoutX="273.0" layoutY="322.0" prefHeight="31.0" prefWidth="316.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="76.0" layoutY="211.0" text="Return Bill No">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="77.0" layoutY="402.0" text="Phone No ">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtPhone" layoutX="272.0" layoutY="386.0" prefHeight="39.0" prefWidth="316.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="709.0" layoutY="202.0" text="Item Code">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXComboBox layoutX="874.0" layoutY="196.0" prefHeight="31.0" prefWidth="155.0" promptText="Select None" />
+            <Label layoutX="710.0" layoutY="273.0" text="Device Name">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="873.0" layoutY="264.0" prefHeight="39.0" prefWidth="214.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="711.0" layoutY="339.0" text="QTY">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="874.0" layoutY="322.0" prefHeight="39.0" prefWidth="135.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="711.0" layoutY="406.0" text="Price">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="872.0" layoutY="389.0" prefHeight="31.0" prefWidth="316.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="77.0" layoutY="467.0" text="Date Taken">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXDatePicker layoutX="272.0" layoutY="460.0" prefHeight="31.0" prefWidth="214.0" />
+            <TableView layoutX="65.0" layoutY="548.0" prefHeight="361.0" prefWidth="1443.0">
+              <columns>
+                <TableColumn prefWidth="115.00003051757812" text="ID" />
+                  <TableColumn prefWidth="166.0" text="Customer Name" />
+                  <TableColumn prefWidth="190.00003051757812" text="Phone No" />
+                  <TableColumn prefWidth="170.0" text="Date Taken" />
+                  <TableColumn prefWidth="223.0" text="Device Name" />
+                  <TableColumn prefWidth="184.0" text="Price" />
+                  <TableColumn prefWidth="151.0" text="QTY" />
+                  <TableColumn prefWidth="244.0" text="Action" />
+              </columns>
+            </TableView>
+            <JFXButton buttonType="RAISED" layoutX="1077.0" layoutY="488.0" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #EAF55C; -fx-background-radius: 6;" text="Clear Text">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="938.0" layoutY="488.0" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #6FEEFF; -fx-background-radius: 6;" text="Return">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="1391.0" layoutY="486.0" prefHeight="49.0" prefWidth="57.0" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField layoutX="1222.0" layoutY="492.0" promptText="Search" />
+            <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="267.0" prefHeight="31.0" prefWidth="161.0" style="-fx-background-color: #2ecc71;" text="NEW CUSTOMER" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/create.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="txtBilNo" layoutX="266.0" layoutY="199.0" prefHeight="39.0" prefWidth="155.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <Label layoutX="601.0" layoutY="24.0" text="return item ">
+         <font>
+            <Font name="Algerian" size="75.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.8398058252427184" startX="0.9951456310679612" startY="0.06310679611650485">
+               <stops>
+                  <Stop color="#1353d3" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="114.0" layoutY="117.0" prefHeight="30.0" prefWidth="135.0" text="Return Item" textFill="#00ff11">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="49.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/4171206-200-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="54.0" layoutY="171.0" prefHeight="0.0" prefWidth="1003.0" />
+   </children>
+</AnchorPane>

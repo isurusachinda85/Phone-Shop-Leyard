@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1645.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.CustomerManageController">
+   <children>
+      <AnchorPane layoutX="31.0" layoutY="14.0" prefHeight="970.0" prefWidth="1577.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Label fx:id="lblEmailError" layoutX="229.0" layoutY="410.0" textFill="RED" />
+            <Label layoutX="229.0" layoutY="421.0" textFill="RED" />
+            <Label fx:id="lblNameError" layoutX="229.0" layoutY="326.0" textFill="RED" />
+            <Label fx:id="lblAddressError" layoutX="1002.0" layoutY="242.0" textFill="RED" />
+            <Label fx:id="lblMobileError" layoutX="1002.0" layoutY="337.0" textFill="RED" />
+            <JFXButton buttonType="RAISED" layoutX="882.0" layoutY="442.0" onAction="#customerSaveOnAction" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #6FEEFF; -fx-background-radius: 6;" text="Save">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="1018.0" layoutY="442.0" onAction="#textFeildClear" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #EAF55C; -fx-background-radius: 6;" text="Clear Text">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="1155.0" layoutY="441.0" onAction="#updateOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2ecc71; -fx-background-radius: 6;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="txtcCusId" layoutX="229.0" layoutY="203.0" onAction="#txtCusId" prefHeight="39.0" prefWidth="127.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children></AnchorPane>
+      <Label layoutX="517.0" layoutY="14.0" text="Customer Form">
+         <font>
+            <Font name="Algerian" size="76.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.8398058252427184" startX="0.9951456310679612" startY="0.06310679611650485">
+               <stops>
+                  <Stop color="#1353d3" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="92.0" layoutY="225.0" text="Customer Id">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="92.0" layoutY="307.0" text="Name ">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCusName" layoutX="263.0" layoutY="290.0" onAction="#nameOnAction" onKeyReleased="#nameOnKeyRelese" prefHeight="31.0" prefWidth="480.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="878.0" layoutY="225.0" text="Address">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCusAddress" layoutX="1032.0" layoutY="206.0" onAction="#addressOnAction" onKeyReleased="#addressOnKeyReles" prefHeight="31.0" prefWidth="480.0">
+         <font>
+            <Font size="18.0" />
+         </font></JFXTextField>
+      <Label layoutX="877.0" layoutY="310.0" text="Phone No ">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCusPhone" layoutX="1030.0" layoutY="294.0" onAction="#phoneOnAction" onKeyReleased="#phoneNoOnKeyReles" prefHeight="31.0" prefWidth="480.0">
+         <font>
+            <Font size="18.0" />
+         </font></JFXTextField>
+      <Label layoutX="92.0" layoutY="400.0" text="Email">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCusEmail" layoutX="260.0" layoutY="383.0" onAction="#emailOnAction" onKeyReleased="#emailOnKeReles" prefHeight="31.0" prefWidth="480.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <TableView fx:id="tblCustomer" layoutX="118.0" layoutY="536.0" prefHeight="414.0" prefWidth="1396.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="104.0" style="-fx-alignment: center;" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="233.99996948242188" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="312.0" style="-fx-alignment: center;" text="Address" />
+            <TableColumn fx:id="colPhoneNo" prefWidth="216.0" style="-fx-alignment: center;" text="Phone No" />
+            <TableColumn fx:id="colEmail" prefWidth="268.0" style="-fx-alignment: center;" text="Email" />
+            <TableColumn fx:id="colAction" prefWidth="261.0" text="Action" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="1494.0" layoutY="460.0" onAction="#searchOnAction" prefHeight="49.0" prefWidth="57.0" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="txtSearch" layoutX="1325.0" layoutY="466.0" onKeyReleased="#searchOnKeyReleased" promptText="Search" />
+      <Label layoutX="103.0" layoutY="117.0" text="Add Customer Detail" textFill="#00ff11">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="38.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/CustomerAdd.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="50.0" layoutY="171.0" prefHeight="0.0" prefWidth="1003.0" />
+   </children>
+</AnchorPane>

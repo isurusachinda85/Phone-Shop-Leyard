@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.phoneshop.controller.OverViewController">
+   <children>
+      <Label layoutX="119.0" layoutY="97.0" prefHeight="174.0" prefWidth="354.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+      <Label fx:id="qtyPhone" layoutX="156.0" layoutY="128.0" text="05">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="126.0" fitWidth="177.0" layoutX="335.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/phone.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="139.0" layoutY="200.0" text="Phones" textFill="#908c8c">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="246.0" text="No Of Phones Availlable" textFill="#5b5858" />
+      <Label layoutX="1106.0" layoutY="97.0" prefHeight="174.0" prefWidth="354.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+      <Label fx:id="qtyParts" layoutX="1143.0" layoutY="128.0" text="05">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="184.0" fitWidth="161.0" layoutX="1311.0" layoutY="73.0" pickOnBounds="true">
+         <image>
+            <Image url="@../image/kissclipart-phone-repair-icon-clipart-emmecumxy-communications-2480ee4559ac38d8-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="1126.0" layoutY="200.0" text="Parts" textFill="#908c8c">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="1126.0" layoutY="246.0" text="No Of Phones Availlable" textFill="#5b5858" />
+      <Label layoutX="612.0" layoutY="97.0" prefHeight="174.0" prefWidth="354.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+      <Label fx:id="qtyAccessories" layoutX="649.0" layoutY="128.0" text="05">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="126.0" fitWidth="177.0" layoutX="828.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Phone-Accessories-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="632.0" layoutY="200.0" text="Accessories" textFill="#908c8c">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="632.0" layoutY="246.0" text="No Of Phones Availlable" textFill="#5b5858" />
+   </children>
+</AnchorPane>
