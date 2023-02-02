@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.dao.EmployeeDAOImpl;
 import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.model.CustomerM;
 import lk.ijse.phoneshop.model.EmployeeM;
@@ -123,7 +124,8 @@ public class EmployeeManageController implements Initializable {
 
         Employee employee = new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password);
         try {
-            boolean saveEmployee = EmployeeM.saveEmployee(employee);
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            boolean saveEmployee = employeeDAO.saveEmployee(employee);
             loadNextEmployeeId();
             if (!saveEmployee){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
