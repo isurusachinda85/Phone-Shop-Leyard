@@ -305,6 +305,8 @@ public class CustomerManageController {
             System.out.println(e);
         }
         loadData();
+        textFeildClear(actionEvent);
+        loadNextCustomerId();
     }
 
     public void txtCusId(ActionEvent actionEvent) {

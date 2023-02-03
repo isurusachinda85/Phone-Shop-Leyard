@@ -61,5 +61,4 @@ public class EmployeeM {
         String sql = "Update employee set name=?,address=?,email=?,phoneNo=?,dateOfBirth=?,jobRole=?,userName=? where eId=?";
         return CrudUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getId());
     }
-
 }

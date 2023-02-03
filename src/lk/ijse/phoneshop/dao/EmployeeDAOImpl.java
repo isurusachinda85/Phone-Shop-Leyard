@@ -1,10 +1,15 @@
 package lk.ijse.phoneshop.dao;
 
+import lk.ijse.phoneshop.db.DBConnection;
+import lk.ijse.phoneshop.to.Customer;
 import lk.ijse.phoneshop.to.Employee;
 import lk.ijse.phoneshop.util.CrudUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class EmployeeDAOImpl {
     public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
@@ -12,9 +17,26 @@ public class EmployeeDAOImpl {
         return CrudUtil.execute(sql,employee.getId(),employee.getName(),employee.getAddress(),employee.getEmail(),
                 employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword());
     }
-    public ResultSet getAllEmployee() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * From employee";
-        return CrudUtil.execute(sql);
+    public ArrayList<Employee> getAllEmployee() throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        Statement stm = connection.createStatement();
+        ResultSet resultSet = stm.executeQuery("SELECT * From employee");
+        ArrayList<Employee> allEmployee = new ArrayList<>();
+
+        while (resultSet.next()){
+            allEmployee.add(new Employee(
+                    resultSet.getString("eId"),
+                    resultSet.getString("name"),
+                    resultSet.getString("address"),
+                    resultSet.getInt("phoneNo"),
+                    resultSet.getString("email"),
+                    resultSet.getString("dateOfBirth"),
+                    resultSet.getString("jobRole"),
+                    resultSet.getString("userName"),
+                    resultSet.getString("Password")));
+        }
+
+        return allEmployee;
     }
     public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT eId FROM employee ORDER BY eId DESC LIMIT 1";
@@ -35,9 +57,9 @@ public class EmployeeDAOImpl {
         return "E001";
 
     }
-    public boolean deleteEmployee(Employee employee) throws SQLException, ClassNotFoundException {
+    public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "Delete From employee where eId=?";
-        return CrudUtil.execute(sql,employee.getId());
+        return CrudUtil.execute(sql,id);
     }
     public Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM employee WHERE eId = ?";

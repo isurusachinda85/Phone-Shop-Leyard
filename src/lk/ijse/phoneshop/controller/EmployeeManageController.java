@@ -122,10 +122,9 @@ public class EmployeeManageController implements Initializable {
         String userName = txtUserName.getText();
         String password = txtPassword.getText();
 
-        Employee employee = new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password);
         try {
             EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-            boolean saveEmployee = employeeDAO.saveEmployee(employee);
+            boolean saveEmployee = employeeDAO.saveEmployee(new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
             loadNextEmployeeId();
             if (!saveEmployee){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -134,6 +133,7 @@ public class EmployeeManageController implements Initializable {
             System.out.println(e);
         }
         loadData();
+        clearOnAction(event);
     }
 
     public void setCmbJobRole(){
@@ -161,21 +161,10 @@ public class EmployeeManageController implements Initializable {
         employeeList.clear();
 
         try {
-            ResultSet resultSet = EmployeeM.getAllEmployee();
-            while (resultSet.next()){
-                list.add(new Employee(
-                        resultSet.getString("eId"),
-                        resultSet.getString("name"),
-                        resultSet.getString("address"),
-                        resultSet.getInt("phoneNo"),
-                        resultSet.getString("email"),
-                        resultSet.getString("dateOfBirth"),
-                        resultSet.getString("jobRole"),
-                        resultSet.getString("userName"),
-                        resultSet.getString("Password")));
-            }
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            ArrayList<Employee> allEmployee = employeeDAO.getAllEmployee();
 
-            for(Employee em : list){
+            for(Employee em : allEmployee){
                 Button button = new Button("Delete");
                 EmployeeTM tm = new EmployeeTM(em.getId(),em.getName(),em.getAddress(),em.getPhoneNo(),em.getEmail(),em.getDateOfBirth(),
                         em.getJobRole(),em.getUserName(),em.getPassword(),button);
@@ -192,9 +181,10 @@ public class EmployeeManageController implements Initializable {
                         tblEmployee.getItems().removeAll(tblEmployee.getSelectionModel().getSelectedItem());
                     }
                     String id = em.getId();
-                    Employee employee = new Employee(id);
+
                     try {
-                        boolean deleteEmployee = EmployeeM.deleteEmployee(employee);
+                        EmployeeDAOImpl employeeDAO1 = new EmployeeDAOImpl();
+                        boolean deleteEmployee = employeeDAO1.deleteEmployee(id);
 
                         if (deleteEmployee){
                             loadNextEmployeeId();
@@ -214,7 +204,8 @@ public class EmployeeManageController implements Initializable {
     }
     private void loadNextEmployeeId(){
         try {
-            String eId = EmployeeM.getNextEmployeeId();
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            String eId = employeeDAO.getNextEmployeeId();
             txtEmployee.setText(eId);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -272,7 +263,8 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            boolean updateEmployee = EmployeeM.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            boolean updateEmployee = employeeDAO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
             if (updateEmployee){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
             }else {
@@ -282,12 +274,15 @@ public class EmployeeManageController implements Initializable {
             System.out.println(e);
         }
         loadData();
+        clearOnAction(actionEvent);
+        loadNextEmployeeId();
     }
 
     public void serchOnAction(ActionEvent actionEvent) {
         String id = txtEmployee.getText();
         try {
-            Employee employee = EmployeeM.searchEmployee(id);
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            Employee employee = employeeDAO.searchEmployee(id);
             if(employee!=null){
                 txtName.setText(employee.getName());
                 txtAddress.setText(employee.getAddress());

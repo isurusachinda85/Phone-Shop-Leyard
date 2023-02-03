@@ -35,12 +35,12 @@ public class CustomerM {
 
         }
             return "C001";
-
     }
     public static ResultSet loadCustomerId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT cusId from customer order by cusId asc";
         return CrudUtil.execute(sql);
     }
+
     public static Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM customer WHERE cusId = ?";
         ResultSet resultSet = CrudUtil.execute(sql, id);
