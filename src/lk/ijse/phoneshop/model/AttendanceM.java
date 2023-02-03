@@ -17,15 +17,7 @@ public class AttendanceM {
         ResultSet resultSet = CrudUtil.execute(sql, id);
         if(resultSet.next()){
             return new Employee(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getInt("phoneNo"),
-                    resultSet.getString(5),
-                    resultSet.getString(6),
-                    resultSet.getString(7),
-                    resultSet.getString(8),
-                    resultSet.getString(9));
+                    resultSet.getString("name"));
         }
         return null;
     }

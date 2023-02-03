@@ -97,7 +97,7 @@
             <TableColumn fx:id="colAction" prefWidth="190.0" style="-fx-alignment: center;" text="Action" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="1034.0" layoutY="463.0" onAction="#attendanceSaveOnAction" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #6FEEFF; -fx-background-radius: 6;" text="Save">
+      <JFXButton buttonType="RAISED" layoutX="911.0" layoutY="463.0" onAction="#attendanceSaveOnAction" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #6FEEFF; -fx-background-radius: 6;" text="Save">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -105,7 +105,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1166.0" layoutY="463.0" onAction="#clearTextOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #EAF55C; -fx-background-radius: 6;" text="Clear Text">
+      <JFXButton buttonType="RAISED" layoutX="1032.0" layoutY="463.0" onAction="#clearTextOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #EAF55C; -fx-background-radius: 6;" text="Clear Text">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -137,5 +137,13 @@
          </image>
       </ImageView>
       <Separator layoutX="57.0" layoutY="168.0" prefHeight="0.0" prefWidth="1003.0" />
+      <JFXButton buttonType="RAISED" layoutX="1159.0" layoutY="464.0" onAction="#updateOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2ecc71; -fx-background-radius: 6;" text="Update">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

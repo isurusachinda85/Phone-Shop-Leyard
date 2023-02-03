@@ -26,7 +26,8 @@ public class Employee {
         this.password = password;
     }
 
-    public Employee(String id) {
+    public Employee(String name) {
+        this.name=name;
     }
 
 

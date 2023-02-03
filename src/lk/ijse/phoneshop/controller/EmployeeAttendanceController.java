@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.dao.AttendanceDAOImpl;
 import lk.ijse.phoneshop.model.AttendanceM;
 import lk.ijse.phoneshop.model.EmployeeM;
 import lk.ijse.phoneshop.tm.AttendanceTM;
@@ -90,9 +91,9 @@ public class EmployeeAttendanceController {
         LocalTime inTime = LocalTime.from(txtInTime.getValue());
         LocalTime outTime = LocalTime.from(txtOutTime.getValue());
 
-        Attendance attendance = new Attendance(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime));
         try {
-            boolean attendanceSave = AttendanceM.attendanceSave(attendance);
+            AttendanceDAOImpl attendanceDAO = new AttendanceDAOImpl();
+            boolean attendanceSave = attendanceDAO.attendanceSave(new Attendance(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime)));
             loadNextAttendanceId();
             if (!attendanceSave){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -101,6 +102,7 @@ public class EmployeeAttendanceController {
             System.out.println(e);
         }
         loadAllAttendance();
+        clearTextOnAction(event);
     }
     public void loadAllAttendance(){
         ObservableList <AttendanceTM> attendanceList = FXCollections.observableArrayList();
@@ -109,18 +111,9 @@ public class EmployeeAttendanceController {
         list.clear();
         attendanceList.clear();
         try {
-            ResultSet resultSet = AttendanceM.getAllAttendance();
-            while (resultSet.next()){
-                list.add(new Attendance(
-                        resultSet.getString("aid"),
-                        resultSet.getString("eid"),
-                        resultSet.getString("employeeName"),
-                        resultSet.getString("date"),
-                        resultSet.getString("state"),
-                        resultSet.getString("inTime"),
-                        resultSet.getString("outTime")));
-            }
-            for(Attendance attendance : list){
+            AttendanceDAOImpl attendanceDAO = new AttendanceDAOImpl();
+            ArrayList<Attendance> allAttendance = attendanceDAO.getAllAttendance();
+            for(Attendance attendance : allAttendance){
                 Button button = new Button("Delete");
                 AttendanceTM tm = new AttendanceTM(attendance.getAttendanceId(),attendance.getEmployeeId(),attendance.getName(),
                         attendance.getDate(),attendance.getSate(),attendance.getInTime(),attendance.getOutTime(),button);
@@ -144,10 +137,12 @@ public class EmployeeAttendanceController {
     public void loadEmployeeId(){
         try {
             ObservableList<String>data = FXCollections.observableArrayList();
-            ResultSet resultSet = AttendanceM.loadEmployeeId();
+            AttendanceDAOImpl attendanceDAO = new AttendanceDAOImpl();
+            ResultSet resultSet = attendanceDAO.loadEmployeeId();
             while (resultSet.next()){
                 data.add(resultSet.getString(1));
                 cmbEmployeeId.setItems(data);
+
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -181,7 +176,8 @@ public class EmployeeAttendanceController {
     void employeeIdOnAction(ActionEvent event) {
         String id = cmbEmployeeId.getValue();
         try {
-            Employee employee = AttendanceM.searchEmployee(id);
+            AttendanceDAOImpl attendanceDAO = new AttendanceDAOImpl();
+            Employee employee = attendanceDAO.searchEmployee(id);
 
             filName(employee);
             txtDate.requestFocus();
@@ -195,7 +191,8 @@ public class EmployeeAttendanceController {
 
     private void loadNextAttendanceId(){
         try {
-            String aId = AttendanceM.getNextAttendanceId();
+            AttendanceDAOImpl attendanceDAO = new AttendanceDAOImpl();
+            String aId = attendanceDAO.getNextAttendanceId();
             txtAttendId.setText(aId);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
