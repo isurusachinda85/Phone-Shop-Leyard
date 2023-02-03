@@ -21,16 +21,16 @@
    <children>
       <AnchorPane layoutX="31.0" layoutY="13.0" prefHeight="966.0" prefWidth="1573.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <Label fx:id="lblAttenId" layoutX="324.0" layoutY="200.0" prefHeight="27.0" prefWidth="169.0" textFill="#010eff">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
             <Label fx:id="lblName" layoutX="327.0" layoutY="324.0" prefHeight="21.0" prefWidth="346.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            <JFXTextField fx:id="txtAttendId" layoutX="317.0" layoutY="188.0" prefHeight="31.0" prefWidth="169.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
          </children></AnchorPane>
       <Label layoutX="389.0" layoutY="14.0" text="Employee attendance">
          <font>

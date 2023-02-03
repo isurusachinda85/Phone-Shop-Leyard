@@ -2,6 +2,7 @@ package lk.ijse.phoneshop.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,9 +25,8 @@ import java.util.ArrayList;
 
 public class EmployeeAttendanceController {
 
-    @FXML
-    private Label lblAttenId;
 
+    public JFXTextField txtAttendId;
     @FXML
     private Label lblName;
 
@@ -82,7 +82,7 @@ public class EmployeeAttendanceController {
 
     @FXML
     void attendanceSaveOnAction(ActionEvent event) {
-        String attendanceId = lblAttenId.getText();
+        String attendanceId = txtAttendId.getText();
         String employeeId = cmbEmployeeId.getValue();
         String employeeName = lblName.getText();
         LocalDate date = LocalDate.from(txtDate.getValue());
@@ -196,7 +196,7 @@ public class EmployeeAttendanceController {
     private void loadNextAttendanceId(){
         try {
             String aId = AttendanceM.getNextAttendanceId();
-            lblAttenId.setText(aId);
+            txtAttendId.setText(aId);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -207,4 +207,6 @@ public class EmployeeAttendanceController {
         txtInTime.requestFocus();
     }
 
+    public void updateOnAction(ActionEvent actionEvent) {
+    }
 }

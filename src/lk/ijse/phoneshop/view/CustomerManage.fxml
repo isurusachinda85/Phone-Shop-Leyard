@@ -49,7 +49,7 @@
             </JFXButton>
             <JFXTextField fx:id="txtcCusId" layoutX="229.0" layoutY="203.0" onAction="#txtCusId" prefHeight="39.0" prefWidth="127.0">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </JFXTextField>
          </children></AnchorPane>

@@ -23,7 +23,7 @@
          <children>
             <JFXTextField fx:id="txtEmployee" alignment="TOP_LEFT" layoutX="282.0" layoutY="158.0" onAction="#serchOnAction" prefHeight="39.0" prefWidth="128.0">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </JFXTextField>
             <JFXButton buttonType="RAISED" layoutX="1137.0" layoutY="456.0" onAction="#updateOnAction" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2ecc71; -fx-background-radius: 6;" text="Update">
