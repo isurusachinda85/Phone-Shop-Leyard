@@ -105,6 +105,7 @@ public class CustomerManageController {
         setPattern();
     }
 
+    //Save Customer
     public void customerSaveOnAction(ActionEvent actionEvent){
         String id = txtcCusId.getText();
         String name = txtCusName.getText();
@@ -127,6 +128,7 @@ public class CustomerManageController {
 
     }
 
+    //load Customer
     public void loadData() {
         ObservableList <CustomerTM> customerList = FXCollections.observableArrayList();
         ArrayList<Customer>list = new ArrayList<>();
@@ -155,7 +157,7 @@ public class CustomerManageController {
                         tblCustomer.getItems().removeAll(tblCustomer.getSelectionModel().getSelectedItem());
                     }
                     String id = c.getId();
-
+                    //delete Customer
                     try {
                         CustomerDAOImpl customerDAO1 = new CustomerDAOImpl();
                         boolean deleteCustomer1 = customerDAO1.deleteCustomer(id);
@@ -283,6 +285,7 @@ public class CustomerManageController {
 
     }
 
+    //update customer
     public void updateOnAction(ActionEvent actionEvent) {
         String id = txtcCusId.getText();
         String name = txtCusName.getText();
@@ -309,6 +312,7 @@ public class CustomerManageController {
         loadNextCustomerId();
     }
 
+    //search customer
     public void txtCusId(ActionEvent actionEvent) {
         String id= txtcCusId.getText();
         try {

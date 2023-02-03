@@ -110,6 +110,7 @@ public class EmployeeManageController implements Initializable {
         cmbJobRole.getSelectionModel().clearSelection();
     }
 
+    //save employee
     @FXML
     void saveOnAction(ActionEvent event) {
         String id = txtEmployee.getText();
@@ -153,6 +154,7 @@ public class EmployeeManageController implements Initializable {
         colJobRole.setCellValueFactory(new PropertyValueFactory<>("JobRole"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("delete"));
     }
+    //load employee
     public void loadData(){
         ObservableList <EmployeeTM> employeeList = FXCollections.observableArrayList();
         ArrayList<Employee> list = new ArrayList<>();
@@ -251,6 +253,7 @@ public class EmployeeManageController implements Initializable {
         txtPhoneNo.requestFocus();
     }
 
+    //update employee
     public void updateOnAction(ActionEvent actionEvent) {
         String id = txtEmployee.getText();
         String name = txtName.getText();
@@ -278,6 +281,7 @@ public class EmployeeManageController implements Initializable {
         loadNextEmployeeId();
     }
 
+    //search employee
     public void serchOnAction(ActionEvent actionEvent) {
         String id = txtEmployee.getText();
         try {
