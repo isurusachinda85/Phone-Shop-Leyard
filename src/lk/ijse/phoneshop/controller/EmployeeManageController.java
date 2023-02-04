@@ -136,23 +136,53 @@ public class EmployeeManageController implements Initializable {
         loadData();
         clearOnAction(event);
     }
+    //update employee
+    public void updateOnAction(ActionEvent actionEvent) {
+        String id = txtEmployee.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        String phoneNo = txtPhoneNo.getText();
+        String email = txtEmail.getText();
+        LocalDate birth = txtDate.getValue();
+        String jobRole = cmbJobRole.getValue();
+        String userName = txtUserName.getText();
+        String password = txtPassword.getText();
 
-    public void setCmbJobRole(){
-        ObservableList<String>list = FXCollections.observableArrayList();
-        list.add("Manager");
-        list.add("Cashier");
-        list.add("Sales men");
-        cmbJobRole.setItems(list);
+        try {
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            boolean updateEmployee = employeeDAO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
+            if (updateEmployee){
+                new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
+            }else {
+                new Alert(Alert.AlertType.WARNING, "No employee !").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        loadData();
+        clearOnAction(actionEvent);
+        loadNextEmployeeId();
     }
-    public void setCellValueFactory(){
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("PhoneNo"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-        colJobRole.setCellValueFactory(new PropertyValueFactory<>("JobRole"));
-        colAction.setCellValueFactory(new PropertyValueFactory<>("delete"));
+    //search employee
+    public void serchOnAction(ActionEvent actionEvent) {
+        String id = txtEmployee.getText();
+        try {
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            Employee employee = employeeDAO.searchEmployee(id);
+            if(employee!=null){
+                txtName.setText(employee.getName());
+                txtAddress.setText(employee.getAddress());
+                txtPhoneNo.setText(String.valueOf(employee.getPhoneNo()));
+                txtEmail.setText(employee.getEmail());
+                txtDate.setValue(LocalDate.parse(employee.getDateOfBirth()));
+                cmbJobRole.setValue(employee.getJobRole());
+                txtUserName.setText(employee.getUserName());
+            }else {
+                new Alert(Alert.AlertType.WARNING, "Not Found Employee !").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
     }
     //load employee
     public void loadData(){
@@ -204,6 +234,24 @@ public class EmployeeManageController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void setCmbJobRole(){
+        ObservableList<String>list = FXCollections.observableArrayList();
+        list.add("Manager");
+        list.add("Cashier");
+        list.add("Sales men");
+        cmbJobRole.setItems(list);
+    }
+    public void setCellValueFactory(){
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("PhoneNo"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+        colJobRole.setCellValueFactory(new PropertyValueFactory<>("JobRole"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("delete"));
+    }
+
     private void loadNextEmployeeId(){
         try {
             EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
@@ -253,53 +301,4 @@ public class EmployeeManageController implements Initializable {
         txtPhoneNo.requestFocus();
     }
 
-    //update employee
-    public void updateOnAction(ActionEvent actionEvent) {
-        String id = txtEmployee.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String phoneNo = txtPhoneNo.getText();
-        String email = txtEmail.getText();
-        LocalDate birth = txtDate.getValue();
-        String jobRole = cmbJobRole.getValue();
-        String userName = txtUserName.getText();
-        String password = txtPassword.getText();
-
-        try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-            boolean updateEmployee = employeeDAO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
-            if (updateEmployee){
-                new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
-            }else {
-                new Alert(Alert.AlertType.WARNING, "No employee !").show();
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e);
-        }
-        loadData();
-        clearOnAction(actionEvent);
-        loadNextEmployeeId();
-    }
-
-    //search employee
-    public void serchOnAction(ActionEvent actionEvent) {
-        String id = txtEmployee.getText();
-        try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-            Employee employee = employeeDAO.searchEmployee(id);
-            if(employee!=null){
-                txtName.setText(employee.getName());
-                txtAddress.setText(employee.getAddress());
-                txtPhoneNo.setText(String.valueOf(employee.getPhoneNo()));
-                txtEmail.setText(employee.getEmail());
-                txtDate.setValue(LocalDate.parse(employee.getDateOfBirth()));
-                cmbJobRole.setValue(employee.getJobRole());
-                txtUserName.setText(employee.getUserName());
-            }else {
-                new Alert(Alert.AlertType.WARNING, "Not Found Employee !").show();
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e);
-        }
-    }
 }

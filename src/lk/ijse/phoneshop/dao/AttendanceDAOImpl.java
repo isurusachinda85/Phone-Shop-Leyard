@@ -68,4 +68,8 @@ public class AttendanceDAOImpl {
         }
         return "A001";
     }
+    public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
+        String sql = "Delete From attendance where aid=?";
+        return CrudUtil.execute(sql,id);
+    }
 }

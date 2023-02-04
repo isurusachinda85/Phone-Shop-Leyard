@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class EmployeeAttendanceController {
 
@@ -119,6 +120,26 @@ public class EmployeeAttendanceController {
                         attendance.getDate(),attendance.getSate(),attendance.getInTime(),attendance.getOutTime(),button);
                 attendanceList.add(tm);
                 tblAttendance.setItems(attendanceList);
+
+                button.setOnAction((e -> {
+                    ButtonType ok = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ok, no);
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.orElse(no) == ok) {
+                        tblAttendance.getItems().removeAll(tblAttendance.getSelectionModel().getSelectedItem());
+                    }
+                    String id = tm.getAttendanceId();
+
+                    try {
+                        AttendanceDAOImpl attendanceDAO1 = new AttendanceDAOImpl();
+                        attendanceDAO1.deleteEmployee(id);
+                        loadNextAttendanceId();
+
+                    } catch (SQLException | ClassNotFoundException throwable) {
+                        throwable.printStackTrace();
+                    }
+                }));
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -198,12 +219,11 @@ public class EmployeeAttendanceController {
             e.printStackTrace();
         }
     }
+    public void updateOnAction(ActionEvent actionEvent) {
 
+    }
     @FXML
     void stateOnAction(ActionEvent event) {
         txtInTime.requestFocus();
-    }
-
-    public void updateOnAction(ActionEvent actionEvent) {
     }
 }
