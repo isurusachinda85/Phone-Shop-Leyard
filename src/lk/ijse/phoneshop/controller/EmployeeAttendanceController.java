@@ -107,9 +107,6 @@ public class EmployeeAttendanceController {
     }
     public void loadAllAttendance(){
         ObservableList <AttendanceTM> attendanceList = FXCollections.observableArrayList();
-        ArrayList<Attendance> list = new ArrayList<>();
-
-        list.clear();
         attendanceList.clear();
         try {
             AttendanceDAOImpl attendanceDAO = new AttendanceDAOImpl();
@@ -132,8 +129,7 @@ public class EmployeeAttendanceController {
                     String id = tm.getAttendanceId();
 
                     try {
-                        AttendanceDAOImpl attendanceDAO1 = new AttendanceDAOImpl();
-                        attendanceDAO1.deleteEmployee(id);
+                        attendanceDAO.deleteEmployee(id);
                         loadNextAttendanceId();
 
                     } catch (SQLException | ClassNotFoundException throwable) {

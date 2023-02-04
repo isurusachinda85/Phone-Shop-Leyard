@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.dao.RepairDAOImpl;
 import lk.ijse.phoneshop.model.CustomerM;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.model.RepairM;
@@ -37,6 +38,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RepairManageController implements Initializable {
@@ -122,6 +124,7 @@ public class RepairManageController implements Initializable {
         setCellValueFactory();
     }
     @FXML
+    //add repair
     void repairOnAction(ActionEvent event) {
         String repairId = txtRepairNo.getText();
         String customerId = cmbCusId.getValue();
@@ -136,9 +139,9 @@ public class RepairManageController implements Initializable {
         String state = cmbState.getValue();
         LocalDate date = LocalDate.now();
 
-        Repair repair = new Repair(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date));
         try {
-            boolean saveRepair = RepairM.saveRepair(repair);
+            RepairDAOImpl repairDAO = new RepairDAOImpl();
+            boolean saveRepair = repairDAO.saveRepair(new Repair(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date)));
             if (saveRepair){
                 Notifications notification = Notifications.create().title("Success").text("Repair Added Success").graphic(null)
                         .hideAfter(Duration.seconds(8))
@@ -152,34 +155,46 @@ public class RepairManageController implements Initializable {
             e.printStackTrace();
         }
         loadData();
+        clearTextOnAction(event);
     }
+    //get all repair data
     public void loadData(){
-        ObservableList <RepairTM> repair = FXCollections.observableArrayList();
-        ArrayList<Repair> list = new ArrayList<>();
-        list.clear();
-        repair.clear();
+        ObservableList <RepairTM> repairList = FXCollections.observableArrayList();
+        repairList.clear();
 
         try {
-            ResultSet allRepair = RepairM.getAllRepair();
-            while (allRepair.next()){
-                list.add(new Repair(
-                        allRepair.getString("repId"),
-                        allRepair.getString("customerName"),
-                        allRepair.getInt("phoneNo"),
-                        allRepair.getString("deviceName"),
-                        allRepair.getString("problem"),
-                        allRepair.getDouble("repairPrice"),
-                        allRepair.getDouble("amount"),
-                        allRepair.getDouble("due"),
-                        allRepair.getString("state")));
-            }
-            for(Repair repairs : list){
+            RepairDAOImpl repairDAO = new RepairDAOImpl();
+            ArrayList<Repair> allRepair = repairDAO.getAllRepair();
+            for(Repair repairs : allRepair){
                 Button button = new Button("Delete");
                 RepairTM tm = new RepairTM(repairs.getRepairNo(),repairs.getCustomerName(),repairs.getPhoneNo(),
                         repairs.getDeviceName(),repairs.getDeviceProblem(),repairs.getPrice(),repairs.getAmount(),
                         repairs.getDue(),repairs.getState(),button);
-                repair.add(tm);
-                tblRepair.setItems(repair);
+                repairList.add(tm);
+                tblRepair.setItems(repairList);
+
+                button.setOnAction((e->{
+                    ButtonType ok = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ok, no);
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.orElse(no) == ok) {
+                        tblRepair.getItems().removeAll(tblRepair.getSelectionModel().getSelectedItem());
+                    }
+                    //delete repair
+                    String rid =repairs.getRepairNo();
+                    try {
+                        boolean deleteRepair = repairDAO.deleteRepair(rid);
+                        if (deleteRepair) {
+                            System.out.println("delete");
+                        }else {
+                            System.out.println("no");
+                        }
+                    } catch (SQLException | ClassNotFoundException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }));
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);

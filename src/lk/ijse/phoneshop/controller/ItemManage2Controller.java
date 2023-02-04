@@ -144,9 +144,6 @@ public class ItemManage2Controller implements Initializable {
     //load accessories
     public void loadItem(){
         ObservableList <ItemTM> itemList = FXCollections.observableArrayList();
-        ArrayList<Item> list = new ArrayList<>();
-
-        list.clear();
         itemList.clear();
 
         try {
@@ -171,8 +168,7 @@ public class ItemManage2Controller implements Initializable {
                     String code = tm.getItemCode();
 
                     try {
-                        ItemDAOImpl itemDAO1 = new ItemDAOImpl();
-                        boolean deletePhone = itemDAO1.deleteItem(code);
+                        boolean deletePhone = itemDAO.deleteItem(code);
                         if (deletePhone) {
                             new Alert(Alert.AlertType.CONFIRMATION,"Delete phone !").show();
                         }else{

@@ -187,9 +187,6 @@ public class EmployeeManageController implements Initializable {
     //load employee
     public void loadData(){
         ObservableList <EmployeeTM> employeeList = FXCollections.observableArrayList();
-        ArrayList<Employee> list = new ArrayList<>();
-
-        list.clear();
         employeeList.clear();
 
         try {
@@ -215,9 +212,7 @@ public class EmployeeManageController implements Initializable {
                     String id = em.getId();
 
                     try {
-                        EmployeeDAOImpl employeeDAO1 = new EmployeeDAOImpl();
-                        boolean deleteEmployee = employeeDAO1.deleteEmployee(id);
-
+                        boolean deleteEmployee = employeeDAO.deleteEmployee(id);
                         if (deleteEmployee){
                             loadNextEmployeeId();
                             System.out.println("Delete");

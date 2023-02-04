@@ -131,10 +131,7 @@ public class CustomerManageController {
     //load Customer
     public void loadData() {
         ObservableList <CustomerTM> customerList = FXCollections.observableArrayList();
-        ArrayList<Customer>list = new ArrayList<>();
-        list.clear();
         customerList.clear();
-
         try {
 
             CustomerDAOImpl customerDAO = new CustomerDAOImpl();
@@ -159,11 +156,8 @@ public class CustomerManageController {
                     String id = c.getId();
                     //delete Customer
                     try {
-                        CustomerDAOImpl customerDAO1 = new CustomerDAOImpl();
-                        boolean deleteCustomer1 = customerDAO1.deleteCustomer(id);
-
-
-                        if (deleteCustomer1){
+                        boolean deleteCustomer = customerDAO.deleteCustomer(id);
+                        if (deleteCustomer){
                             loadNextCustomerId();
                             System.out.println("Delete");
                         }else {
