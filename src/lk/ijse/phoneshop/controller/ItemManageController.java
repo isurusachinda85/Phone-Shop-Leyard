@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.model.EmployeeM;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.tm.EmployeeTM;
@@ -103,10 +104,9 @@ public class ItemManageController implements Initializable {
         int qty =Integer.parseInt(txtQty.getText());
         String category = cmbCategory.getValue();
 
-        Item item = new Item(itemCode,brand,modalNo,name,price,warranty,qty,category);
-
         try {
-            boolean itemAdd = ItemM.itemAdd(item);
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            boolean itemAdd = itemDAO.itemAdd(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -115,6 +115,7 @@ public class ItemManageController implements Initializable {
             e.printStackTrace();
         }
         loadItem();
+        clearTextOnAction(event);
     }
     public void loadItem(){
         ObservableList <ItemTM> itemList = FXCollections.observableArrayList();

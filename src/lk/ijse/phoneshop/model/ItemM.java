@@ -26,44 +26,7 @@ public class ItemM {
         String sql = "SELECT * from item where itemCode like 'R%'";
         return CrudUtil.execute(sql);
     }
-    /*public static String getNextPhoneId() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT itemCode FROM item ORDER BY itemCode like 'P%'DESC LIMIT 1";
-        ResultSet resultSet = CrudUtil.execute(sql);
-        if (resultSet.next()){
-            return getNextPhoneId(resultSet.getString(1));
-        }
-        return getNextPhoneId(resultSet.getString(null));
-    }
-    public static String getNextPhoneId(String itemCode){
-        if (itemCode!=null){
-            String[]split = itemCode.split("P0");
-            int id = Integer.parseInt(split[1]);
-            id+=1;
-            return "P00"+id;
 
-        }
-        return "P001";
-
-    }
-    public static String getNextAccessoriesCode() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT itemCode FROM item ORDER BY itemCode like 'A%'DESC LIMIT 1";
-        ResultSet resultSet = CrudUtil.execute(sql);
-        if (resultSet.next()){
-            return getNextAccessoriesCode(resultSet.getString(1));
-        }
-        return getNextAccessoriesCode(resultSet.getString(null));
-    }
-    public static String getNextAccessoriesCode(String itemCode){
-        if (itemCode!=null){
-            String[]split = itemCode.split("A0");
-            int id = Integer.parseInt(split[1]);
-            id+=1;
-            return "A00"+id;
-
-        }
-        return "A001";
-
-    }*/
     public static ResultSet loadItemCode() throws SQLException, ClassNotFoundException {
         String sql = "SELECT itemCode from item";
         return CrudUtil.execute(sql);
