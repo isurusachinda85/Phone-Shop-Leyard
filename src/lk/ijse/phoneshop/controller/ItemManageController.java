@@ -25,6 +25,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ItemManageController implements Initializable {
@@ -93,6 +94,7 @@ public class ItemManageController implements Initializable {
         setCellValueFactory();
 
     }
+    //save phone
     @FXML
     void itemAddOnAction(ActionEvent event) {
         String itemCode = txtItemCode.getText();
@@ -117,6 +119,7 @@ public class ItemManageController implements Initializable {
         loadItem();
         clearTextOnAction(event);
     }
+    //load allPhone
     public void loadItem(){
         ObservableList <ItemTM> itemList = FXCollections.observableArrayList();
         ArrayList<Item> list = new ArrayList<>();
@@ -125,24 +128,40 @@ public class ItemManageController implements Initializable {
         itemList.clear();
 
         try {
-            ResultSet resultSet = ItemM.loadAllPhone();
-            while (resultSet.next()){
-                list.add(new Item(
-                        resultSet.getString("itemCode"),
-                        resultSet.getString("brand"),
-                        resultSet.getString("modalNo"),
-                        resultSet.getString("itemName"),
-                        resultSet.getDouble("price"),
-                        resultSet.getString("warranty"),
-                        resultSet.getInt("qty"),
-                        resultSet.getString("category")));
-            }
-            for(Item it : list){
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ArrayList<Item> allPhone = itemDAO.loadAllPhone();
+
+            for(Item it : allPhone){
                 Button button = new Button("Delete");
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(),
                         it.getQty(),it.getCategory(),button);
                 itemList.add(tm);
                 tblItem.setItems(itemList);
+
+                //delete phone
+                button.setOnAction((e->{
+                    ButtonType ok = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ok, no);
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.orElse(no) == ok) {
+                        tblItem.getItems().removeAll(tblItem.getSelectionModel().getSelectedItem());
+                    }
+                    String code = tm.getItemCode();
+
+                    try {
+                        ItemDAOImpl itemDAO1 = new ItemDAOImpl();
+                        boolean deletePhone = itemDAO1.deleteItem(code);
+                        if (deletePhone) {
+                            new Alert(Alert.AlertType.CONFIRMATION,"Delete phone !").show();
+                        }else{
+                            new Alert(Alert.AlertType.WARNING, "No Phone !").show();
+                        }
+                    } catch (SQLException | ClassNotFoundException throwable) {
+                        throwable.printStackTrace();
+                    }
+                }));
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -222,6 +241,25 @@ public class ItemManageController implements Initializable {
 
     @FXML
     void itemCodeOnAction(ActionEvent event) {
+        String code = txtItemCode.getText();
+
+        try {
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            Item item = itemDAO.searchItem(code);
+            if (item != null) {
+                txtBrand.setText(item.getBrand());
+                txtModalNo.setText(item.getModalNo());
+                txtName.setText(item.getName());
+                txtPrice.setText(String.valueOf(item.getPrice()));
+                cmbWarrenty.setValue(item.getWarranty());
+                txtQty.setText(String.valueOf(item.getQty()));
+                cmbCategory.setValue(item.getCategory());
+            }else{
+                new Alert(Alert.AlertType.WARNING, "Not Item Customer !").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         txtBrand.requestFocus();
     }
     @FXML

@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.to.Item;
@@ -21,6 +22,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ItemManage2Controller implements Initializable {
@@ -88,6 +90,7 @@ public class ItemManage2Controller implements Initializable {
         loadItem();
         setCellValueFactory();
     }
+    //save accessories
     @FXML
     void saveOnActin(ActionEvent event) {
         String itemCode = txtItemCode.getText();
@@ -99,10 +102,9 @@ public class ItemManage2Controller implements Initializable {
         int qty =Integer.parseInt(txtQty.getText());
         String category = cmbCategory.getValue();
 
-        Item item = new Item(itemCode,brand,modalNo,name,price,warranty,qty,category);
-
         try {
-            boolean itemAdd = ItemM.itemAdd(item);
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            boolean itemAdd = itemDAO.itemAdd(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -111,6 +113,7 @@ public class ItemManage2Controller implements Initializable {
             e.printStackTrace();
         }
         loadItem();
+        clearOnAction(event);
     }
     public void setCellValueFactory(){
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
@@ -138,6 +141,7 @@ public class ItemManage2Controller implements Initializable {
         category.add("Accessories");
         cmbCategory.setItems(category);
     }
+    //load accessories
     public void loadItem(){
         ObservableList <ItemTM> itemList = FXCollections.observableArrayList();
         ArrayList<Item> list = new ArrayList<>();
@@ -146,24 +150,39 @@ public class ItemManage2Controller implements Initializable {
         itemList.clear();
 
         try {
-            ResultSet resultSet = ItemM.loadAccessories();
-            while (resultSet.next()){
-                list.add(new Item(
-                        resultSet.getString("itemCode"),
-                        resultSet.getString("brand"),
-                        resultSet.getString("modalNo"),
-                        resultSet.getString("itemName"),
-                        resultSet.getDouble("price"),
-                        resultSet.getString("warranty"),
-                        resultSet.getInt("qty"),
-                        resultSet.getString("category")));
-            }
-            for(Item it : list){
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ArrayList<Item> allAccessories = itemDAO.loadAccessories();
+            for(Item it : allAccessories){
                 Button button = new Button("Delete");
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(),
                         it.getQty(),it.getCategory(),button);
                 itemList.add(tm);
                 tblAccessories.setItems(itemList);
+                //delete accessories
+                button.setOnAction((e->{
+                    ButtonType ok = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ok, no);
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.orElse(no) == ok) {
+                        tblAccessories.getItems().removeAll(tblAccessories.getSelectionModel().getSelectedItem());
+                    }
+                    String code = tm.getItemCode();
+
+                    try {
+                        ItemDAOImpl itemDAO1 = new ItemDAOImpl();
+                        boolean deletePhone = itemDAO1.deleteItem(code);
+                        if (deletePhone) {
+                            new Alert(Alert.AlertType.CONFIRMATION,"Delete phone !").show();
+                        }else{
+                            new Alert(Alert.AlertType.WARNING, "No Phone !").show();
+                        }
+                    } catch (SQLException | ClassNotFoundException throwable) {
+                        throwable.printStackTrace();
+                    }
+                }));
+
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -200,6 +219,25 @@ public class ItemManage2Controller implements Initializable {
 
     @FXML
     void codeOnAction(ActionEvent event) {
+        String code = txtItemCode.getText();
+
+        try {
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            Item item = itemDAO.searchItem(code);
+            if (item != null) {
+                txtBrand.setText(item.getBrand());
+                txtModalNo.setText(item.getModalNo());
+                txtName.setText(item.getName());
+                txtPrice.setText(String.valueOf(item.getPrice()));
+                cmbWarranty.setValue(item.getWarranty());
+                txtQty.setText(String.valueOf(item.getQty()));
+                cmbCategory.setValue(item.getCategory());
+            }else{
+                new Alert(Alert.AlertType.WARNING, "Not Item Customer !").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         txtBrand.requestFocus();
     }
 

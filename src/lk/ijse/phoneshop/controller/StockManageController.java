@@ -10,18 +10,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.phoneshop.model.ItemM;
+import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.to.Item;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class StockManageController {
     public AnchorPane stockPane;
     @FXML
-    private TableView<Item> tblPhoneStock;
+    private TableView<ItemTM> tblPhoneStock;
 
     @FXML
     private TableColumn<?, ?> colItemCode;
@@ -53,21 +53,15 @@ public class StockManageController {
     }
 
     private void loadData() {
-        ObservableList<Item> itemList = FXCollections.observableArrayList();
+        ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = ItemM.loadAllPhone();
-            while (resultSet.next()){
-                itemList.add(new Item(
-                        resultSet.getString("itemCode"),
-                        resultSet.getString("brand"),
-                        resultSet.getString("modalNo"),
-                        resultSet.getString("itemName"),
-                        resultSet.getDouble("price"),
-                        resultSet.getString("warranty"),
-                        resultSet.getInt("qty"),
-                        resultSet.getString("category")));
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ArrayList<Item> allPhone = itemDAO.loadAllPhone();
+            for (Item it : allPhone){
+                ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
+                itemList.add(tm);
+                tblPhoneStock.setItems(itemList);
             }
-            tblPhoneStock.setItems(itemList);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

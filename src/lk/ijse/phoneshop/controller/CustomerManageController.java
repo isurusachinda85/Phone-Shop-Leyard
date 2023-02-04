@@ -152,8 +152,8 @@ public class CustomerManageController {
                     ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ok, no);
                     Optional<ButtonType> result = alert.showAndWait();
-                    if (result.orElse(no) == ok) {
 
+                    if (result.orElse(no) == ok) {
                         tblCustomer.getItems().removeAll(tblCustomer.getSelectionModel().getSelectedItem());
                     }
                     String id = c.getId();
@@ -323,6 +323,8 @@ public class CustomerManageController {
                 txtCusEmail.setText(customer.getEmail());
                 txtCusAddress.setText(customer.getAddress());
                 txtCusPhone.setText(customer.getPhoneNo());
+            }else {
+                new Alert(Alert.AlertType.WARNING, "Not Found Customer !").show();
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

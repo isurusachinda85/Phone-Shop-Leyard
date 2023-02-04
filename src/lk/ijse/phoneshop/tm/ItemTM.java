@@ -28,6 +28,17 @@ public class ItemTM {
     public ItemTM() {
     }
 
+    public ItemTM(String itemCode, String brand, String modalNo, String name, double price, String warranty, int qty, String category) {
+        this.itemCode = itemCode;
+        this.brand = brand;
+        this.modalNo = modalNo;
+        this.name = name;
+        this.price = price;
+        this.warranty = warranty;
+        this.qty = qty;
+        this.category = category;
+    }
+
     public String getItemCode() {
         return itemCode;
     }
