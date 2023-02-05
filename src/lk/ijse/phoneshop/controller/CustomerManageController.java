@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
+import lk.ijse.phoneshop.dao.CustomerDAO;
 import lk.ijse.phoneshop.dao.CustomerDAOImpl;
 import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.model.CustomerM;
@@ -115,7 +116,7 @@ public class CustomerManageController {
 
         patternPerform();
         try {
-            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            CustomerDAO customerDAO = new CustomerDAOImpl();
             customerDAO.saveCustomer(new Customer(id,name,address,phoneNo,email));
             
             loadNextCustomerId();
@@ -134,7 +135,7 @@ public class CustomerManageController {
         customerList.clear();
         try {
 
-            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            CustomerDAO customerDAO = new CustomerDAOImpl();
             ArrayList<Customer>allCustomer =customerDAO.getAllCustomer();
 
             for (Customer c:allCustomer) {
@@ -184,7 +185,7 @@ public class CustomerManageController {
 
     private void loadNextCustomerId(){
         try {
-            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            CustomerDAO customerDAO = new CustomerDAOImpl();
             String cusId = customerDAO.getNextCustomerId();
             txtcCusId.setText(cusId);
         } catch (SQLException | ClassNotFoundException e) {
@@ -289,7 +290,7 @@ public class CustomerManageController {
 
 
         try {
-            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            CustomerDAO customerDAO = new CustomerDAOImpl();
             boolean updateCustomer = customerDAO.updateCustomer(new Customer(id, name, address, phoneNo, email));
 
             if (updateCustomer){
@@ -310,7 +311,7 @@ public class CustomerManageController {
     public void txtCusId(ActionEvent actionEvent) {
         String id= txtcCusId.getText();
         try {
-            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            CustomerDAO customerDAO = new CustomerDAOImpl();
             Customer customer = customerDAO.searchCustomer(id);
             if (customer!=null){
                 txtCusName.setText(customer.getName());
