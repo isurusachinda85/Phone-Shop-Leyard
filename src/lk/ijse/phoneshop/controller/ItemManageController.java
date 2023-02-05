@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.model.EmployeeM;
 import lk.ijse.phoneshop.model.ItemM;
@@ -107,7 +108,7 @@ public class ItemManageController implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             boolean itemAdd = itemDAO.itemAdd(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
@@ -125,7 +126,7 @@ public class ItemManageController implements Initializable {
         itemList.clear();
 
         try {
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             ArrayList<Item> allPhone = itemDAO.loadAllPhone();
 
             for(Item it : allPhone){
@@ -240,7 +241,7 @@ public class ItemManageController implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             Item item = itemDAO.searchItem(code);
             if (item != null) {
                 txtBrand.setText(item.getBrand());

@@ -11,12 +11,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ItemDAOImpl {
+public class ItemDAOImpl implements ItemDAO {
+    @Override
     public boolean itemAdd(Item item) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO item VALUES (?,?,?,?,?,?,?,?)";
         return CrudUtil.execute(sql,item.getItemCode(),item.getBrand(),item.getModalNo(),item.getName(),item.getPrice(),
                 item.getWarranty(),item.getQty(),item.getCategory());
     }
+    @Override
     public ArrayList<Item> loadAllPhone() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
@@ -35,6 +37,7 @@ public class ItemDAOImpl {
         }
         return allPhone;
     }
+    @Override
     public ArrayList<Item> loadAccessories() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
@@ -53,6 +56,7 @@ public class ItemDAOImpl {
         }
         return allAccessories;
     }
+    @Override
     public ArrayList<Item> loadParts() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
@@ -71,10 +75,12 @@ public class ItemDAOImpl {
         }
         return allParts;
     }
+    @Override
     public boolean deleteItem(String  code) throws SQLException, ClassNotFoundException {
         String sql = "Delete from item where itemCode = ?";
         return CrudUtil.execute(sql,code);
     }
+    @Override
     public  Item searchItem(String code) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM item WHERE itemCode = ?";
         ResultSet resultSet = CrudUtil.execute(sql, code);
@@ -91,6 +97,7 @@ public class ItemDAOImpl {
         }
         return null;
     }
+    @Override
     public  ResultSet loadItemCode() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * from item where itemCode like 'P%'";
         return CrudUtil.execute(sql);
