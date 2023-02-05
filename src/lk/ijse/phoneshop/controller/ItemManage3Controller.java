@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.tm.ItemTM;
@@ -102,7 +103,7 @@ public class ItemManage3Controller implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             boolean itemAdd = itemDAO.itemAdd(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
@@ -120,7 +121,7 @@ public class ItemManage3Controller implements Initializable {
         itemList.clear();
 
         try {
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             ArrayList<Item> allParts = itemDAO.loadParts();
             for(Item it : allParts){
                 Button button = new Button("Delete");
@@ -214,7 +215,7 @@ public class ItemManage3Controller implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             Item item = itemDAO.searchItem(code);
             if (item != null) {
                 txtBrand.setText(item.getBrand());
