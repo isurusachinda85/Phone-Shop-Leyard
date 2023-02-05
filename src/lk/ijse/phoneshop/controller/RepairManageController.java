@@ -18,6 +18,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.dao.CustomerDAOImpl;
+import lk.ijse.phoneshop.dao.EmployeeDAOImpl;
+import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.dao.RepairDAOImpl;
 import lk.ijse.phoneshop.model.CustomerM;
 import lk.ijse.phoneshop.model.ItemM;
@@ -122,6 +125,7 @@ public class RepairManageController implements Initializable {
         loadTime();
         loadData();
         setCellValueFactory();
+        getNextRepairID();
     }
     @FXML
     //add repair
@@ -142,6 +146,7 @@ public class RepairManageController implements Initializable {
         try {
             RepairDAOImpl repairDAO = new RepairDAOImpl();
             boolean saveRepair = repairDAO.saveRepair(new Repair(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date)));
+
             if (saveRepair){
                 Notifications notification = Notifications.create().title("Success").text("Repair Added Success").graphic(null)
                         .hideAfter(Duration.seconds(8))
@@ -156,6 +161,7 @@ public class RepairManageController implements Initializable {
         }
         loadData();
         clearTextOnAction(event);
+        getNextRepairID();
     }
     //get all repair data
     public void loadData(){
@@ -187,6 +193,7 @@ public class RepairManageController implements Initializable {
                     try {
                         boolean deleteRepair = repairDAO.deleteRepair(rid);
                         if (deleteRepair) {
+                            getNextRepairID();
                             System.out.println("delete");
                         }else {
                             System.out.println("no");
@@ -244,7 +251,8 @@ public class RepairManageController implements Initializable {
     private void loadItemCode() {
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = ItemM.loadAllPhone();
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ResultSet resultSet = itemDAO.loadItemCode();
             while (resultSet.next()){
                 itemIdList.add(resultSet.getString(1));
                 cmbItemCode.setItems(itemIdList);
@@ -257,7 +265,8 @@ public class RepairManageController implements Initializable {
     private void loadCustomerId() {
         ObservableList<String> customerIdList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = CustomerM.loadCustomerId();
+            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            ResultSet resultSet = customerDAO.loadCustomerId();
             while (resultSet.next()){
                 customerIdList.add(resultSet.getString(1));
                 cmbCusId.setItems(customerIdList);
@@ -294,7 +303,8 @@ public class RepairManageController implements Initializable {
     void customerIdOnAction(ActionEvent event) {
         String cusId = cmbCusId.getValue();
         try {
-            Customer customer =CustomerM.searchCustomer(cusId);
+            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            Customer customer =customerDAO.searchCustomer(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -308,7 +318,8 @@ public class RepairManageController implements Initializable {
     void itemCodeOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            Item item = ItemM.searchItem(itemCode);
+            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            Item item = itemDAO.searchItem(itemCode);
             filItem(item);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -322,7 +333,8 @@ public class RepairManageController implements Initializable {
     void txtSearch(ActionEvent event) {
         String id = txtRepairNo.getText();
         try {
-            Repair repair = RepairM.searchRepair(id);
+            RepairDAOImpl repairDAO = new RepairDAOImpl();
+            Repair repair = repairDAO.searchRepair(id);
             if (repair!=null){
                 txtCustomerName.setText(repair.getCustomerName());
                 txtCusMobil.setText(String.valueOf(repair.getPhoneNo()));
@@ -332,6 +344,8 @@ public class RepairManageController implements Initializable {
                 txtAmount.setText(String.valueOf(repair.getAmount()));
                 lblDue.setText(String.valueOf(repair.getDue()));
 
+            }else {
+                new Alert(Alert.AlertType.WARNING, "Not Found Repair !").show();
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -343,10 +357,9 @@ public class RepairManageController implements Initializable {
         double amount = Double.parseDouble(txtAmount.getText());
         double due = Double.parseDouble(lblDue.getText());
         String state = cmbState.getValue();
-
-        Repair repair = new Repair(id,amount,due,state);
         try {
-            boolean updateRepair = RepairM.updateRepair(repair);
+            RepairDAOImpl repairDAO = new RepairDAOImpl();
+            boolean updateRepair = repairDAO.updateRepair(new Repair(id,amount,due,state));
             if (updateRepair){
                 Notifications notification = Notifications.create().title("Success").text("Repair Update Success").graphic(null)
                         .hideAfter(Duration.seconds(8))
@@ -359,5 +372,16 @@ public class RepairManageController implements Initializable {
             System.out.println(e);
         }
         loadData();
+        clearTextOnAction(event);
+        getNextRepairID();
+    }
+    private void getNextRepairID(){
+        try {
+            RepairDAOImpl repairDAO = new RepairDAOImpl();
+            String repairID = repairDAO.getNextRepairID();
+            txtRepairNo.setText(repairID);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

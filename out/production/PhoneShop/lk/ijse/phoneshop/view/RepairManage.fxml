@@ -198,7 +198,7 @@
             <JFXTextField layoutX="1275.0" layoutY="600.0" promptText="Search" />
             <JFXTextField fx:id="txtRepairNo" layoutX="243.0" layoutY="225.0" onAction="#txtSearch" prefHeight="39.0" prefWidth="161.0">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </JFXTextField>
             <Label layoutX="1275.0" layoutY="118.0" text="Date : ">

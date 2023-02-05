@@ -91,4 +91,8 @@ public class ItemDAOImpl {
         }
         return null;
     }
+    public  ResultSet loadItemCode() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * from item where itemCode like 'P%'";
+        return CrudUtil.execute(sql);
+    }
 }

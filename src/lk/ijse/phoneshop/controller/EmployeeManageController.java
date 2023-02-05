@@ -210,7 +210,7 @@ public class EmployeeManageController implements Initializable {
                         tblEmployee.getItems().removeAll(tblEmployee.getSelectionModel().getSelectedItem());
                     }
                     String id = em.getId();
-
+                    //delete employee
                     try {
                         boolean deleteEmployee = employeeDAO.deleteEmployee(id);
                         if (deleteEmployee){

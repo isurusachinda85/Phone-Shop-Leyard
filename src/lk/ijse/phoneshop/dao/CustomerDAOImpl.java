@@ -70,6 +70,9 @@ public class CustomerDAOImpl {
 
         }
         return "C001";
-
+    }
+    public ResultSet loadCustomerId() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT cusId from customer order by cusId asc";
+        return CrudUtil.execute(sql);
     }
 }

@@ -21,7 +21,6 @@ public class RepairM {
         String sql = "SELECT * FROM repair WHERE repId=?";
 
         ResultSet resultSet  = CrudUtil.execute(sql, id);
-
         if(resultSet.next()){
             return new Repair(resultSet.getString(1),
                     resultSet.getString(2),
