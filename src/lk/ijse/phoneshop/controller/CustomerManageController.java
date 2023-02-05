@@ -52,6 +52,8 @@ public class CustomerManageController {
     private Matcher addressMatcher;
     private Matcher phoneNoMatcher;
 
+    private CustomerDAO customerDAO = new CustomerDAOImpl();
+
     public void setPattern(){
         Pattern namePattern = Pattern.compile("^[a-z.\\sA-Z.\\s]{4,}$");
         nameMatcher = namePattern.matcher(txtCusName.getText());
@@ -116,9 +118,7 @@ public class CustomerManageController {
 
         patternPerform();
         try {
-            CustomerDAO customerDAO = new CustomerDAOImpl();
             customerDAO.saveCustomer(new Customer(id,name,address,phoneNo,email));
-            
             loadNextCustomerId();
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.WARNING, "Pleas File All data  !").show();
@@ -134,8 +134,6 @@ public class CustomerManageController {
         ObservableList <CustomerTM> customerList = FXCollections.observableArrayList();
         customerList.clear();
         try {
-
-            CustomerDAO customerDAO = new CustomerDAOImpl();
             ArrayList<Customer>allCustomer =customerDAO.getAllCustomer();
 
             for (Customer c:allCustomer) {
@@ -185,7 +183,6 @@ public class CustomerManageController {
 
     private void loadNextCustomerId(){
         try {
-            CustomerDAO customerDAO = new CustomerDAOImpl();
             String cusId = customerDAO.getNextCustomerId();
             txtcCusId.setText(cusId);
         } catch (SQLException | ClassNotFoundException e) {
@@ -290,7 +287,6 @@ public class CustomerManageController {
 
 
         try {
-            CustomerDAO customerDAO = new CustomerDAOImpl();
             boolean updateCustomer = customerDAO.updateCustomer(new Customer(id, name, address, phoneNo, email));
 
             if (updateCustomer){
@@ -311,7 +307,6 @@ public class CustomerManageController {
     public void txtCusId(ActionEvent actionEvent) {
         String id= txtcCusId.getText();
         try {
-            CustomerDAO customerDAO = new CustomerDAOImpl();
             Customer customer = customerDAO.searchCustomer(id);
             if (customer!=null){
                 txtCusName.setText(customer.getName());
