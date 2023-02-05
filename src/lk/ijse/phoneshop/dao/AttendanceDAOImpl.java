@@ -11,12 +11,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class AttendanceDAOImpl {
+public class AttendanceDAOImpl implements AttendanceDAO{
+    @Override
     public boolean attendanceSave(Attendance attendance) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into attendance values (?,?,?,?,?,?,?)";
         return CrudUtil.execute(sql,attendance.getAttendanceId(),attendance.getName(),attendance.getDate(),
                 attendance.getInTime(),attendance.getOutTime(),attendance.getSate(),attendance.getEmployeeId());
     }
+    @Override
     public ArrayList<Attendance> getAllAttendance() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
@@ -36,10 +38,12 @@ public class AttendanceDAOImpl {
 
         return allAttendance;
     }
+    @Override
     public  ResultSet loadEmployeeId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT eId from employee order by eId asc";
         return CrudUtil.execute(sql);
     }
+    @Override
     public  Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM employee WHERE eId = ?";
         ResultSet resultSet = CrudUtil.execute(sql, id);
@@ -49,6 +53,7 @@ public class AttendanceDAOImpl {
         }
         return null;
     }
+    @Override
     public String getNextAttendanceId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT aid FROM attendance ORDER BY aid DESC LIMIT 1";
         ResultSet resultSet = CrudUtil.execute(sql);
@@ -58,6 +63,7 @@ public class AttendanceDAOImpl {
             return getNextAttendanceId(resultSet.getString(null));
         }
     }
+    @Override
     public String getNextAttendanceId(String aId){
         if (aId!=null){
             String[]split = aId.split("A0");
@@ -68,6 +74,7 @@ public class AttendanceDAOImpl {
         }
         return "A001";
     }
+    @Override
     public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "Delete From attendance where aid=?";
         return CrudUtil.execute(sql,id);
