@@ -11,13 +11,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class EmployeeDAOImpl {
+public class EmployeeDAOImpl implements EmployeeDAO {
 
+    @Override
     public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into employee values (?,?,?,?,?,?,?,?,?)";
         return CrudUtil.execute(sql,employee.getId(),employee.getName(),employee.getAddress(),employee.getEmail(),
                 employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword());
     }
+    @Override
     public ArrayList<Employee> getAllEmployee() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
@@ -39,6 +41,7 @@ public class EmployeeDAOImpl {
 
         return allEmployee;
     }
+    @Override
     public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT eId FROM employee ORDER BY eId DESC LIMIT 1";
         ResultSet resultSet = CrudUtil.execute(sql);
@@ -47,6 +50,7 @@ public class EmployeeDAOImpl {
         }
         return getNextEmployeeId(resultSet.getString(null));
     }
+    @Override
     public String getNextEmployeeId(String cusId){
         if (cusId!=null){
             String[]split = cusId.split("E0");
@@ -58,10 +62,12 @@ public class EmployeeDAOImpl {
         return "E001";
 
     }
+    @Override
     public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "Delete From employee where eId=?";
         return CrudUtil.execute(sql,id);
     }
+    @Override
     public Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM employee WHERE eId = ?";
         ResultSet resultSet = CrudUtil.execute(sql, id);
@@ -79,6 +85,7 @@ public class EmployeeDAOImpl {
         }
         return null;
     }
+    @Override
     public boolean updateEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "Update employee set name=?,address=?,email=?,phoneNo=?,dateOfBirth=?,jobRole=?,userName=? where eId=?";
         return CrudUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getId());
