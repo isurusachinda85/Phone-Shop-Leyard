@@ -11,13 +11,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class RepairDAOImpl {
+public class RepairDAOImpl implements RepairDAO{
+    @Override
     public boolean saveRepair(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into repair values (?,?,?,?,?,?,?,?,?,?,?)";
         return CrudUtil.execute(sql,repair.getRepairNo(),repair.getCustomerName(),repair.getPhoneNo(),repair.getDeviceName(),
                 repair.getDeviceProblem(),repair.getPrice(),repair.getAmount(),repair.getDue(),repair.getState(),
                 repair.getDate(),repair.getCustomerId());
     }
+    @Override
     public ArrayList<Repair> getAllRepair() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
@@ -37,10 +39,12 @@ public class RepairDAOImpl {
         }
         return allRepair;
     }
+    @Override
     public boolean deleteRepair(String  rid) throws SQLException, ClassNotFoundException {
         String sql = "Delete From repair where repId=?";
         return CrudUtil.execute(sql,rid);
     }
+    @Override
     public Repair searchRepair(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM repair WHERE repId=?";
 
@@ -60,10 +64,12 @@ public class RepairDAOImpl {
         }
         return null;
     }
+    @Override
     public boolean updateRepair(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "Update repair set amount=?,due=?,state=? where repId=?";
         return CrudUtil.execute(sql,repair.getAmount(),repair.getDue(),repair.getState(),repair.getRepairNo());
     }
+    @Override
     public  String getNextRepairID() throws SQLException, ClassNotFoundException {
         String sql = "SELECT repId FROM repair ORDER BY repId DESC LIMIT 1;";
         ResultSet resultSet = CrudUtil.execute(sql);
@@ -72,6 +78,7 @@ public class RepairDAOImpl {
         }
         return getNextRepairID(resultSet.getString(null));
     }
+    @Override
     public  String getNextRepairID(String cusId){
         if (cusId!=null){
             String[]split = cusId.split("R0");
