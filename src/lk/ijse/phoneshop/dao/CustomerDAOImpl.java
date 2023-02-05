@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CustomerDAOImpl {
+
     public boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into customer values (?,?,?,?,?)";
         return CrudUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
