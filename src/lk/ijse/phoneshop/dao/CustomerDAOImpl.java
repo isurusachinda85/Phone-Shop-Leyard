@@ -10,12 +10,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class CustomerDAOImpl {
+public class CustomerDAOImpl implements CustomerDAO {
 
+    @Override
     public boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into customer values (?,?,?,?,?)";
         return CrudUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
     }
+    @Override
     public ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
@@ -33,10 +35,12 @@ public class CustomerDAOImpl {
 
         return allCustomer;
     }
+    @Override
     public boolean deleteCustomer(String  id) throws SQLException, ClassNotFoundException {
         String sql = "Delete From Customer where cusId=?";
         return CrudUtil.execute(sql,id);
     }
+    @Override
     public  Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM customer WHERE cusId = ?";
         ResultSet resultSet = CrudUtil.execute(sql, id);
@@ -50,10 +54,12 @@ public class CustomerDAOImpl {
         }
         return null;
     }
+    @Override
     public boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "Update Customer set name=?,address=?,phoneNo=?,email=? where cusId=?";
         return CrudUtil.execute(sql,customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail(),customer.getId());
     }
+    @Override
     public  String getNextCustomerId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT cusId FROM customer ORDER BY cusId DESC LIMIT 1";
         ResultSet resultSet = CrudUtil.execute(sql);
@@ -62,6 +68,7 @@ public class CustomerDAOImpl {
         }
         return getNextCustomerId(resultSet.getString(null));
     }
+    @Override
     public  String getNextCustomerId(String cusId){
         if (cusId!=null){
             String[]split = cusId.split("C0");
@@ -72,6 +79,7 @@ public class CustomerDAOImpl {
         }
         return "C001";
     }
+    @Override
     public ResultSet loadCustomerId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT cusId from customer order by cusId asc";
         return CrudUtil.execute(sql);
