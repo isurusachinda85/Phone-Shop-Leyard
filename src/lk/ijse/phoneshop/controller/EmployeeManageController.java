@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.dao.EmployeeDAO;
 import lk.ijse.phoneshop.dao.EmployeeDAOImpl;
 import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.model.CustomerM;
@@ -124,7 +125,7 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             boolean saveEmployee = employeeDAO.saveEmployee(new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
             loadNextEmployeeId();
             if (!saveEmployee){
@@ -149,7 +150,7 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             boolean updateEmployee = employeeDAO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
             if (updateEmployee){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
@@ -167,7 +168,7 @@ public class EmployeeManageController implements Initializable {
     public void serchOnAction(ActionEvent actionEvent) {
         String id = txtEmployee.getText();
         try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             Employee employee = employeeDAO.searchEmployee(id);
             if(employee!=null){
                 txtName.setText(employee.getName());
@@ -190,7 +191,7 @@ public class EmployeeManageController implements Initializable {
         employeeList.clear();
 
         try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             ArrayList<Employee> allEmployee = employeeDAO.getAllEmployee();
 
             for(Employee em : allEmployee){
@@ -249,7 +250,7 @@ public class EmployeeManageController implements Initializable {
 
     private void loadNextEmployeeId(){
         try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             String eId = employeeDAO.getNextEmployeeId();
             txtEmployee.setText(eId);
         } catch (SQLException | ClassNotFoundException e) {
