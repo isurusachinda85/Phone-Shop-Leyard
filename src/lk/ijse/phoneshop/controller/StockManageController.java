@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.to.Item;
@@ -55,7 +56,7 @@ public class StockManageController {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             ArrayList<Item> allPhone = itemDAO.loadAllPhone();
             for (Item it : allPhone){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
