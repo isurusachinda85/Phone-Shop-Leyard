@@ -18,9 +18,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
     @Override
     public ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement stm = connection.createStatement();
-        ResultSet resultSet = stm.executeQuery("SELECT * From Customer");
+        ResultSet resultSet  = SQLUtil.execute("SELECT * From Customer");
         ArrayList<Customer> allCustomer = new ArrayList<>();
 
         while (resultSet.next()){
@@ -36,13 +34,11 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
     @Override
     public boolean deleteCustomer(String  id) throws SQLException, ClassNotFoundException {
-        String sql = "Delete From Customer where cusId=?";
-        return SQLUtil.execute(sql,id);
+        return SQLUtil.execute("Delete From Customer where cusId=?",id);
     }
     @Override
     public  Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT  * FROM customer WHERE cusId = ?";
-        ResultSet resultSet = SQLUtil.execute(sql, id);
+        ResultSet resultSet = SQLUtil.execute("SELECT  * FROM customer WHERE cusId = ?", id);
         while (resultSet.next()){
             return new Customer(
                     resultSet.getString(1),
