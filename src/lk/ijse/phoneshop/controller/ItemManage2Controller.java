@@ -83,6 +83,7 @@ public class ItemManage2Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
+    private ItemDAO itemDAO = new ItemDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -104,7 +105,6 @@ public class ItemManage2Controller implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            ItemDAO itemDAO = new ItemDAOImpl();
             boolean itemAdd = itemDAO.itemAdd(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
@@ -148,7 +148,6 @@ public class ItemManage2Controller implements Initializable {
         itemList.clear();
 
         try {
-            ItemDAO itemDAO = new ItemDAOImpl();
             ArrayList<Item> allAccessories = itemDAO.loadAccessories();
             for(Item it : allAccessories){
                 Button button = new Button("Delete");
@@ -219,7 +218,6 @@ public class ItemManage2Controller implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            ItemDAO itemDAO = new ItemDAOImpl();
             Item item = itemDAO.searchItem(code);
             if (item != null) {
                 txtBrand.setText(item.getBrand());
