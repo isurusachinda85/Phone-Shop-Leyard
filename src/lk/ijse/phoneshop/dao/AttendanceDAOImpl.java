@@ -19,9 +19,7 @@ public class AttendanceDAOImpl implements AttendanceDAO{
     }
     @Override
     public ArrayList<Attendance> getAllAttendance() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement stm = connection.createStatement();
-        ResultSet resultSet = stm.executeQuery("SELECT * From attendance");
+        ResultSet resultSet = SQLUtil.execute("SELECT * From attendance");
         ArrayList<Attendance> allAttendance = new ArrayList<>();
 
         while (resultSet.next()){
@@ -39,13 +37,11 @@ public class AttendanceDAOImpl implements AttendanceDAO{
     }
     @Override
     public  ResultSet loadEmployeeId() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT eId from employee order by eId asc";
-        return SQLUtil.execute(sql);
+        return SQLUtil.execute("SELECT eId from employee order by eId asc");
     }
     @Override
     public  Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT  * FROM employee WHERE eId = ?";
-        ResultSet resultSet = SQLUtil.execute(sql, id);
+        ResultSet resultSet = SQLUtil.execute("SELECT  * FROM employee WHERE eId = ?", id);
         if(resultSet.next()){
             return new Employee(
                     resultSet.getString("name"));
@@ -54,8 +50,7 @@ public class AttendanceDAOImpl implements AttendanceDAO{
     }
     @Override
     public String getNextAttendanceId() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT aid FROM attendance ORDER BY aid DESC LIMIT 1";
-        ResultSet resultSet = SQLUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute("SELECT aid FROM attendance ORDER BY aid DESC LIMIT 1");
         if (resultSet.next()){
             return getNextAttendanceId(resultSet.getString(1));
         }else {
@@ -75,7 +70,6 @@ public class AttendanceDAOImpl implements AttendanceDAO{
     }
     @Override
     public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
-        String sql = "Delete From attendance where aid=?";
-        return SQLUtil.execute(sql,id);
+        return SQLUtil.execute("Delete From attendance where aid=?",id);
     }
 }

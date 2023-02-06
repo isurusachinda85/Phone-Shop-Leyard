@@ -19,9 +19,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
     @Override
     public ArrayList<Employee> getAllEmployee() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement stm = connection.createStatement();
-        ResultSet resultSet = stm.executeQuery("SELECT * From employee");
+        ResultSet resultSet = SQLUtil.execute("SELECT * From employee");
         ArrayList<Employee> allEmployee = new ArrayList<>();
 
         while (resultSet.next()){
@@ -41,8 +39,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
     @Override
     public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT eId FROM employee ORDER BY eId DESC LIMIT 1";
-        ResultSet resultSet = SQLUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute("SELECT eId FROM employee ORDER BY eId DESC LIMIT 1");
         if (resultSet.next()){
             return getNextEmployeeId(resultSet.getString(1));
         }
@@ -62,13 +59,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
     @Override
     public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
-        String sql = "Delete From employee where eId=?";
-        return SQLUtil.execute(sql,id);
+        return SQLUtil.execute("Delete From employee where eId=?",id);
     }
     @Override
     public Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT  * FROM employee WHERE eId = ?";
-        ResultSet resultSet = SQLUtil.execute(sql, id);
+        ResultSet resultSet = SQLUtil.execute("SELECT  * FROM employee WHERE eId = ?", id);
         while (resultSet.next()){
             return new Employee(
                     resultSet.getString("eId"),

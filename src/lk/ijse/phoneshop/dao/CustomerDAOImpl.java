@@ -76,7 +76,6 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
     @Override
     public ResultSet loadCustomerId() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT cusId from customer order by cusId asc";
-        return SQLUtil.execute(sql);
+        return SQLUtil.execute("SELECT cusId from customer order by cusId asc");
     }
 }

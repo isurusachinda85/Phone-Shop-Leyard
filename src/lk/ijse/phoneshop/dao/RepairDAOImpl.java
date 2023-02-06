@@ -19,9 +19,7 @@ public class RepairDAOImpl implements RepairDAO{
     }
     @Override
     public ArrayList<Repair> getAllRepair() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement stm = connection.createStatement();
-        ResultSet resultSet = stm.executeQuery("SELECT repId,customerName,phoneNo,deviceName,problem,repairPrice,amount,due,state from repair");
+        ResultSet resultSet = SQLUtil.execute("SELECT repId,customerName,phoneNo,deviceName,problem,repairPrice,amount,due,state from repair");
         ArrayList<Repair> allRepair = new ArrayList<>();
         while (resultSet.next()){
             allRepair.add(new Repair(
@@ -39,14 +37,11 @@ public class RepairDAOImpl implements RepairDAO{
     }
     @Override
     public boolean deleteRepair(String  rid) throws SQLException, ClassNotFoundException {
-        String sql = "Delete From repair where repId=?";
-        return SQLUtil.execute(sql,rid);
+        return SQLUtil.execute("Delete From repair where repId=?",rid);
     }
     @Override
     public Repair searchRepair(String id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM repair WHERE repId=?";
-
-        ResultSet resultSet  = SQLUtil.execute(sql, id);
+        ResultSet resultSet  = SQLUtil.execute("SELECT * FROM repair WHERE repId=?", id);
 
         if(resultSet.next()){
             return new Repair(resultSet.getString(1),
@@ -69,8 +64,7 @@ public class RepairDAOImpl implements RepairDAO{
     }
     @Override
     public  String getNextRepairID() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT repId FROM repair ORDER BY repId DESC LIMIT 1;";
-        ResultSet resultSet = SQLUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute("SELECT repId FROM repair ORDER BY repId DESC LIMIT 1;");
         if (resultSet.next()){
             return getNextRepairID(resultSet.getString(1));
         }
