@@ -89,6 +89,8 @@ public class EmployeeManageController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
+    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setCmbJobRole();
@@ -125,7 +127,6 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             boolean saveEmployee = employeeDAO.saveEmployee(new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
             loadNextEmployeeId();
             if (!saveEmployee){
@@ -150,7 +151,6 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             boolean updateEmployee = employeeDAO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
             if (updateEmployee){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
@@ -168,7 +168,6 @@ public class EmployeeManageController implements Initializable {
     public void serchOnAction(ActionEvent actionEvent) {
         String id = txtEmployee.getText();
         try {
-            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             Employee employee = employeeDAO.searchEmployee(id);
             if(employee!=null){
                 txtName.setText(employee.getName());
@@ -191,7 +190,6 @@ public class EmployeeManageController implements Initializable {
         employeeList.clear();
 
         try {
-            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             ArrayList<Employee> allEmployee = employeeDAO.getAllEmployee();
 
             for(Employee em : allEmployee){
@@ -250,7 +248,6 @@ public class EmployeeManageController implements Initializable {
 
     private void loadNextEmployeeId(){
         try {
-            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             String eId = employeeDAO.getNextEmployeeId();
             txtEmployee.setText(eId);
         } catch (SQLException | ClassNotFoundException e) {
