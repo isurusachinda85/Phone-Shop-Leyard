@@ -2,7 +2,6 @@ package lk.ijse.phoneshop.dao;
 
 import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.to.Item;
-import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package lk.ijse.phoneshop.util;
+package lk.ijse.phoneshop.dao;
 
 import lk.ijse.phoneshop.db.DBConnection;
 

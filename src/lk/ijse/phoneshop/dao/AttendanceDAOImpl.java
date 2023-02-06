@@ -3,7 +3,6 @@ package lk.ijse.phoneshop.dao;
 import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.to.Attendance;
 import lk.ijse.phoneshop.to.Employee;
-import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
