@@ -1,9 +1,8 @@
 package lk.ijse.phoneshop.dao;
 
 import lk.ijse.phoneshop.db.DBConnection;
-import lk.ijse.phoneshop.to.Customer;
 import lk.ijse.phoneshop.to.Employee;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,7 +15,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into employee values (?,?,?,?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,employee.getId(),employee.getName(),employee.getAddress(),employee.getEmail(),
+        return SQLUtil.execute(sql,employee.getId(),employee.getName(),employee.getAddress(),employee.getEmail(),
                 employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword());
     }
     @Override
@@ -44,7 +43,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT eId FROM employee ORDER BY eId DESC LIMIT 1";
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         if (resultSet.next()){
             return getNextEmployeeId(resultSet.getString(1));
         }
@@ -65,12 +64,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "Delete From employee where eId=?";
-        return CrudUtil.execute(sql,id);
+        return SQLUtil.execute(sql,id);
     }
     @Override
     public Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM employee WHERE eId = ?";
-        ResultSet resultSet = CrudUtil.execute(sql, id);
+        ResultSet resultSet = SQLUtil.execute(sql, id);
         while (resultSet.next()){
             return new Employee(
                     resultSet.getString("eId"),
@@ -88,6 +87,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public boolean updateEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "Update employee set name=?,address=?,email=?,phoneNo=?,dateOfBirth=?,jobRole=?,userName=? where eId=?";
-        return CrudUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getId());
+        return SQLUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getId());
     }
 }

@@ -1,26 +1,23 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.to.Customer;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerM {
     public static boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into customer values (?,?,?,?,?)";
-        return CrudUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
+        return SQLUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
     }
     public static ResultSet getAllCustomer() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * From Customer";
-        return CrudUtil.execute(sql);
+        return SQLUtil.execute(sql);
     }
     public static String getNextCustomerId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT cusId FROM customer ORDER BY cusId DESC LIMIT 1";
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         if (resultSet.next()){
             return getNextCustomerId(resultSet.getString(1));
         }
@@ -38,12 +35,12 @@ public class CustomerM {
     }
     public static ResultSet loadCustomerId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT cusId from customer order by cusId asc";
-        return CrudUtil.execute(sql);
+        return SQLUtil.execute(sql);
     }
 
     public static Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM customer WHERE cusId = ?";
-        ResultSet resultSet = CrudUtil.execute(sql, id);
+        ResultSet resultSet = SQLUtil.execute(sql, id);
         while (resultSet.next()){
             return new Customer(
                     resultSet.getString(1),
@@ -56,10 +53,10 @@ public class CustomerM {
     }
     public static boolean deleteCustomer(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "Delete From Customer where cusId=?";
-        return CrudUtil.execute(sql,customer.getId());
+        return SQLUtil.execute(sql,customer.getId());
     }
     public static boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "Update Customer set name=?,address=?,phoneNo=?,email=? where cusId=?";
-        return CrudUtil.execute(sql,customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail(),customer.getId());
+        return SQLUtil.execute(sql,customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail(),customer.getId());
     }
 }

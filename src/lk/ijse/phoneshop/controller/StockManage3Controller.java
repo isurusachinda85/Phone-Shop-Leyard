@@ -56,6 +56,7 @@ public class StockManage3Controller implements Initializable {
     private TableColumn<?, ?> colCategory;
 
     private ItemDAO itemDAO = new ItemDAOImpl();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadData();

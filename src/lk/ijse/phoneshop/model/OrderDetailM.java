@@ -1,7 +1,7 @@
 package lk.ijse.phoneshop.model;
 
 import lk.ijse.phoneshop.to.CartDetail;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +17,6 @@ public class OrderDetailM {
     }
     public static boolean saveOrderDetail(CartDetail cartDetail) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO OrderDetail VALUES(?, ?, ?, ?,?)";
-        return CrudUtil.execute(sql, cartDetail.getOrderId(), cartDetail.getCode(), cartDetail.getItemName(),cartDetail.getQty(), cartDetail.getUnitPrice());
+        return SQLUtil.execute(sql, cartDetail.getOrderId(), cartDetail.getCode(), cartDetail.getItemName(),cartDetail.getQty(), cartDetail.getUnitPrice());
     }
 }

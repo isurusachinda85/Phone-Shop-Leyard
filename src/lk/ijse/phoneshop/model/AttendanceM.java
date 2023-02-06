@@ -2,7 +2,7 @@ package lk.ijse.phoneshop.model;
 
 import lk.ijse.phoneshop.to.Attendance;
 import lk.ijse.phoneshop.to.Employee;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,11 +10,11 @@ import java.sql.SQLException;
 public class AttendanceM {
     public static ResultSet loadEmployeeId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT eId from employee order by eId asc";
-        return CrudUtil.execute(sql);
+        return SQLUtil.execute(sql);
     }
     public static Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM employee WHERE eId = ?";
-        ResultSet resultSet = CrudUtil.execute(sql, id);
+        ResultSet resultSet = SQLUtil.execute(sql, id);
         if(resultSet.next()){
             return new Employee(
                     resultSet.getString("name"));
@@ -24,7 +24,7 @@ public class AttendanceM {
 
     public static String getNextAttendanceId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT aid FROM attendance ORDER BY aid DESC LIMIT 1";
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         if (resultSet.next()){
             return getNextAttendanceId(resultSet.getString(1));
         }else {
@@ -43,11 +43,11 @@ public class AttendanceM {
     }
     public static boolean attendanceSave(Attendance attendance) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into attendance values (?,?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,attendance.getAttendanceId(),attendance.getName(),attendance.getDate(),
+        return SQLUtil.execute(sql,attendance.getAttendanceId(),attendance.getName(),attendance.getDate(),
                 attendance.getInTime(),attendance.getOutTime(),attendance.getSate(),attendance.getEmployeeId());
     }
     public static ResultSet getAllAttendance() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * From attendance";
-        return CrudUtil.execute(sql);
+        return SQLUtil.execute(sql);
     }
 }

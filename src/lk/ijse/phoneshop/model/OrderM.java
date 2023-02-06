@@ -1,7 +1,7 @@
 package lk.ijse.phoneshop.model;
 
 import lk.ijse.phoneshop.to.Order;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,11 +9,11 @@ import java.sql.SQLException;
 public class OrderM {
     public static boolean saveOrder(Order order) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO orders VALUES(?, ?, ?,?)";
-        return CrudUtil.execute(sql, order.getOrderId(), order.getOrderDate(),order.getOrderTime(), order.getCustomerId());
+        return SQLUtil.execute(sql, order.getOrderId(), order.getOrderDate(),order.getOrderTime(), order.getCustomerId());
     }
     public static String getNextOrderId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         if (resultSet.next()){
             return getNextOrderId(resultSet.getString(1));
         }

@@ -1,8 +1,7 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.to.Customer;
 import lk.ijse.phoneshop.to.Employee;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,16 +9,16 @@ import java.sql.SQLException;
 public class EmployeeM {
     public static boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into employee values (?,?,?,?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,employee.getId(),employee.getName(),employee.getAddress(),employee.getEmail(),
+        return SQLUtil.execute(sql,employee.getId(),employee.getName(),employee.getAddress(),employee.getEmail(),
                 employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword());
     }
     public static ResultSet getAllEmployee() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * From employee";
-        return CrudUtil.execute(sql);
+        return SQLUtil.execute(sql);
     }
     public static String getNextEmployeeId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT eId FROM employee ORDER BY eId DESC LIMIT 1";
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         if (resultSet.next()){
             return getNextEmployeeId(resultSet.getString(1));
         }
@@ -38,11 +37,11 @@ public class EmployeeM {
     }
     public static boolean deleteEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "Delete From employee where eId=?";
-        return CrudUtil.execute(sql,employee.getId());
+        return SQLUtil.execute(sql,employee.getId());
     }
     public static Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM employee WHERE eId = ?";
-        ResultSet resultSet = CrudUtil.execute(sql, id);
+        ResultSet resultSet = SQLUtil.execute(sql, id);
         while (resultSet.next()){
             return new Employee(
                     resultSet.getString("eId"),
@@ -59,6 +58,6 @@ public class EmployeeM {
     }
     public static boolean updateEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "Update employee set name=?,address=?,email=?,phoneNo=?,dateOfBirth=?,jobRole=?,userName=? where eId=?";
-        return CrudUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getId());
+        return SQLUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getId());
     }
 }

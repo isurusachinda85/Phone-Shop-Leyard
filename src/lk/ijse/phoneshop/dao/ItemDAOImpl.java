@@ -1,9 +1,8 @@
 package lk.ijse.phoneshop.dao;
 
 import lk.ijse.phoneshop.db.DBConnection;
-import lk.ijse.phoneshop.to.Customer;
 import lk.ijse.phoneshop.to.Item;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ public class ItemDAOImpl implements ItemDAO {
     @Override
     public boolean itemAdd(Item item) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO item VALUES (?,?,?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,item.getItemCode(),item.getBrand(),item.getModalNo(),item.getName(),item.getPrice(),
+        return SQLUtil.execute(sql,item.getItemCode(),item.getBrand(),item.getModalNo(),item.getName(),item.getPrice(),
                 item.getWarranty(),item.getQty(),item.getCategory());
     }
     @Override
@@ -78,12 +77,12 @@ public class ItemDAOImpl implements ItemDAO {
     @Override
     public boolean deleteItem(String  code) throws SQLException, ClassNotFoundException {
         String sql = "Delete from item where itemCode = ?";
-        return CrudUtil.execute(sql,code);
+        return SQLUtil.execute(sql,code);
     }
     @Override
     public  Item searchItem(String code) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM item WHERE itemCode = ?";
-        ResultSet resultSet = CrudUtil.execute(sql, code);
+        ResultSet resultSet = SQLUtil.execute(sql, code);
         while (resultSet.next()){
             return new Item(
                     resultSet.getString(1),
@@ -100,6 +99,6 @@ public class ItemDAOImpl implements ItemDAO {
     @Override
     public  ResultSet loadItemCode() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * from item where itemCode like 'P%'";
-        return CrudUtil.execute(sql);
+        return SQLUtil.execute(sql);
     }
 }

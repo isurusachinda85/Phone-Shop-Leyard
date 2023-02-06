@@ -1,9 +1,8 @@
 package lk.ijse.phoneshop.dao;
 
 import lk.ijse.phoneshop.db.DBConnection;
-import lk.ijse.phoneshop.to.Item;
 import lk.ijse.phoneshop.to.Repair;
-import lk.ijse.phoneshop.util.CrudUtil;
+import lk.ijse.phoneshop.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ public class RepairDAOImpl implements RepairDAO{
     @Override
     public boolean saveRepair(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into repair values (?,?,?,?,?,?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,repair.getRepairNo(),repair.getCustomerName(),repair.getPhoneNo(),repair.getDeviceName(),
+        return SQLUtil.execute(sql,repair.getRepairNo(),repair.getCustomerName(),repair.getPhoneNo(),repair.getDeviceName(),
                 repair.getDeviceProblem(),repair.getPrice(),repair.getAmount(),repair.getDue(),repair.getState(),
                 repair.getDate(),repair.getCustomerId());
     }
@@ -42,13 +41,13 @@ public class RepairDAOImpl implements RepairDAO{
     @Override
     public boolean deleteRepair(String  rid) throws SQLException, ClassNotFoundException {
         String sql = "Delete From repair where repId=?";
-        return CrudUtil.execute(sql,rid);
+        return SQLUtil.execute(sql,rid);
     }
     @Override
     public Repair searchRepair(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM repair WHERE repId=?";
 
-        ResultSet resultSet  = CrudUtil.execute(sql, id);
+        ResultSet resultSet  = SQLUtil.execute(sql, id);
 
         if(resultSet.next()){
             return new Repair(resultSet.getString(1),
@@ -67,12 +66,12 @@ public class RepairDAOImpl implements RepairDAO{
     @Override
     public boolean updateRepair(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "Update repair set amount=?,due=?,state=? where repId=?";
-        return CrudUtil.execute(sql,repair.getAmount(),repair.getDue(),repair.getState(),repair.getRepairNo());
+        return SQLUtil.execute(sql,repair.getAmount(),repair.getDue(),repair.getState(),repair.getRepairNo());
     }
     @Override
     public  String getNextRepairID() throws SQLException, ClassNotFoundException {
         String sql = "SELECT repId FROM repair ORDER BY repId DESC LIMIT 1;";
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         if (resultSet.next()){
             return getNextRepairID(resultSet.getString(1));
         }
