@@ -37,7 +37,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         return SQLUtil.execute("Delete From Customer where cusId=?",id);
     }
     @Override
-    public  Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
+    public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT  * FROM customer WHERE cusId = ?", id);
         while (resultSet.next()){
             return new Customer(
