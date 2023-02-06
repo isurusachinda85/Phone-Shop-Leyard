@@ -75,6 +75,8 @@ public class EmployeeAttendanceController {
     @FXML
     private TableColumn<?, ?> colAction;
 
+    private AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+
     public void initialize(){
         loadEmployeeId();
         loadNextAttendanceId();
@@ -94,7 +96,6 @@ public class EmployeeAttendanceController {
         LocalTime outTime = LocalTime.from(txtOutTime.getValue());
 
         try {
-            AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
             boolean attendanceSave = attendanceDAO.attendanceSave(new Attendance(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime)));
             loadNextAttendanceId();
             if (!attendanceSave){
@@ -110,7 +111,6 @@ public class EmployeeAttendanceController {
         ObservableList <AttendanceTM> attendanceList = FXCollections.observableArrayList();
         attendanceList.clear();
         try {
-            AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
             ArrayList<Attendance> allAttendance = attendanceDAO.getAllAttendance();
             for(Attendance attendance : allAttendance){
                 Button button = new Button("Delete");
@@ -155,7 +155,6 @@ public class EmployeeAttendanceController {
     public void loadEmployeeId(){
         try {
             ObservableList<String>data = FXCollections.observableArrayList();
-            AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
             ResultSet resultSet = attendanceDAO.loadEmployeeId();
             while (resultSet.next()){
                 data.add(resultSet.getString(1));
@@ -194,7 +193,6 @@ public class EmployeeAttendanceController {
     void employeeIdOnAction(ActionEvent event) {
         String id = cmbEmployeeId.getValue();
         try {
-            AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
             Employee employee = attendanceDAO.searchEmployee(id);
 
             filName(employee);
@@ -209,7 +207,6 @@ public class EmployeeAttendanceController {
 
     private void loadNextAttendanceId(){
         try {
-            AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
             String aId = attendanceDAO.getNextAttendanceId();
             txtAttendId.setText(aId);
         } catch (SQLException | ClassNotFoundException e) {
