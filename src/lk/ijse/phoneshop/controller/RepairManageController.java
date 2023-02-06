@@ -113,6 +113,10 @@ public class RepairManageController implements Initializable {
 
     @FXML
     private Label lblTime;
+
+    private RepairDAO repairDAO = new RepairDAOImpl();
+    private ItemDAO itemDAO = new ItemDAOImpl();
+    private CustomerDAO customerDAO = new CustomerDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCustomerId();
@@ -141,7 +145,6 @@ public class RepairManageController implements Initializable {
         LocalDate date = LocalDate.now();
 
         try {
-            RepairDAO repairDAO = new RepairDAOImpl();
             boolean saveRepair = repairDAO.saveRepair(new Repair(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date)));
 
             if (saveRepair){
@@ -166,7 +169,6 @@ public class RepairManageController implements Initializable {
         repairList.clear();
 
         try {
-            RepairDAO repairDAO = new RepairDAOImpl();
             ArrayList<Repair> allRepair = repairDAO.getAllRepair();
             for(Repair repairs : allRepair){
                 Button button = new Button("Delete");
@@ -248,7 +250,6 @@ public class RepairManageController implements Initializable {
     private void loadItemCode() {
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            ItemDAO itemDAO = new ItemDAOImpl();
             ResultSet resultSet = itemDAO.loadItemCode();
             while (resultSet.next()){
                 itemIdList.add(resultSet.getString(1));
@@ -262,7 +263,6 @@ public class RepairManageController implements Initializable {
     private void loadCustomerId() {
         ObservableList<String> customerIdList = FXCollections.observableArrayList();
         try {
-            CustomerDAO customerDAO = new CustomerDAOImpl();
             ResultSet resultSet = customerDAO.loadCustomerId();
             while (resultSet.next()){
                 customerIdList.add(resultSet.getString(1));
@@ -300,7 +300,6 @@ public class RepairManageController implements Initializable {
     void customerIdOnAction(ActionEvent event) {
         String cusId = cmbCusId.getValue();
         try {
-            CustomerDAO customerDAO = new CustomerDAOImpl();
             Customer customer =customerDAO.searchCustomer(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
@@ -315,7 +314,6 @@ public class RepairManageController implements Initializable {
     void itemCodeOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            ItemDAO itemDAO = new ItemDAOImpl();
             Item item = itemDAO.searchItem(itemCode);
             filItem(item);
         } catch (SQLException | ClassNotFoundException e) {
@@ -330,7 +328,6 @@ public class RepairManageController implements Initializable {
     void txtSearch(ActionEvent event) {
         String id = txtRepairNo.getText();
         try {
-            RepairDAO repairDAO = new RepairDAOImpl();
             Repair repair = repairDAO.searchRepair(id);
             if (repair!=null){
                 txtCustomerName.setText(repair.getCustomerName());
@@ -355,7 +352,6 @@ public class RepairManageController implements Initializable {
         double due = Double.parseDouble(lblDue.getText());
         String state = cmbState.getValue();
         try {
-            RepairDAO repairDAO = new RepairDAOImpl();
             boolean updateRepair = repairDAO.updateRepair(new Repair(id,amount,due,state));
             if (updateRepair){
                 Notifications notification = Notifications.create().title("Success").text("Repair Update Success").graphic(null)
@@ -374,7 +370,6 @@ public class RepairManageController implements Initializable {
     }
     private void getNextRepairID(){
         try {
-            RepairDAO repairDAO = new RepairDAOImpl();
             String repairID = repairDAO.getNextRepairID();
             txtRepairNo.setText(repairID);
         } catch (SQLException | ClassNotFoundException e) {
