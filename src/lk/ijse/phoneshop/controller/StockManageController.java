@@ -48,6 +48,8 @@ public class StockManageController {
     @FXML
     private TableColumn<?, ?> colCategory;
 
+    private ItemDAO itemDAO = new ItemDAOImpl();
+
     public void initialize(){
         loadData();
         setCellValueFactory();
@@ -56,7 +58,6 @@ public class StockManageController {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ItemDAO itemDAO = new ItemDAOImpl();
             ArrayList<Item> allPhone = itemDAO.loadAllPhone();
             for (Item it : allPhone){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());

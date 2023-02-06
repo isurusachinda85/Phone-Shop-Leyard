@@ -53,6 +53,8 @@ public class StockManage2Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colCategory;
 
+    private ItemDAO itemDAO = new ItemDAOImpl();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,7 +65,6 @@ public class StockManage2Controller implements Initializable {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ItemDAO itemDAO = new ItemDAOImpl();
             ArrayList<Item> allAccessories = itemDAO.loadAccessories();
             for (Item it : allAccessories){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
