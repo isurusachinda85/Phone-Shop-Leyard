@@ -19,13 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.phoneshop.dao.*;
-import lk.ijse.phoneshop.model.CustomerM;
-import lk.ijse.phoneshop.model.ItemM;
-import lk.ijse.phoneshop.model.RepairM;
-import lk.ijse.phoneshop.tm.AttendanceTM;
-import lk.ijse.phoneshop.tm.CustomerTM;
 import lk.ijse.phoneshop.tm.RepairTM;
-import lk.ijse.phoneshop.to.Attendance;
 import lk.ijse.phoneshop.to.Customer;
 import lk.ijse.phoneshop.to.Item;
 import lk.ijse.phoneshop.to.Repair;
@@ -116,7 +110,7 @@ public class RepairManageController implements Initializable {
 
     private RepairDAO repairDAO = new RepairDAOImpl();
     private ItemDAO itemDAO = new ItemDAOImpl();
-    private CustomerDAO customerDAO = new CustomerDAOImpl();
+    private CrudDAO crudDAO = new CustomerDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCustomerId();
@@ -263,7 +257,7 @@ public class RepairManageController implements Initializable {
     private void loadCustomerId() {
         ObservableList<String> customerIdList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = customerDAO.loadCustomerId();
+            ResultSet resultSet = crudDAO.loadCustomerId();
             while (resultSet.next()){
                 customerIdList.add(resultSet.getString(1));
                 cmbCusId.setItems(customerIdList);
@@ -300,7 +294,7 @@ public class RepairManageController implements Initializable {
     void customerIdOnAction(ActionEvent event) {
         String cusId = cmbCusId.getValue();
         try {
-            Customer customer =customerDAO.searchCustomer(cusId);
+            Customer customer = crudDAO.searchCustomer(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);

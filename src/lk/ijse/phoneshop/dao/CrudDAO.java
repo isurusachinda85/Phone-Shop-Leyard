@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CustomerDAO {
+public interface CrudDAO {
     boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException;
     ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException;
     boolean deleteCustomer(String id) throws SQLException, ClassNotFoundException;
