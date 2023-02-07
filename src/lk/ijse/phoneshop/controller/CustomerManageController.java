@@ -303,7 +303,8 @@ public class CustomerManageController {
     public void txtCusId(ActionEvent actionEvent) {
         String id= txtcCusId.getText();
         try {
-            Customer customer = crudDAO.search(id);
+            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
+            Customer customer = customerDAO.search(id);
             if (customer!=null){
                 txtCusName.setText(customer.getName());
                 txtCusEmail.setText(customer.getEmail());

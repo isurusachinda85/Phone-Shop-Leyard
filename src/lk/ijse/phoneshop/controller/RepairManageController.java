@@ -295,7 +295,8 @@ public class RepairManageController implements Initializable {
     void customerIdOnAction(ActionEvent event) {
         String cusId = cmbCusId.getValue();
         try {
-            Customer customer = crudDAO.searchCustomer(cusId);
+            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
+            Customer customer = customerDAO.search(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
