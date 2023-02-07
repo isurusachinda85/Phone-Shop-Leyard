@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.dao.CrudDAO;
 import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
@@ -53,7 +54,7 @@ public class StockManage3Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colCategory;
 
-    private ItemDAO itemDAO = new ItemDAOImpl();
+    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,7 +65,7 @@ public class StockManage3Controller implements Initializable {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ArrayList<Item> allParts = itemDAO.loadParts();
+            ArrayList<Item> allParts = itemDAO.getAll();
             for (Item it : allParts){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
                 itemList.add(tm);

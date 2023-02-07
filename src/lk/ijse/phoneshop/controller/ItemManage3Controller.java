@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import lk.ijse.phoneshop.dao.CrudDAO;
 import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
@@ -82,7 +83,7 @@ public class ItemManage3Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private ItemDAO itemDAO = new ItemDAOImpl();
+    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setCmbCategory();
@@ -103,7 +104,7 @@ public class ItemManage3Controller implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            boolean itemAdd = itemDAO.itemAdd(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
+            boolean itemAdd = itemDAO.save(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -120,7 +121,7 @@ public class ItemManage3Controller implements Initializable {
         itemList.clear();
 
         try {
-            ArrayList<Item> allParts = itemDAO.loadParts();
+            ArrayList<Item> allParts = itemDAO.getAll();
             for(Item it : allParts){
                 Button button = new Button("Delete");
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(),
@@ -140,7 +141,7 @@ public class ItemManage3Controller implements Initializable {
                     String code = tm.getItemCode();
 
                     try {
-                        boolean deletePhone = itemDAO.deleteItem(code);
+                        boolean deletePhone = itemDAO.delete(code);
                         if (deletePhone) {
                             new Alert(Alert.AlertType.CONFIRMATION,"Delete phone !").show();
                         }else{
@@ -213,7 +214,7 @@ public class ItemManage3Controller implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            Item item = itemDAO.searchItem(code);
+            Item item = itemDAO.search(code);
             if (item != null) {
                 txtBrand.setText(item.getBrand());
                 txtModalNo.setText(item.getModalNo());

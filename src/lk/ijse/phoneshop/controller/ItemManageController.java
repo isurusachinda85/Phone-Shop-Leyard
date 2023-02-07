@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.dao.CrudDAO;
 import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
@@ -81,7 +82,7 @@ public class ItemManageController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private ItemDAO itemDAO = new ItemDAOImpl();
+    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -104,7 +105,7 @@ public class ItemManageController implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            boolean itemAdd = itemDAO.itemAdd(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
+            boolean itemAdd = itemDAO.save(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -121,7 +122,7 @@ public class ItemManageController implements Initializable {
         itemList.clear();
 
         try {
-            ArrayList<Item> allPhone = itemDAO.loadAllPhone();
+            ArrayList<Item> allPhone = itemDAO.getAll();
 
             for(Item it : allPhone){
                 Button button = new Button("Delete");
@@ -143,7 +144,7 @@ public class ItemManageController implements Initializable {
                     String code = tm.getItemCode();
 
                     try {
-                        boolean deletePhone = itemDAO.deleteItem(code);
+                        boolean deletePhone = itemDAO.delete(code);
                         if (deletePhone) {
                             new Alert(Alert.AlertType.CONFIRMATION,"Delete phone !").show();
                         }else{
@@ -235,7 +236,7 @@ public class ItemManageController implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            Item item = itemDAO.searchItem(code);
+            Item item = itemDAO.search(code);
             if (item != null) {
                 txtBrand.setText(item.getBrand());
                 txtModalNo.setText(item.getModalNo());

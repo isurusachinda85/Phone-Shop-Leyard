@@ -6,16 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ItemDAOImpl implements ItemDAO {
+public class ItemDAOImpl implements CrudDAO<Item,String> {
     @Override
-    public boolean itemAdd(Item item) throws SQLException, ClassNotFoundException {
+    public boolean save(Item item) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO item VALUES (?,?,?,?,?,?,?,?)";
         return SQLUtil.execute(sql,item.getItemCode(),item.getBrand(),item.getModalNo(),item.getName(),item.getPrice(),
                 item.getWarranty(),item.getQty(),item.getCategory());
     }
     @Override
-    public ArrayList<Item> loadAllPhone() throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = SQLUtil.execute("SELECT * from item where itemCode like 'P%'");
+    public ArrayList<Item> getAll() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT * from item");
         ArrayList<Item> allPhone = new ArrayList<>();
         while (resultSet.next()){
             allPhone.add(new Item(
@@ -30,7 +30,7 @@ public class ItemDAOImpl implements ItemDAO {
         }
         return allPhone;
     }
-    @Override
+    /*@Override
     public ArrayList<Item> loadAccessories() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT * from item where itemCode like 'A%'");
         ArrayList<Item> allAccessories = new ArrayList<>();
@@ -63,13 +63,13 @@ public class ItemDAOImpl implements ItemDAO {
                     resultSet.getString("category")));
         }
         return allParts;
-    }
+    }*/
     @Override
-    public boolean deleteItem(String  code) throws SQLException, ClassNotFoundException {
+    public boolean delete(String  code) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("Delete from item where itemCode = ?",code);
     }
     @Override
-    public  Item searchItem(String code) throws SQLException, ClassNotFoundException {
+    public  Item search(String code) throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT  * FROM item WHERE itemCode = ?", code);
         while (resultSet.next()){
             return new Item(
@@ -82,6 +82,21 @@ public class ItemDAOImpl implements ItemDAO {
                     resultSet.getInt(7),
                     resultSet.getString(8));
         }
+        return null;
+    }
+
+    @Override
+    public boolean update(Item dto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public String getNextId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public String getNextId(String s) {
         return null;
     }
 }

@@ -107,9 +107,9 @@ public class RepairManageController implements Initializable {
     @FXML
     private Label lblTime;
 
-    private RepairDAO repairDAO = new RepairDAOImpl();
-    private ItemDAO itemDAO = new ItemDAOImpl();
-    private CrudDAO crudDAO = new CustomerDAOImpl();
+    private CrudDAO<Repair,String> repairDAO = new RepairDAOImpl();
+    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+    private CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCustomerId();
@@ -138,7 +138,7 @@ public class RepairManageController implements Initializable {
         LocalDate date = LocalDate.now();
 
         try {
-            boolean saveRepair = repairDAO.saveRepair(new Repair(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date)));
+            boolean saveRepair = repairDAO.save(new Repair(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date)));
 
             if (saveRepair){
                 Notifications notification = Notifications.create().title("Success").text("Repair Added Success").graphic(null)
@@ -162,7 +162,7 @@ public class RepairManageController implements Initializable {
         repairList.clear();
 
         try {
-            ArrayList<Repair> allRepair = repairDAO.getAllRepair();
+            ArrayList<Repair> allRepair = repairDAO.getAll();
             for(Repair repairs : allRepair){
                 Button button = new Button("Delete");
                 RepairTM tm = new RepairTM(repairs.getRepairNo(),repairs.getCustomerName(),repairs.getPhoneNo(),
@@ -183,7 +183,7 @@ public class RepairManageController implements Initializable {
                     //delete repair
                     String rid =repairs.getRepairNo();
                     try {
-                        boolean deleteRepair = repairDAO.deleteRepair(rid);
+                        boolean deleteRepair = repairDAO.delete(rid);
                         if (deleteRepair) {
                             getNextRepairID();
                             System.out.println("delete");
@@ -243,7 +243,7 @@ public class RepairManageController implements Initializable {
     private void loadItemCode() {
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            ArrayList<Item> allPhone = itemDAO.loadAllPhone();
+            ArrayList<Item> allPhone = itemDAO.getAll();
             for (Item item : allPhone) {
                 itemIdList.add(item.getItemCode());
                 cmbItemCode.setItems(itemIdList);
@@ -257,7 +257,6 @@ public class RepairManageController implements Initializable {
         ObservableList<String> customerIdList = FXCollections.observableArrayList();
         try {
 
-            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
             ArrayList<Customer> all = customerDAO.getAll();
             for (Customer customer : all) {
                 customerIdList.add(customer.getId());
@@ -295,7 +294,6 @@ public class RepairManageController implements Initializable {
     void customerIdOnAction(ActionEvent event) {
         String cusId = cmbCusId.getValue();
         try {
-            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
             Customer customer = customerDAO.search(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
@@ -310,7 +308,7 @@ public class RepairManageController implements Initializable {
     void itemCodeOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            Item item = itemDAO.searchItem(itemCode);
+            Item item = itemDAO.search(itemCode);
             filItem(item);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -324,7 +322,7 @@ public class RepairManageController implements Initializable {
     void txtSearch(ActionEvent event) {
         String id = txtRepairNo.getText();
         try {
-            Repair repair = repairDAO.searchRepair(id);
+            Repair repair = repairDAO.search(id);
             if (repair!=null){
                 txtCustomerName.setText(repair.getCustomerName());
                 txtCusMobil.setText(String.valueOf(repair.getPhoneNo()));
@@ -348,7 +346,7 @@ public class RepairManageController implements Initializable {
         double due = Double.parseDouble(lblDue.getText());
         String state = cmbState.getValue();
         try {
-            boolean updateRepair = repairDAO.updateRepair(new Repair(id,amount,due,state));
+            boolean updateRepair = repairDAO.update(new Repair(id,amount,due,state));
             if (updateRepair){
                 Notifications notification = Notifications.create().title("Success").text("Repair Update Success").graphic(null)
                         .hideAfter(Duration.seconds(8))
@@ -366,7 +364,7 @@ public class RepairManageController implements Initializable {
     }
     private void getNextRepairID(){
         try {
-            String repairID = repairDAO.getNextRepairID();
+            String repairID = repairDAO.getNextId();
             txtRepairNo.setText(repairID);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
