@@ -36,10 +36,6 @@ public class AttendanceDAOImpl implements AttendanceDAO{
         return allAttendance;
     }
     @Override
-    public  ResultSet loadEmployeeId() throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("SELECT eId from employee order by eId asc");
-    }
-    @Override
     public  Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT  * FROM employee WHERE eId = ?", id);
         if(resultSet.next()){

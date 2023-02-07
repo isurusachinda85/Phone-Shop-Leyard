@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CrudDAO {
-    boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException;
-    ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException;
-    boolean deleteCustomer(String id) throws SQLException, ClassNotFoundException;
-    Customer searchCustomer(String id) throws SQLException, ClassNotFoundException;
-    boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException;
-    String getNextCustomerId() throws SQLException, ClassNotFoundException;
-    String getNextCustomerId(String cusId);
-    ResultSet loadCustomerId() throws SQLException, ClassNotFoundException;
+public interface CrudDAO<T,ID> {
+    boolean save(T customer) throws SQLException, ClassNotFoundException;
+    ArrayList<T> getAll() throws SQLException, ClassNotFoundException;
+    boolean delete(ID id) throws SQLException, ClassNotFoundException;
+    T search(ID id) throws SQLException, ClassNotFoundException;
+    boolean update(T customer) throws SQLException, ClassNotFoundException;
+    String getNextId() throws SQLException, ClassNotFoundException;
+    String getNextId(ID cusId);
+    ResultSet loadId() throws SQLException, ClassNotFoundException;
 }

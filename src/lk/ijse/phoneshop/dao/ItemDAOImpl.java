@@ -87,8 +87,4 @@ public class ItemDAOImpl implements ItemDAO {
         }
         return null;
     }
-    @Override
-    public  ResultSet loadItemCode() throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("SELECT * from item where itemCode like 'P%'");
-    }
 }

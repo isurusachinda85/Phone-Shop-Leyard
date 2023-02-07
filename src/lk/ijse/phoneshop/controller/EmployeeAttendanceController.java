@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.phoneshop.dao.AttendanceDAO;
 import lk.ijse.phoneshop.dao.AttendanceDAOImpl;
+import lk.ijse.phoneshop.dao.EmployeeDAO;
+import lk.ijse.phoneshop.dao.EmployeeDAOImpl;
 import lk.ijse.phoneshop.model.AttendanceM;
 import lk.ijse.phoneshop.model.EmployeeM;
 import lk.ijse.phoneshop.tm.AttendanceTM;
@@ -76,6 +78,7 @@ public class EmployeeAttendanceController {
     private TableColumn<?, ?> colAction;
 
     private AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
     public void initialize(){
         loadEmployeeId();
@@ -155,11 +158,10 @@ public class EmployeeAttendanceController {
     public void loadEmployeeId(){
         try {
             ObservableList<String>data = FXCollections.observableArrayList();
-            ResultSet resultSet = attendanceDAO.loadEmployeeId();
-            while (resultSet.next()){
-                data.add(resultSet.getString(1));
+            ArrayList<Employee> allEmployee = employeeDAO.getAllEmployee();
+            for (Employee employee : allEmployee) {
+                data.add(employee.getId());
                 cmbEmployeeId.setItems(data);
-
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

@@ -6,15 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CustomerDAOImpl implements CrudDAO {
-
+public class CustomerDAOImpl implements CrudDAO<Customer,String> {
     @Override
-    public boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException {
+    public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into customer values (?,?,?,?,?)";
         return SQLUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
     }
     @Override
-    public ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException {
+    public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
         ResultSet resultSet  = SQLUtil.execute("SELECT * From Customer");
         ArrayList<Customer> allCustomer = new ArrayList<>();
 
@@ -30,11 +29,11 @@ public class CustomerDAOImpl implements CrudDAO {
         return allCustomer;
     }
     @Override
-    public boolean deleteCustomer(String  id) throws SQLException, ClassNotFoundException {
+    public boolean delete(String  id) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("Delete From Customer where cusId=?",id);
     }
     @Override
-    public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
+    public Customer search(String id) throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT  * FROM customer WHERE cusId = ?", id);
         while (resultSet.next()){
             return new Customer(
@@ -47,21 +46,21 @@ public class CustomerDAOImpl implements CrudDAO {
         return null;
     }
     @Override
-    public boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException {
+    public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "Update Customer set name=?,address=?,phoneNo=?,email=? where cusId=?";
         return SQLUtil.execute(sql,customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail(),customer.getId());
     }
     @Override
-    public  String getNextCustomerId() throws SQLException, ClassNotFoundException {
+    public  String getNextId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT cusId FROM customer ORDER BY cusId DESC LIMIT 1";
         ResultSet resultSet = SQLUtil.execute(sql);
         if (resultSet.next()){
-            return getNextCustomerId(resultSet.getString(1));
+            return getNextId(resultSet.getString(1));
         }
-        return getNextCustomerId(resultSet.getString(null));
+        return getNextId(resultSet.getString(null));
     }
     @Override
-    public  String getNextCustomerId(String cusId){
+    public  String getNextId(String cusId){
         if (cusId!=null){
             String[]split = cusId.split("C0");
             int id = Integer.parseInt(split[1]);
@@ -72,7 +71,7 @@ public class CustomerDAOImpl implements CrudDAO {
         return "C001";
     }
     @Override
-    public ResultSet loadCustomerId() throws SQLException, ClassNotFoundException {
+    public ResultSet loadId() throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("SELECT cusId from customer order by cusId asc");
     }
 }

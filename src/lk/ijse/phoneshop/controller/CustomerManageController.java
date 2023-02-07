@@ -114,7 +114,7 @@ public class CustomerManageController {
 
         patternPerform();
         try {
-            crudDAO.saveCustomer(new Customer(id,name,address,phoneNo,email));
+            crudDAO.save(new Customer(id,name,address,phoneNo,email));
             loadNextCustomerId();
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.WARNING, "Pleas File All data  !").show();
@@ -130,7 +130,7 @@ public class CustomerManageController {
         ObservableList <CustomerTM> customerList = FXCollections.observableArrayList();
         customerList.clear();
         try {
-            ArrayList<Customer>allCustomer = crudDAO.getAllCustomer();
+            ArrayList<Customer>allCustomer = crudDAO.getAll();
 
             for (Customer c:allCustomer) {
                 Button button = new Button("Delete");
@@ -151,7 +151,7 @@ public class CustomerManageController {
                     String id = c.getId();
                     //delete Customer
                     try {
-                        boolean deleteCustomer = crudDAO.deleteCustomer(id);
+                        boolean deleteCustomer = crudDAO.delete(id);
                         if (deleteCustomer){
                             loadNextCustomerId();
                             System.out.println("Delete");
@@ -179,7 +179,7 @@ public class CustomerManageController {
 
     private void loadNextCustomerId(){
         try {
-            String cusId = crudDAO.getNextCustomerId();
+            String cusId = crudDAO.getNextId();
             txtcCusId.setText(cusId);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -283,7 +283,7 @@ public class CustomerManageController {
 
 
         try {
-            boolean updateCustomer = crudDAO.updateCustomer(new Customer(id, name, address, phoneNo, email));
+            boolean updateCustomer = crudDAO.update(new Customer(id, name, address, phoneNo, email));
 
             if (updateCustomer){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update customer !").show();
@@ -303,7 +303,7 @@ public class CustomerManageController {
     public void txtCusId(ActionEvent actionEvent) {
         String id= txtcCusId.getText();
         try {
-            Customer customer = crudDAO.searchCustomer(id);
+            Customer customer = crudDAO.search(id);
             if (customer!=null){
                 txtCusName.setText(customer.getName());
                 txtCusEmail.setText(customer.getEmail());

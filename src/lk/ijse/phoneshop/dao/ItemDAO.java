@@ -13,5 +13,4 @@ public interface ItemDAO {
     ArrayList<Item> loadParts() throws SQLException, ClassNotFoundException;
     boolean deleteItem(String code) throws SQLException, ClassNotFoundException;
     Item searchItem(String code) throws SQLException, ClassNotFoundException;
-    ResultSet loadItemCode() throws SQLException, ClassNotFoundException;
 }

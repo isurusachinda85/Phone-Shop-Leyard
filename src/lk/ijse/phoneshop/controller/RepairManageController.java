@@ -244,9 +244,9 @@ public class RepairManageController implements Initializable {
     private void loadItemCode() {
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = itemDAO.loadItemCode();
-            while (resultSet.next()){
-                itemIdList.add(resultSet.getString(1));
+            ArrayList<Item> allPhone = itemDAO.loadAllPhone();
+            for (Item item : allPhone) {
+                itemIdList.add(item.getItemCode());
                 cmbItemCode.setItems(itemIdList);
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -257,9 +257,11 @@ public class RepairManageController implements Initializable {
     private void loadCustomerId() {
         ObservableList<String> customerIdList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = crudDAO.loadCustomerId();
-            while (resultSet.next()){
-                customerIdList.add(resultSet.getString(1));
+
+            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            ArrayList<Customer> all = customerDAO.getAll();
+            for (Customer customer : all) {
+                customerIdList.add(customer.getId());
                 cmbCusId.setItems(customerIdList);
             }
         } catch (SQLException | ClassNotFoundException e) {
