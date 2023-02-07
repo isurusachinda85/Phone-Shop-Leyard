@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class CustomerDAOImpl implements CrudDAO<Customer,String> {
     @Override
-    public boolean save(Customer dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into customer values (?,?,?,?,?)";
-        return SQLUtil.execute(sql,dto.getId(),dto.getName(),dto.getAddress(),dto.getPhoneNo(),dto.getEmail());
+        return SQLUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
     }
 
     @Override
@@ -49,9 +49,9 @@ public class CustomerDAOImpl implements CrudDAO<Customer,String> {
     }
 
     @Override
-    public boolean update(Customer dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "Update Customer set name=?,address=?,phoneNo=?,email=? where cusId=?";
-        return SQLUtil.execute(sql,dto.getName(),dto.getAddress(),dto.getPhoneNo(),dto.getEmail(),dto.getId());
+        return SQLUtil.execute(sql,customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail(),customer.getId());
     }
 
     @Override
