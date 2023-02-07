@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.dao;
 
-import lk.ijse.phoneshop.to.Repair;
+import lk.ijse.phoneshop.dto.Repair;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

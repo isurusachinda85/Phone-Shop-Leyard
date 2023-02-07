@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import lk.ijse.phoneshop.dao.CrudDAO;
 import lk.ijse.phoneshop.dao.CustomerDAOImpl;
-import lk.ijse.phoneshop.to.Customer;
+import lk.ijse.phoneshop.dto.Customer;
 import lk.ijse.phoneshop.tm.CustomerTM;
 
 import java.sql.SQLException;

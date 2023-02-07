@@ -1,4 +1,4 @@
-package lk.ijse.phoneshop.to;
+package lk.ijse.phoneshop.dto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

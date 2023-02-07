@@ -1,4 +1,4 @@
-package lk.ijse.phoneshop.to;
+package lk.ijse.phoneshop.dto;
 
 import java.util.ArrayList;
 

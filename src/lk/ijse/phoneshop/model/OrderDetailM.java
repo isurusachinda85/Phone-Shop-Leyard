@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.to.CartDetail;
+import lk.ijse.phoneshop.dto.CartDetail;
 import lk.ijse.phoneshop.dao.SQLUtil;
 
 import java.sql.SQLException;

@@ -1,7 +1,6 @@
 package lk.ijse.phoneshop.controller;
 
 import com.jfoenix.controls.*;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,22 +10,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.phoneshop.dao.EmployeeDAO;
 import lk.ijse.phoneshop.dao.EmployeeDAOImpl;
-import lk.ijse.phoneshop.db.DBConnection;
-import lk.ijse.phoneshop.model.CustomerM;
-import lk.ijse.phoneshop.model.EmployeeM;
-import lk.ijse.phoneshop.tm.CustomerTM;
 import lk.ijse.phoneshop.tm.EmployeeTM;
-import lk.ijse.phoneshop.to.Customer;
-import lk.ijse.phoneshop.to.Employee;
+import lk.ijse.phoneshop.dto.Employee;
 
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 

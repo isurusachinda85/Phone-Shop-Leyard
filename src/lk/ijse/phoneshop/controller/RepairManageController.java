@@ -20,14 +20,13 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.phoneshop.dao.*;
 import lk.ijse.phoneshop.tm.RepairTM;
-import lk.ijse.phoneshop.to.Customer;
-import lk.ijse.phoneshop.to.Item;
-import lk.ijse.phoneshop.to.Repair;
+import lk.ijse.phoneshop.dto.Customer;
+import lk.ijse.phoneshop.dto.Item;
+import lk.ijse.phoneshop.dto.Repair;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;

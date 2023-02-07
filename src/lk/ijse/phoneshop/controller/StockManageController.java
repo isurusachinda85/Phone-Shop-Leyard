@@ -13,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
-import lk.ijse.phoneshop.to.Item;
+import lk.ijse.phoneshop.dto.Item;
 
 import java.io.IOException;
 import java.sql.SQLException;

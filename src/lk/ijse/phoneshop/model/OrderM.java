@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.to.Order;
+import lk.ijse.phoneshop.dto.Order;
 import lk.ijse.phoneshop.dao.SQLUtil;
 
 import java.sql.ResultSet;

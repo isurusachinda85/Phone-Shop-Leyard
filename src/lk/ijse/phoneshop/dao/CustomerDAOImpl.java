@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.dao;
 
-import lk.ijse.phoneshop.to.Customer;
+import lk.ijse.phoneshop.dto.Customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

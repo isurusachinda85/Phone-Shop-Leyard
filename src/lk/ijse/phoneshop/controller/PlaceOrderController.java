@@ -23,10 +23,10 @@ import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.model.OrderM;
 import lk.ijse.phoneshop.model.PlaceOrderM;
 import lk.ijse.phoneshop.tm.PlaceOrderTM;
-import lk.ijse.phoneshop.to.CartDetail;
-import lk.ijse.phoneshop.to.Customer;
-import lk.ijse.phoneshop.to.Item;
-import lk.ijse.phoneshop.to.PlaceOrder;
+import lk.ijse.phoneshop.dto.CartDetail;
+import lk.ijse.phoneshop.dto.Customer;
+import lk.ijse.phoneshop.dto.Item;
+import lk.ijse.phoneshop.dto.PlaceOrder;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;

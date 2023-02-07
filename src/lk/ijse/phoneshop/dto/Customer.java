@@ -1,4 +1,4 @@
-package lk.ijse.phoneshop.to;
+package lk.ijse.phoneshop.dto;
 
 public class Customer {
     private String id;

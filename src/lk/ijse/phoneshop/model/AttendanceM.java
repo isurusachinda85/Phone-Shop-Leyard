@@ -1,7 +1,7 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.to.Attendance;
-import lk.ijse.phoneshop.to.Employee;
+import lk.ijse.phoneshop.dto.Attendance;
+import lk.ijse.phoneshop.dto.Employee;
 import lk.ijse.phoneshop.dao.SQLUtil;
 
 import java.sql.ResultSet;

@@ -1,8 +1,7 @@
 package lk.ijse.phoneshop.dao;
 
-import lk.ijse.phoneshop.to.Item;
+import lk.ijse.phoneshop.dto.Item;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

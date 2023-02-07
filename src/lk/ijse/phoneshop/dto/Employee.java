@@ -1,7 +1,4 @@
-package lk.ijse.phoneshop.to;
-
-import java.time.LocalDate;
-import java.util.Date;
+package lk.ijse.phoneshop.dto;
 
 public class Employee {
     private String id;

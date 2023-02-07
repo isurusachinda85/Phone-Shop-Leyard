@@ -14,16 +14,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.phoneshop.dao.ItemDAO;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
-import lk.ijse.phoneshop.model.EmployeeM;
-import lk.ijse.phoneshop.model.ItemM;
-import lk.ijse.phoneshop.tm.EmployeeTM;
 import lk.ijse.phoneshop.tm.ItemTM;
-import lk.ijse.phoneshop.to.Employee;
-import lk.ijse.phoneshop.to.Item;
+import lk.ijse.phoneshop.dto.Item;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;

@@ -14,14 +14,10 @@ import lk.ijse.phoneshop.dao.AttendanceDAO;
 import lk.ijse.phoneshop.dao.AttendanceDAOImpl;
 import lk.ijse.phoneshop.dao.EmployeeDAO;
 import lk.ijse.phoneshop.dao.EmployeeDAOImpl;
-import lk.ijse.phoneshop.model.AttendanceM;
-import lk.ijse.phoneshop.model.EmployeeM;
 import lk.ijse.phoneshop.tm.AttendanceTM;
-import lk.ijse.phoneshop.tm.EmployeeTM;
-import lk.ijse.phoneshop.to.Attendance;
-import lk.ijse.phoneshop.to.Employee;
+import lk.ijse.phoneshop.dto.Attendance;
+import lk.ijse.phoneshop.dto.Employee;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;

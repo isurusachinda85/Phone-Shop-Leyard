@@ -1,9 +1,8 @@
 package lk.ijse.phoneshop.model;
 
 import lk.ijse.phoneshop.db.DBConnection;
-import lk.ijse.phoneshop.to.Order;
-import lk.ijse.phoneshop.to.Payment;
-import lk.ijse.phoneshop.to.PlaceOrder;
+import lk.ijse.phoneshop.dto.Order;
+import lk.ijse.phoneshop.dto.PlaceOrder;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
