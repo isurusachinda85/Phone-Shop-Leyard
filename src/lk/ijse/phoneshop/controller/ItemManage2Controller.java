@@ -169,7 +169,7 @@ public class ItemManage2Controller implements Initializable {
                     try {
                         boolean deletePhone = itemDAO.delete(code);
                         if (deletePhone) {
-                            new Alert(Alert.AlertType.CONFIRMATION,"Delete phone !").show();
+                            new Alert(Alert.AlertType.CONFIRMATION,"Delete Item !").show();
                         }else{
                             new Alert(Alert.AlertType.WARNING, "No Phone !").show();
                         }

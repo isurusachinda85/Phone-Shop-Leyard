@@ -18,6 +18,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.dao.CrudDAO;
+import lk.ijse.phoneshop.dao.CustomerDAOImpl;
+import lk.ijse.phoneshop.dao.ItemDAOImpl;
+import lk.ijse.phoneshop.dao.OrderDAOImpl;
 import lk.ijse.phoneshop.model.CustomerM;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.model.OrderM;
@@ -30,6 +34,7 @@ import lk.ijse.phoneshop.dto.PlaceOrder;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -127,11 +132,13 @@ public class PlaceOrderController {
     private void loadCustomerId(){
         ObservableList<String>customerIdList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = CustomerM.loadCustomerId();
-            while (resultSet.next()){
-                customerIdList.add(resultSet.getString(1));
+            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
+            ArrayList<Customer> all = customerDAO.getAll();
+            for (Customer customer : all) {
+                customerIdList.add(customer.getId());
                 cmbCustomerId.setItems(customerIdList);
             }
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -139,9 +146,10 @@ public class PlaceOrderController {
     private void loadItemCode(){
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = ItemM.loadItemCode();
-            while (resultSet.next()){
-                itemIdList.add(resultSet.getString(1));
+            CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+            ArrayList<Item> all = itemDAO.getAll();
+            for (Item item : all) {
+                itemIdList.add(item.getItemCode());
                 cmbItemCode.setItems(itemIdList);
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -171,6 +179,7 @@ public class PlaceOrderController {
                     list.get(i).setTotal(total);
                     tblOrderCart.refresh();
                     return;
+
                 }
 
             }
@@ -263,18 +272,21 @@ public class PlaceOrderController {
             System.out.println(e);
         }
     }
+
     private void loadNextOrderId(){
         try {
-            String nextOrderId = OrderM.getNextOrderId();
+            OrderDAOImpl orderDAO = new OrderDAOImpl();
+            String nextOrderId = orderDAO.getNextId();
             lblNextOrderId.setText(nextOrderId);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
         }
     }
-    public void cmbCustomerIdOnAction(ActionEvent actionEvent) {
+    public void cmbCustomerIdOnAction(ActionEvent actionEvent){
         String cusId = cmbCustomerId.getValue();
         try {
-            Customer customer =CustomerM.searchCustomer(cusId);
+            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
+            Customer customer =customerDAO.search(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -284,7 +296,8 @@ public class PlaceOrderController {
     void cmbItemOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            Item item = ItemM.searchItem(itemCode);
+            CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+            Item item = itemDAO.search(itemCode);
             filItem(item);
             txtQty.requestFocus();
         } catch (SQLException | ClassNotFoundException e) {
