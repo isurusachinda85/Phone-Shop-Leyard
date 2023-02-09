@@ -22,15 +22,12 @@ import lk.ijse.phoneshop.dao.CrudDAO;
 import lk.ijse.phoneshop.dao.CustomerDAOImpl;
 import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.dao.OrderDAOImpl;
+import lk.ijse.phoneshop.dto.*;
 import lk.ijse.phoneshop.model.CustomerM;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.model.OrderM;
 import lk.ijse.phoneshop.model.PlaceOrderM;
 import lk.ijse.phoneshop.tm.PlaceOrderTM;
-import lk.ijse.phoneshop.dto.CartDetail;
-import lk.ijse.phoneshop.dto.Customer;
-import lk.ijse.phoneshop.dto.Item;
-import lk.ijse.phoneshop.dto.PlaceOrder;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
@@ -100,6 +97,10 @@ public class PlaceOrderController {
 
     @FXML
     private TableColumn<?, ?> colAction;
+
+    private CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
+    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+    private CrudDAO<Order,String> orderDAO = new OrderDAOImpl();
     
     public void initialize(){
         loadDate();
@@ -132,7 +133,6 @@ public class PlaceOrderController {
     private void loadCustomerId(){
         ObservableList<String>customerIdList = FXCollections.observableArrayList();
         try {
-            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
             ArrayList<Customer> all = customerDAO.getAll();
             for (Customer customer : all) {
                 customerIdList.add(customer.getId());
@@ -146,7 +146,6 @@ public class PlaceOrderController {
     private void loadItemCode(){
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
             ArrayList<Item> all = itemDAO.getAll();
             for (Item item : all) {
                 itemIdList.add(item.getItemCode());
@@ -275,7 +274,6 @@ public class PlaceOrderController {
 
     private void loadNextOrderId(){
         try {
-            OrderDAOImpl orderDAO = new OrderDAOImpl();
             String nextOrderId = orderDAO.getNextId();
             lblNextOrderId.setText(nextOrderId);
         } catch (SQLException | ClassNotFoundException e) {
@@ -285,7 +283,6 @@ public class PlaceOrderController {
     public void cmbCustomerIdOnAction(ActionEvent actionEvent){
         String cusId = cmbCustomerId.getValue();
         try {
-            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
             Customer customer =customerDAO.search(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
@@ -296,7 +293,6 @@ public class PlaceOrderController {
     void cmbItemOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
             Item item = itemDAO.search(itemCode);
             filItem(item);
             txtQty.requestFocus();

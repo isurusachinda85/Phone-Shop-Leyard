@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RepairDAOImpl implements CrudDAO<Repair,String>{
+public class RepairDAOImpl implements RepairDAO{
     @Override
     public boolean save(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into repair values (?,?,?,?,?,?,?,?,?,?,?)";

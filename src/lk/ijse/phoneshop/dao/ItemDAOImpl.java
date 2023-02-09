@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ItemDAOImpl implements CrudDAO<Item,String> {
+public class ItemDAOImpl implements ItemDAO {
     @Override
     public boolean save(Item item) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO item VALUES (?,?,?,?,?,?,?,?)";
@@ -86,8 +86,9 @@ public class ItemDAOImpl implements CrudDAO<Item,String> {
     }
 
     @Override
-    public boolean update(Item dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(Item item) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE Item SET qty = qty - ? WHERE itemCode = ?";
+        return SQLUtil.execute(sql,item.getQty(),item.getItemCode());
     }
 
     @Override

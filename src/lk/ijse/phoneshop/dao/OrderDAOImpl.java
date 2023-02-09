@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class OrderDAOImpl implements CrudDAO<Order,String> {
+public class OrderDAOImpl implements OrderDAO {
     @Override
     public boolean save(Order order) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO orders VALUES(?, ?, ?,?)";

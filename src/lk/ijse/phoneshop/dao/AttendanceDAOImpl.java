@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AttendanceDAOImpl implements CrudDAO<Attendance,String>{
+public class AttendanceDAOImpl implements AttendanceDAO{
     @Override
     public boolean save(Attendance attendance) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into attendance values (?,?,?,?,?,?,?)";

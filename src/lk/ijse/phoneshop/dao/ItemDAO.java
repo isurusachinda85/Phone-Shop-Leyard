@@ -5,11 +5,6 @@ import lk.ijse.phoneshop.dto.Item;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface ItemDAO {
-    boolean itemAdd(Item item) throws SQLException, ClassNotFoundException;
-    ArrayList<Item> loadAllPhone() throws SQLException, ClassNotFoundException;
-    ArrayList<Item> loadAccessories() throws SQLException, ClassNotFoundException;
-    ArrayList<Item> loadParts() throws SQLException, ClassNotFoundException;
-    boolean deleteItem(String code) throws SQLException, ClassNotFoundException;
-    Item searchItem(String code) throws SQLException, ClassNotFoundException;
+public interface ItemDAO extends CrudDAO<Item,String>{
+
 }

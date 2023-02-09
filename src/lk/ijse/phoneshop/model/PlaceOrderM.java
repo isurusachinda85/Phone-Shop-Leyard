@@ -1,5 +1,7 @@
 package lk.ijse.phoneshop.model;
 
+import lk.ijse.phoneshop.dao.CrudDAO;
+import lk.ijse.phoneshop.dao.OrderDAOImpl;
 import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.dto.Order;
 import lk.ijse.phoneshop.dto.PlaceOrder;
@@ -12,7 +14,8 @@ public class PlaceOrderM {
     public static boolean placeOrder(PlaceOrder placeOrder) throws SQLException, ClassNotFoundException {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
-            boolean saveOrder = OrderM.saveOrder(new Order(placeOrder.getOrderId(), LocalDate.now(), LocalTime.now(), placeOrder.getCustomerId()));
+            CrudDAO<Order,String> orderDAO = new OrderDAOImpl();
+            boolean saveOrder = orderDAO.save(new Order(placeOrder.getOrderId(), LocalDate.now(), LocalTime.now(), placeOrder.getCustomerId()));
             if (saveOrder){
                 boolean updateQty = ItemM.updateQty(placeOrder.getOrderDetail());
                 if (updateQty){
