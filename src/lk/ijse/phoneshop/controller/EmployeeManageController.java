@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.bo.EmployeeBOImpl;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
 import lk.ijse.phoneshop.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.phoneshop.tm.EmployeeTM;
@@ -79,7 +80,7 @@ public class EmployeeManageController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -117,7 +118,8 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            boolean saveEmployee = employeeDAO.save(new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
+            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+            boolean saveEmployee = employeeBO.saveEmployee(new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
             loadNextEmployeeId();
             if (!saveEmployee){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -141,7 +143,8 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            boolean updateEmployee = employeeDAO.update(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
+            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+            boolean updateEmployee = employeeBO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
             if (updateEmployee){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
             }else {
@@ -158,7 +161,8 @@ public class EmployeeManageController implements Initializable {
     public void serchOnAction(ActionEvent actionEvent) {
         String id = txtEmployee.getText();
         try {
-            Employee employee = employeeDAO.search(id);
+            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+            Employee employee = employeeBO.searchEmployee(id);
             if(employee!=null){
                 txtName.setText(employee.getName());
                 txtAddress.setText(employee.getAddress());
@@ -180,7 +184,8 @@ public class EmployeeManageController implements Initializable {
         employeeList.clear();
 
         try {
-            ArrayList<Employee> allEmployee = employeeDAO.getAll();
+            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+            ArrayList<Employee> allEmployee = employeeBO.getAllEmployee();
 
             for(Employee em : allEmployee){
                 Button button = new Button("Delete");
@@ -201,7 +206,8 @@ public class EmployeeManageController implements Initializable {
                     String id = em.getId();
                     //delete employee
                     try {
-                        boolean deleteEmployee = employeeDAO.delete(id);
+
+                        boolean deleteEmployee = employeeBO.deleteEmployee(id);
                         if (deleteEmployee){
                             loadNextEmployeeId();
                             System.out.println("Delete");
@@ -238,7 +244,8 @@ public class EmployeeManageController implements Initializable {
 
     private void loadNextEmployeeId(){
         try {
-            String eId = employeeDAO.getNextId();
+            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+            String eId = employeeBO.getNextEmployeeId();
             txtEmployee.setText(eId);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

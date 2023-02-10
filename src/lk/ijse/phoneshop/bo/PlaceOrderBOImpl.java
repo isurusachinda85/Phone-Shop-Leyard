@@ -24,19 +24,20 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class PlaceOrderBOImpl {
+public class PlaceOrderBOImpl implements PlaceOrderBO {
 
     private CustomerDAO customerDAO = new CustomerDAOImpl();
     private ItemDAO itemDAO = new ItemDAOImpl();
     private OrderDAO orderDAO = new OrderDAOImpl();
     private OrderDetailDAO orderDetailDAO = new OrderDetailDAOImpl();
 
+    @Override
     public  boolean placeOrder(PlaceOrder placeOrder) throws SQLException, ClassNotFoundException {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
             boolean saveOrder = orderDAO.save(new Order(placeOrder.getOrderId(), LocalDate.now(), LocalTime.now(), placeOrder.getCustomerId()));
             if (saveOrder){
-                boolean updateQty = itemDAO.update(placeOrder.getOrderDetail());
+                boolean updateQty = ItemM.updateQty(placeOrder.getOrderDetail());
                 if (updateQty){
                     boolean saveOrderDetails = OrderDetailM.saveOrderDetails(placeOrder.getOrderDetail());
                     if (saveOrderDetails){
@@ -51,18 +52,23 @@ public class PlaceOrderBOImpl {
             DBConnection.getInstance().getConnection().setAutoCommit(true);
         }
     }
+    @Override
     public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
         return customerDAO.search(id);
     }
+    @Override
     public Item searchItem(String code) throws SQLException, ClassNotFoundException {
         return itemDAO.search(code);
     }
+    @Override
     public String getNextOrderId() throws SQLException, ClassNotFoundException {
         return orderDAO.getNextId();
     }
+    @Override
     public ArrayList<Customer> loadCustomerId() throws SQLException, ClassNotFoundException {
         return customerDAO.getAll();
     }
+    @Override
     public ArrayList<Item> loadItemCode() throws SQLException, ClassNotFoundException {
         return itemDAO.getAll();
     }

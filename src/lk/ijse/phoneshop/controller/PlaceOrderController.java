@@ -249,7 +249,7 @@ public class PlaceOrderController {
         }
         PlaceOrder placeOrder = new PlaceOrder(cusId,orderId,cartDetails);
         PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
-        placeOrderBO.placeOrder(cusId,orderId,cartDetails);
+        //placeOrderBO.placeOrder(cusId,orderId,cartDetails);
         try {
             boolean order = PlaceOrderM.placeOrder(placeOrder);
             loadNextOrderId();

@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.bo.ItemBOImpl;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
@@ -81,7 +82,6 @@ public class ItemManage2Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private ItemDAO itemDAO = new ItemDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -103,7 +103,8 @@ public class ItemManage2Controller implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            boolean itemAdd = itemDAO.save(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
+            ItemBOImpl itemBO = new ItemBOImpl();
+            boolean itemAdd = itemBO.saveItem(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -146,7 +147,8 @@ public class ItemManage2Controller implements Initializable {
         itemList.clear();
 
         try {
-            ArrayList<Item> allAccessories = itemDAO.getAll();
+            ItemBOImpl itemBO = new ItemBOImpl();
+            ArrayList<Item> allAccessories = itemBO.getAllItem();
             for(Item it : allAccessories){
                 Button button = new Button("Delete");
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(),
@@ -166,7 +168,7 @@ public class ItemManage2Controller implements Initializable {
                     String code = tm.getItemCode();
 
                     try {
-                        boolean deletePhone = itemDAO.delete(code);
+                        boolean deletePhone = itemBO.deleteItem(code);
                         if (deletePhone) {
                             new Alert(Alert.AlertType.CONFIRMATION,"Delete Item !").show();
                         }else{
@@ -216,7 +218,8 @@ public class ItemManage2Controller implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            Item item = itemDAO.search(code);
+            ItemBOImpl itemBO = new ItemBOImpl();
+            Item item = itemBO.searchItem(code);
             if (item != null) {
                 txtBrand.setText(item.getBrand());
                 txtModalNo.setText(item.getModalNo());

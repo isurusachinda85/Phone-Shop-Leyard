@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
+import lk.ijse.phoneshop.bo.CustomerBOImpl;
 import lk.ijse.phoneshop.dao.CrudDAO;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.impl.CustomerDAOImpl;
@@ -49,7 +50,7 @@ public class CustomerManageController {
     private Matcher addressMatcher;
     private Matcher phoneNoMatcher;
 
-    private CustomerDAO customerDAO = new CustomerDAOImpl();
+
 
     public void setPattern(){
         Pattern namePattern = Pattern.compile("^[a-z.\\sA-Z.\\s]{4,}$");
@@ -115,7 +116,8 @@ public class CustomerManageController {
 
         patternPerform();
         try {
-            customerDAO.save(new Customer(id,name,address,phoneNo,email));
+            CustomerBOImpl customerBO = new CustomerBOImpl();
+            customerBO.saveCustomer(new Customer(id,name,address,phoneNo,email));
             loadNextCustomerId();
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.WARNING, "Pleas File All data  !").show();
@@ -131,7 +133,8 @@ public class CustomerManageController {
         ObservableList <CustomerTM> customerList = FXCollections.observableArrayList();
         customerList.clear();
         try {
-            ArrayList<Customer>allCustomer = customerDAO.getAll();
+            CustomerBOImpl customerBO = new CustomerBOImpl();
+            ArrayList<Customer>allCustomer = customerBO.getAllCustomer();
 
             for (Customer c:allCustomer) {
                 Button button = new Button("Delete");
@@ -152,7 +155,7 @@ public class CustomerManageController {
                     String id = c.getId();
                     //delete Customer
                     try {
-                        boolean deleteCustomer = customerDAO.delete(id);
+                        boolean deleteCustomer = customerBO.deleteCustomer(id);
                         if (deleteCustomer){
                             loadNextCustomerId();
                             System.out.println("Delete");
@@ -180,7 +183,8 @@ public class CustomerManageController {
 
     private void loadNextCustomerId(){
         try {
-            String cusId = customerDAO.getNextId();
+            CustomerBOImpl customerBO = new CustomerBOImpl();
+            String cusId = customerBO.getNextCustomerId();
             txtcCusId.setText(cusId);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -284,7 +288,8 @@ public class CustomerManageController {
 
 
         try {
-            boolean updateCustomer = customerDAO.update(new Customer(id, name, address, phoneNo, email));
+            CustomerBOImpl customerBO = new CustomerBOImpl();
+            boolean updateCustomer = customerBO.updateCustomer(new Customer(id, name, address, phoneNo, email));
 
             if (updateCustomer){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update customer !").show();
@@ -304,8 +309,8 @@ public class CustomerManageController {
     public void txtCusId(ActionEvent actionEvent) {
         String id= txtcCusId.getText();
         try {
-            CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
-            Customer customer = customerDAO.search(id);
+            CustomerBOImpl customerBO = new CustomerBOImpl();
+            Customer customer = customerBO.searchCustomer(id);
             if (customer!=null){
                 txtCusName.setText(customer.getName());
                 txtCusEmail.setText(customer.getEmail());

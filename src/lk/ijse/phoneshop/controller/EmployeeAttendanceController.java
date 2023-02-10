@@ -10,6 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.bo.AttendanceBOImpl;
+import lk.ijse.phoneshop.bo.EmployeeBOImpl;
 import lk.ijse.phoneshop.dao.custom.AttendanceDAO;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
 import lk.ijse.phoneshop.dao.custom.impl.AttendanceDAOImpl;
@@ -73,8 +75,7 @@ public class EmployeeAttendanceController {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
-    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+
 
     public void initialize(){
         loadEmployeeId();
@@ -95,7 +96,8 @@ public class EmployeeAttendanceController {
         LocalTime outTime = LocalTime.from(txtOutTime.getValue());
 
         try {
-            boolean attendanceSave = attendanceDAO.save(new Attendance(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime)));
+            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+            boolean attendanceSave = attendanceBO.saveAttendance(new Attendance(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime)));
             loadNextAttendanceId();
             if (!attendanceSave){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -110,7 +112,8 @@ public class EmployeeAttendanceController {
         ObservableList <AttendanceTM> attendanceList = FXCollections.observableArrayList();
         attendanceList.clear();
         try {
-            ArrayList<Attendance> allAttendance = attendanceDAO.getAll();
+            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+            ArrayList<Attendance> allAttendance = attendanceBO.getAllAttendance();
             for(Attendance attendance : allAttendance){
                 Button button = new Button("Delete");
                 AttendanceTM tm = new AttendanceTM(attendance.getAttendanceId(),attendance.getEmployeeId(),attendance.getName(),
@@ -129,7 +132,7 @@ public class EmployeeAttendanceController {
                     String id = tm.getAttendanceId();
 
                     try {
-                        attendanceDAO.delete(id);
+                        attendanceBO.deleteAttendance(id);
                         loadNextAttendanceId();
 
                     } catch (SQLException | ClassNotFoundException throwable) {
@@ -154,7 +157,8 @@ public class EmployeeAttendanceController {
     public void loadEmployeeId(){
         try {
             ObservableList<String>data = FXCollections.observableArrayList();
-            ArrayList<Employee> allEmployee = employeeDAO.getAll();
+            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+            ArrayList<Employee> allEmployee = attendanceBO.getAllEmployee();
             for (Employee employee : allEmployee) {
                 data.add(employee.getId());
                 cmbEmployeeId.setItems(data);
@@ -191,7 +195,8 @@ public class EmployeeAttendanceController {
     void employeeIdOnAction(ActionEvent event) {
         String id = cmbEmployeeId.getValue();
         try {
-            Employee employee = employeeDAO.search(id);
+            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+            Employee employee = attendanceBO.searchEmployee(id);
 
             filName(employee);
             txtDate.requestFocus();
@@ -205,7 +210,8 @@ public class EmployeeAttendanceController {
 
     private void loadNextAttendanceId(){
         try {
-            String aId = attendanceDAO.getNextId();
+            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+            String aId = attendanceBO.getNextAttendanceId();
             txtAttendId.setText(aId);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
