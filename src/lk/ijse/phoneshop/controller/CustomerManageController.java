@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
+import lk.ijse.phoneshop.bo.CustomerBO;
 import lk.ijse.phoneshop.bo.CustomerBOImpl;
 import lk.ijse.phoneshop.dao.CrudDAO;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
@@ -50,7 +51,7 @@ public class CustomerManageController {
     private Matcher addressMatcher;
     private Matcher phoneNoMatcher;
 
-
+    private CustomerBO customerBO = new CustomerBOImpl();
 
     public void setPattern(){
         Pattern namePattern = Pattern.compile("^[a-z.\\sA-Z.\\s]{4,}$");
@@ -116,7 +117,6 @@ public class CustomerManageController {
 
         patternPerform();
         try {
-            CustomerBOImpl customerBO = new CustomerBOImpl();
             customerBO.saveCustomer(new Customer(id,name,address,phoneNo,email));
             loadNextCustomerId();
         } catch (ClassNotFoundException | SQLException e) {
@@ -133,7 +133,7 @@ public class CustomerManageController {
         ObservableList <CustomerTM> customerList = FXCollections.observableArrayList();
         customerList.clear();
         try {
-            CustomerBOImpl customerBO = new CustomerBOImpl();
+
             ArrayList<Customer>allCustomer = customerBO.getAllCustomer();
 
             for (Customer c:allCustomer) {
@@ -183,7 +183,6 @@ public class CustomerManageController {
 
     private void loadNextCustomerId(){
         try {
-            CustomerBOImpl customerBO = new CustomerBOImpl();
             String cusId = customerBO.getNextCustomerId();
             txtcCusId.setText(cusId);
         } catch (SQLException | ClassNotFoundException e) {
@@ -288,7 +287,7 @@ public class CustomerManageController {
 
 
         try {
-            CustomerBOImpl customerBO = new CustomerBOImpl();
+
             boolean updateCustomer = customerBO.updateCustomer(new Customer(id, name, address, phoneNo, email));
 
             if (updateCustomer){
@@ -309,7 +308,7 @@ public class CustomerManageController {
     public void txtCusId(ActionEvent actionEvent) {
         String id= txtcCusId.getText();
         try {
-            CustomerBOImpl customerBO = new CustomerBOImpl();
+
             Customer customer = customerBO.searchCustomer(id);
             if (customer!=null){
                 txtCusName.setText(customer.getName());

@@ -14,9 +14,14 @@ import java.util.ArrayList;
 
 public interface PlaceOrderBO {
     boolean placeOrder(PlaceOrder placeOrder) throws SQLException, ClassNotFoundException;
+
     Customer searchCustomer(String id) throws SQLException, ClassNotFoundException ;
+
     Item searchItem(String code) throws SQLException, ClassNotFoundException;
+
     String getNextOrderId() throws SQLException, ClassNotFoundException;
+
     ArrayList<Customer> loadCustomerId() throws SQLException, ClassNotFoundException;
+
     ArrayList<Item> loadItemCode() throws SQLException, ClassNotFoundException;
 }

@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.bo.PlaceOrderBO;
 import lk.ijse.phoneshop.bo.PlaceOrderBOImpl;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
@@ -96,6 +97,8 @@ public class PlaceOrderController {
     @FXML
     private TableColumn<?, ?> colAction;
 
+    private PlaceOrderBO placeOrderBO = new PlaceOrderBOImpl();
+
     
     public void initialize(){
         loadDate();
@@ -128,7 +131,7 @@ public class PlaceOrderController {
     private void loadCustomerId(){
         ObservableList<String>customerIdList = FXCollections.observableArrayList();
         try {
-            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
+
             ArrayList<Customer> all = placeOrderBO.loadCustomerId();
             for (Customer customer : all) {
                 customerIdList.add(customer.getId());
@@ -142,7 +145,6 @@ public class PlaceOrderController {
     private void loadItemCode(){
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
             ArrayList<Item> all = placeOrderBO.loadItemCode();
             for (Item item : all) {
                 itemIdList.add(item.getItemCode());
@@ -248,10 +250,10 @@ public class PlaceOrderController {
             cartDetails.add(new CartDetail(orderId,tm.getCode(),tm.getQty(),tm.getItemName(),tm.getUnitPrice(),tm.getCategory()));
         }
         PlaceOrder placeOrder = new PlaceOrder(cusId,orderId,cartDetails);
-        PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
-        //placeOrderBO.placeOrder(cusId,orderId,cartDetails);
+
+
         try {
-            boolean order = PlaceOrderM.placeOrder(placeOrder);
+            boolean order = placeOrderBO.placeOrder(placeOrder);
             loadNextOrderId();
             if (order){
                 list.clear();
@@ -272,7 +274,6 @@ public class PlaceOrderController {
 
     private void loadNextOrderId(){
         try {
-            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
             String nextOrderId = placeOrderBO.getNextOrderId();
             lblNextOrderId.setText(nextOrderId);
         } catch (SQLException | ClassNotFoundException e) {
@@ -282,7 +283,6 @@ public class PlaceOrderController {
     public void cmbCustomerIdOnAction(ActionEvent actionEvent){
         String cusId = cmbCustomerId.getValue();
         try {
-            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
             Customer customer = placeOrderBO.searchCustomer(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
@@ -293,7 +293,6 @@ public class PlaceOrderController {
     void cmbItemOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
             Item item = placeOrderBO.searchItem(itemCode);
             filItem(item);
             txtQty.requestFocus();

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.bo.EmployeeBO;
 import lk.ijse.phoneshop.bo.EmployeeBOImpl;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
 import lk.ijse.phoneshop.dao.custom.impl.EmployeeDAOImpl;
@@ -80,7 +81,7 @@ public class EmployeeManageController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-
+    private EmployeeBO employeeBO = new EmployeeBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -118,7 +119,7 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+
             boolean saveEmployee = employeeBO.saveEmployee(new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
             loadNextEmployeeId();
             if (!saveEmployee){
@@ -143,7 +144,7 @@ public class EmployeeManageController implements Initializable {
         String password = txtPassword.getText();
 
         try {
-            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+
             boolean updateEmployee = employeeBO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
             if (updateEmployee){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
@@ -161,7 +162,7 @@ public class EmployeeManageController implements Initializable {
     public void serchOnAction(ActionEvent actionEvent) {
         String id = txtEmployee.getText();
         try {
-            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+
             Employee employee = employeeBO.searchEmployee(id);
             if(employee!=null){
                 txtName.setText(employee.getName());
@@ -184,7 +185,7 @@ public class EmployeeManageController implements Initializable {
         employeeList.clear();
 
         try {
-            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+
             ArrayList<Employee> allEmployee = employeeBO.getAllEmployee();
 
             for(Employee em : allEmployee){
@@ -244,7 +245,7 @@ public class EmployeeManageController implements Initializable {
 
     private void loadNextEmployeeId(){
         try {
-            EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+
             String eId = employeeBO.getNextEmployeeId();
             txtEmployee.setText(eId);
         } catch (SQLException | ClassNotFoundException e) {

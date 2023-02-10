@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.bo.ItemBO;
 import lk.ijse.phoneshop.bo.ItemBOImpl;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
@@ -49,6 +50,7 @@ public class StockManageController {
     @FXML
     private TableColumn<?, ?> colCategory;
 
+    private ItemBO itemBO = new ItemBOImpl();
 
 
     public void initialize(){
@@ -59,7 +61,6 @@ public class StockManageController {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ItemBOImpl itemBO = new ItemBOImpl();
             ArrayList<Item> allPhone = itemBO.getAllItem();
             for (Item it : allPhone){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());

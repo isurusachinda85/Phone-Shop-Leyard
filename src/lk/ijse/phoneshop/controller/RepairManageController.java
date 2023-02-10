@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.bo.RepairBO;
 import lk.ijse.phoneshop.bo.RepairBOImpl;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
@@ -113,6 +114,8 @@ public class RepairManageController implements Initializable {
     @FXML
     private Label lblTime;
 
+    private RepairBO repairBO = new RepairBOImpl();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -142,7 +145,7 @@ public class RepairManageController implements Initializable {
         LocalDate date = LocalDate.now();
 
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
+
             boolean saveRepair = repairBO.saveRepair(new Repair(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date)));
 
             if (saveRepair){
@@ -167,7 +170,6 @@ public class RepairManageController implements Initializable {
         repairList.clear();
 
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             ArrayList<Repair> allRepair = repairBO.getAllRepair();
             for(Repair repairs : allRepair){
                 Button button = new Button("Delete");
@@ -249,7 +251,6 @@ public class RepairManageController implements Initializable {
     private void loadItemCode() {
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             ArrayList<Item> allPhone = repairBO.getAllItem();
             for (Item item : allPhone) {
                 itemIdList.add(item.getItemCode());
@@ -263,7 +264,6 @@ public class RepairManageController implements Initializable {
     private void loadCustomerId() {
         ObservableList<String> customerIdList = FXCollections.observableArrayList();
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             ArrayList<Customer> all = repairBO.getAllCustomer();
             for (Customer customer : all) {
                 customerIdList.add(customer.getId());
@@ -301,7 +301,6 @@ public class RepairManageController implements Initializable {
     void customerIdOnAction(ActionEvent event) {
         String cusId = cmbCusId.getValue();
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             Customer customer = repairBO.searchCustomer(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
@@ -316,7 +315,6 @@ public class RepairManageController implements Initializable {
     void itemCodeOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             Item item = repairBO.searchItem(itemCode);
             filItem(item);
         } catch (SQLException | ClassNotFoundException e) {
@@ -331,7 +329,6 @@ public class RepairManageController implements Initializable {
     void txtSearch(ActionEvent event) {
         String id = txtRepairNo.getText();
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             Repair repair = repairBO.searchRepair(id);
             if (repair!=null){
                 txtCustomerName.setText(repair.getCustomerName());
@@ -356,7 +353,6 @@ public class RepairManageController implements Initializable {
         double due = Double.parseDouble(lblDue.getText());
         String state = cmbState.getValue();
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             boolean updateRepair = repairBO.updateRepair(new Repair(id,amount,due,state));
             if (updateRepair){
                 Notifications notification = Notifications.create().title("Success").text("Repair Update Success").graphic(null)
@@ -375,7 +371,6 @@ public class RepairManageController implements Initializable {
     }
     private void getNextRepairID(){
         try {
-            RepairBOImpl repairBO = new RepairBOImpl();
             String repairID = repairBO.getNextRepairId();
             txtRepairNo.setText(repairID);
         } catch (SQLException | ClassNotFoundException e) {

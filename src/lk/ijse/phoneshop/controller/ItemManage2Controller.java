@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.bo.ItemBO;
 import lk.ijse.phoneshop.bo.ItemBOImpl;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
@@ -82,6 +83,7 @@ public class ItemManage2Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
+    private ItemBO itemBO = new ItemBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -103,7 +105,6 @@ public class ItemManage2Controller implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            ItemBOImpl itemBO = new ItemBOImpl();
             boolean itemAdd = itemBO.saveItem(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
@@ -147,7 +148,6 @@ public class ItemManage2Controller implements Initializable {
         itemList.clear();
 
         try {
-            ItemBOImpl itemBO = new ItemBOImpl();
             ArrayList<Item> allAccessories = itemBO.getAllItem();
             for(Item it : allAccessories){
                 Button button = new Button("Delete");
@@ -218,7 +218,6 @@ public class ItemManage2Controller implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            ItemBOImpl itemBO = new ItemBOImpl();
             Item item = itemBO.searchItem(code);
             if (item != null) {
                 txtBrand.setText(item.getBrand());

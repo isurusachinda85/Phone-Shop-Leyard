@@ -12,25 +12,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AttendanceBOImpl {
+public class AttendanceBOImpl implements AttendanceBO{
     private AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
     private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
+    @Override
     public boolean saveAttendance(Attendance attendance) throws SQLException, ClassNotFoundException {
         return attendanceDAO.save(attendance);
     }
+    @Override
     public ArrayList<Attendance> getAllAttendance() throws SQLException, ClassNotFoundException {
         return attendanceDAO.getAll();
     }
+    @Override
     public boolean deleteAttendance(String id) throws SQLException, ClassNotFoundException {
         return attendanceDAO.delete(id);
     }
+    @Override
     public ArrayList<Employee> getAllEmployee() throws SQLException, ClassNotFoundException {
         return employeeDAO.getAll();
     }
+    @Override
     public Employee searchEmployee(String id) throws SQLException, ClassNotFoundException {
         return employeeDAO.search(id);
     }
+    @Override
     public String getNextAttendanceId() throws SQLException, ClassNotFoundException {
         return attendanceDAO.getNextId();
     }

@@ -9,9 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StockManageBOImpl {
+public class StockManageBOImpl implements StockManageBO {
     private ItemDAO itemDAO = new ItemDAOImpl();
 
+    @Override
     public ArrayList<Item> getAllItem() throws SQLException, ClassNotFoundException {
         return itemDAO.getAll();
     }

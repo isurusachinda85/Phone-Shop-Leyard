@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.bo.ItemBO;
 import lk.ijse.phoneshop.bo.ItemBOImpl;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
@@ -52,6 +53,7 @@ public class StockManage2Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colCategory;
 
+    private ItemBO itemBO = new ItemBOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadData();
@@ -61,7 +63,6 @@ public class StockManage2Controller implements Initializable {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ItemBOImpl itemBO = new ItemBOImpl();
             ArrayList<Item> allAccessories = itemBO.getAllItem();
             for (Item it : allAccessories){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());

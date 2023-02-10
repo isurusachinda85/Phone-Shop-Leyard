@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.bo.AttendanceBO;
 import lk.ijse.phoneshop.bo.AttendanceBOImpl;
 import lk.ijse.phoneshop.bo.EmployeeBOImpl;
 import lk.ijse.phoneshop.dao.custom.AttendanceDAO;
@@ -75,7 +76,7 @@ public class EmployeeAttendanceController {
     @FXML
     private TableColumn<?, ?> colAction;
 
-
+    private AttendanceBO attendanceBO = new AttendanceBOImpl();
 
     public void initialize(){
         loadEmployeeId();
@@ -96,7 +97,7 @@ public class EmployeeAttendanceController {
         LocalTime outTime = LocalTime.from(txtOutTime.getValue());
 
         try {
-            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+
             boolean attendanceSave = attendanceBO.saveAttendance(new Attendance(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime)));
             loadNextAttendanceId();
             if (!attendanceSave){
@@ -112,7 +113,7 @@ public class EmployeeAttendanceController {
         ObservableList <AttendanceTM> attendanceList = FXCollections.observableArrayList();
         attendanceList.clear();
         try {
-            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+
             ArrayList<Attendance> allAttendance = attendanceBO.getAllAttendance();
             for(Attendance attendance : allAttendance){
                 Button button = new Button("Delete");
@@ -157,7 +158,6 @@ public class EmployeeAttendanceController {
     public void loadEmployeeId(){
         try {
             ObservableList<String>data = FXCollections.observableArrayList();
-            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
             ArrayList<Employee> allEmployee = attendanceBO.getAllEmployee();
             for (Employee employee : allEmployee) {
                 data.add(employee.getId());
@@ -195,7 +195,7 @@ public class EmployeeAttendanceController {
     void employeeIdOnAction(ActionEvent event) {
         String id = cmbEmployeeId.getValue();
         try {
-            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+
             Employee employee = attendanceBO.searchEmployee(id);
 
             filName(employee);
@@ -210,7 +210,7 @@ public class EmployeeAttendanceController {
 
     private void loadNextAttendanceId(){
         try {
-            AttendanceBOImpl attendanceBO = new AttendanceBOImpl();
+
             String aId = attendanceBO.getNextAttendanceId();
             txtAttendId.setText(aId);
         } catch (SQLException | ClassNotFoundException e) {
