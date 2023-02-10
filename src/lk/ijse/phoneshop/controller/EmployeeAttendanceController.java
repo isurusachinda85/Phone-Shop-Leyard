@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.AttendanceBO;
 import lk.ijse.phoneshop.bo.custom.impl.AttendanceBOImpl;
 import lk.ijse.phoneshop.tm.AttendanceTM;
@@ -71,7 +72,7 @@ public class EmployeeAttendanceController {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private AttendanceBO attendanceBO = new AttendanceBOImpl();
+    private AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ATTENDANCE);
 
     public void initialize(){
         loadEmployeeId();

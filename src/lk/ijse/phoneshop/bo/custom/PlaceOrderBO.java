@@ -1,5 +1,6 @@
 package lk.ijse.phoneshop.bo.custom;
 
+import lk.ijse.phoneshop.bo.SuperBO;
 import lk.ijse.phoneshop.db.DBConnection;
 import lk.ijse.phoneshop.dto.Customer;
 import lk.ijse.phoneshop.dto.Item;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public interface PlaceOrderBO {
+public interface PlaceOrderBO extends SuperBO {
     boolean placeOrder(PlaceOrder placeOrder) throws SQLException, ClassNotFoundException;
 
     Customer searchCustomer(String id) throws SQLException, ClassNotFoundException ;

@@ -1,11 +1,12 @@
 package lk.ijse.phoneshop.bo.custom;
 
+import lk.ijse.phoneshop.bo.SuperBO;
 import lk.ijse.phoneshop.dto.Customer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CustomerBO {
+public interface CustomerBO extends SuperBO {
     boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException ;
 
     ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException ;

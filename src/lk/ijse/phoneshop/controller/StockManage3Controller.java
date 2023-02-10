@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.ItemBO;
 import lk.ijse.phoneshop.bo.custom.impl.ItemBOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
@@ -53,7 +54,7 @@ public class StockManage3Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colCategory;
 
-    private ItemBO itemBO = new ItemBOImpl();
+    private ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadData();

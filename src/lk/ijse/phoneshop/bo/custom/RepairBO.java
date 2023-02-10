@@ -1,5 +1,6 @@
 package lk.ijse.phoneshop.bo.custom;
 
+import lk.ijse.phoneshop.bo.SuperBO;
 import lk.ijse.phoneshop.dto.Customer;
 import lk.ijse.phoneshop.dto.Item;
 import lk.ijse.phoneshop.dto.Repair;
@@ -7,7 +8,7 @@ import lk.ijse.phoneshop.dto.Repair;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface RepairBO {
+public interface RepairBO extends SuperBO {
     boolean saveRepair(Repair repair) throws SQLException, ClassNotFoundException ;
 
     ArrayList<Repair> getAllRepair() throws SQLException, ClassNotFoundException ;

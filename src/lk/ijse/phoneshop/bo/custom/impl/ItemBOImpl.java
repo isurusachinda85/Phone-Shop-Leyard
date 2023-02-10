@@ -3,7 +3,6 @@ package lk.ijse.phoneshop.bo.custom.impl;
 import lk.ijse.phoneshop.bo.custom.ItemBO;
 import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
-import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.phoneshop.dto.Item;
 
 import java.sql.SQLException;

@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.RepairBO;
 import lk.ijse.phoneshop.bo.custom.impl.RepairBOImpl;
 import lk.ijse.phoneshop.tm.RepairTM;
@@ -108,7 +109,7 @@ public class RepairManageController implements Initializable {
     @FXML
     private Label lblTime;
 
-    private RepairBO repairBO = new RepairBOImpl();
+    private RepairBO repairBO = (RepairBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.REPAIR);
 
 
     @Override

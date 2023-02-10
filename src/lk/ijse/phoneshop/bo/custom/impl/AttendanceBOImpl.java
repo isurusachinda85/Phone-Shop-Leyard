@@ -4,8 +4,6 @@ import lk.ijse.phoneshop.bo.custom.AttendanceBO;
 import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.AttendanceDAO;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
-import lk.ijse.phoneshop.dao.custom.impl.AttendanceDAOImpl;
-import lk.ijse.phoneshop.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.phoneshop.dto.Attendance;
 import lk.ijse.phoneshop.dto.Employee;
 

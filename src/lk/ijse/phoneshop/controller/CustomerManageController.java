@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
+import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.CustomerBO;
 import lk.ijse.phoneshop.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.phoneshop.dto.Customer;
@@ -48,7 +49,7 @@ public class CustomerManageController {
     private Matcher addressMatcher;
     private Matcher phoneNoMatcher;
 
-    private CustomerBO customerBO = new CustomerBOImpl();
+    private CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
 
     public void setPattern(){
         Pattern namePattern = Pattern.compile("^[a-z.\\sA-Z.\\s]{4,}$");

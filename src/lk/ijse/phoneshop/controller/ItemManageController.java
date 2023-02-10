@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.ItemBO;
 import lk.ijse.phoneshop.bo.custom.impl.ItemBOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
@@ -81,7 +82,7 @@ public class ItemManageController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private ItemBO itemBO = new ItemBOImpl();
+    private ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

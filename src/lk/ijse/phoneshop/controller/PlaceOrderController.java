@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.PlaceOrderBO;
 import lk.ijse.phoneshop.bo.custom.impl.PlaceOrderBOImpl;
 import lk.ijse.phoneshop.dto.*;
@@ -90,7 +91,7 @@ public class PlaceOrderController {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private PlaceOrderBO placeOrderBO = new PlaceOrderBOImpl();
+    private PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PLACEORDER);
 
     
     public void initialize(){

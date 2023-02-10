@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.EmployeeBO;
 import lk.ijse.phoneshop.bo.custom.impl.EmployeeBOImpl;
 import lk.ijse.phoneshop.tm.EmployeeTM;
@@ -79,7 +80,7 @@ public class EmployeeManageController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private EmployeeBO employeeBO = new EmployeeBOImpl();
+    private EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
