@@ -18,10 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import lk.ijse.phoneshop.dao.CrudDAO;
-import lk.ijse.phoneshop.dao.CustomerDAOImpl;
-import lk.ijse.phoneshop.dao.ItemDAOImpl;
-import lk.ijse.phoneshop.dao.OrderDAOImpl;
+import lk.ijse.phoneshop.dao.*;
 import lk.ijse.phoneshop.dto.*;
 import lk.ijse.phoneshop.model.CustomerM;
 import lk.ijse.phoneshop.model.ItemM;
@@ -98,9 +95,9 @@ public class PlaceOrderController {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
-    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
-    private CrudDAO<Order,String> orderDAO = new OrderDAOImpl();
+    private CustomerDAO customerDAO = new CustomerDAOImpl();
+    private ItemDAO itemDAO = new ItemDAOImpl();
+    private OrderDAO orderDAO = new OrderDAOImpl();
     
     public void initialize(){
         loadDate();
