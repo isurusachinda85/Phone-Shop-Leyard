@@ -1,6 +1,7 @@
 package lk.ijse.phoneshop.bo.custom.impl;
 
 import lk.ijse.phoneshop.bo.custom.EmployeeBO;
+import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
 import lk.ijse.phoneshop.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.phoneshop.dto.Employee;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
-    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+    private EmployeeDAO employeeDAO = (EmployeeDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.EMPLOYEE);
 
     @Override
     public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {

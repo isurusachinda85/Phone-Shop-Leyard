@@ -1,6 +1,7 @@
 package lk.ijse.phoneshop.bo.custom.impl;
 
 import lk.ijse.phoneshop.bo.custom.PlaceOrderBO;
+import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.OrderDAO;
@@ -24,10 +25,10 @@ import java.util.ArrayList;
 
 public class PlaceOrderBOImpl implements PlaceOrderBO {
 
-    private CustomerDAO customerDAO = new CustomerDAOImpl();
-    private ItemDAO itemDAO = new ItemDAOImpl();
-    private OrderDAO orderDAO = new OrderDAOImpl();
-    private OrderDetailDAO orderDetailDAO = new OrderDetailDAOImpl();
+    private CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.CUSTOMER);
+    private ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.ITEM);
+    private OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.ORDER);
+    private OrderDetailDAO orderDetailDAO = (OrderDetailDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.ORDERDETAILS);
 
     @Override
     public  boolean placeOrder(PlaceOrder placeOrder) throws SQLException, ClassNotFoundException {

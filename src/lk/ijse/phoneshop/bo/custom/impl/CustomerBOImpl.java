@@ -1,6 +1,7 @@
 package lk.ijse.phoneshop.bo.custom.impl;
 
 import lk.ijse.phoneshop.bo.custom.CustomerBO;
+import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.phoneshop.dto.Customer;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerBOImpl implements CustomerBO {
-    private CustomerDAO customerDAO = new CustomerDAOImpl();
+    private CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.CUSTOMER);
 
     @Override
     public boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException {

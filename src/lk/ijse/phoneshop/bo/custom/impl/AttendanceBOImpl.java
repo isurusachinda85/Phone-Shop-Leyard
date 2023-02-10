@@ -1,6 +1,7 @@
 package lk.ijse.phoneshop.bo.custom.impl;
 
 import lk.ijse.phoneshop.bo.custom.AttendanceBO;
+import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.AttendanceDAO;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
 import lk.ijse.phoneshop.dao.custom.impl.AttendanceDAOImpl;
@@ -12,8 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AttendanceBOImpl implements AttendanceBO {
-    private AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
-    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+    private AttendanceDAO attendanceDAO = (AttendanceDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.ATTENDANCE);
+    private EmployeeDAO employeeDAO = (EmployeeDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.EMPLOYEE);
 
     @Override
     public boolean saveAttendance(Attendance attendance) throws SQLException, ClassNotFoundException {

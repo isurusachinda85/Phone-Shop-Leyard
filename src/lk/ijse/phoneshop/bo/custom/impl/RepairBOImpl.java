@@ -1,6 +1,7 @@
 package lk.ijse.phoneshop.bo.custom.impl;
 
 import lk.ijse.phoneshop.bo.custom.RepairBO;
+import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.RepairDAO;
@@ -15,9 +16,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RepairBOImpl implements RepairBO {
-    private RepairDAO repairDAO = new RepairDAOImpl();
-    private ItemDAO itemDAO = new ItemDAOImpl();
-    private CustomerDAO customerDAO = new CustomerDAOImpl();
+    private RepairDAO repairDAO = (RepairDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.REPAIR);
+    private ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.ITEM);
+    private CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.CUSTOMER);
 
     @Override
     public boolean saveRepair(Repair repair) throws SQLException, ClassNotFoundException {
