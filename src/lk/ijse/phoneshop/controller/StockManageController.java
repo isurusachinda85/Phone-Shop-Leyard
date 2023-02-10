@@ -49,7 +49,7 @@ public class StockManageController {
     @FXML
     private TableColumn<?, ?> colCategory;
 
-    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+    private ItemDAO itemDAO = new ItemDAOImpl();
 
     public void initialize(){
         loadData();

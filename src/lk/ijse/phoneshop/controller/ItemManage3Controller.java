@@ -83,7 +83,7 @@ public class ItemManage3Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+    private ItemDAO itemDAO = new ItemDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setCmbCategory();

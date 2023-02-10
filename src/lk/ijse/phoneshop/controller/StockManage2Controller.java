@@ -52,7 +52,7 @@ public class StockManage2Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colCategory;
 
-    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+    private ItemDAO itemDAO = new ItemDAOImpl();
 
 
     @Override

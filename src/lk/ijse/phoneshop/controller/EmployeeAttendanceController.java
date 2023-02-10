@@ -70,8 +70,8 @@ public class EmployeeAttendanceController {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private CrudDAO<Attendance,String> attendanceDAO = new AttendanceDAOImpl();
-    private CrudDAO<Employee,String> employeeDAO = new EmployeeDAOImpl();
+    private AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
     public void initialize(){
         loadEmployeeId();

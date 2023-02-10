@@ -80,7 +80,7 @@ public class EmployeeManageController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private CrudDAO<Employee,String> employeeDAO = new EmployeeDAOImpl();
+    private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

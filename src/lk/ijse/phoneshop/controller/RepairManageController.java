@@ -107,9 +107,9 @@ public class RepairManageController implements Initializable {
     @FXML
     private Label lblTime;
 
-    private CrudDAO<Repair,String> repairDAO = new RepairDAOImpl();
-    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
-    private CrudDAO<Customer,String> customerDAO = new CustomerDAOImpl();
+    private RepairDAO repairDAO = new RepairDAOImpl();
+    private ItemDAO itemDAO = new ItemDAOImpl();
+    private CustomerDAO customerDAO = new CustomerDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCustomerId();

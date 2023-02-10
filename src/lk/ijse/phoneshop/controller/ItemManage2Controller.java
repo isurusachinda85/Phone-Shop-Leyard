@@ -18,6 +18,7 @@ import lk.ijse.phoneshop.dao.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.dto.Item;
 
+import javax.mail.FetchProfile;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -82,7 +83,7 @@ public class ItemManage2Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private CrudDAO<Item,String> itemDAO = new ItemDAOImpl();
+    private ItemDAO itemDAO = new ItemDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
