@@ -96,9 +96,6 @@ public class PlaceOrderController {
     @FXML
     private TableColumn<?, ?> colAction;
 
-    private CustomerDAO customerDAO = new CustomerDAOImpl();
-    private ItemDAO itemDAO = new ItemDAOImpl();
-    private OrderDAO orderDAO = new OrderDAOImpl();
     
     public void initialize(){
         loadDate();
@@ -131,7 +128,8 @@ public class PlaceOrderController {
     private void loadCustomerId(){
         ObservableList<String>customerIdList = FXCollections.observableArrayList();
         try {
-            ArrayList<Customer> all = customerDAO.getAll();
+            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
+            ArrayList<Customer> all = placeOrderBO.loadCustomerId();
             for (Customer customer : all) {
                 customerIdList.add(customer.getId());
                 cmbCustomerId.setItems(customerIdList);
@@ -144,7 +142,8 @@ public class PlaceOrderController {
     private void loadItemCode(){
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            ArrayList<Item> all = itemDAO.getAll();
+            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
+            ArrayList<Item> all = placeOrderBO.loadItemCode();
             for (Item item : all) {
                 itemIdList.add(item.getItemCode());
                 cmbItemCode.setItems(itemIdList);
@@ -273,7 +272,8 @@ public class PlaceOrderController {
 
     private void loadNextOrderId(){
         try {
-            String nextOrderId = orderDAO.getNextId();
+            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
+            String nextOrderId = placeOrderBO.getNextOrderId();
             lblNextOrderId.setText(nextOrderId);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);

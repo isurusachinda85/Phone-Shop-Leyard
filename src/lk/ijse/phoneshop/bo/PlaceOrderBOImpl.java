@@ -22,6 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class PlaceOrderBOImpl {
 
@@ -55,5 +56,14 @@ public class PlaceOrderBOImpl {
     }
     public Item searchItem(String code) throws SQLException, ClassNotFoundException {
         return itemDAO.search(code);
+    }
+    public String getNextOrderId() throws SQLException, ClassNotFoundException {
+        return orderDAO.getNextId();
+    }
+    public ArrayList<Customer> loadCustomerId() throws SQLException, ClassNotFoundException {
+        return customerDAO.getAll();
+    }
+    public ArrayList<Item> loadItemCode() throws SQLException, ClassNotFoundException {
+        return itemDAO.getAll();
     }
 }
