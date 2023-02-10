@@ -1,12 +1,14 @@
-package lk.ijse.phoneshop.dao;
+package lk.ijse.phoneshop.dao.custom.impl;
 
+import lk.ijse.phoneshop.dao.SQLUtil;
+import lk.ijse.phoneshop.dao.custom.RepairDAO;
 import lk.ijse.phoneshop.dto.Repair;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RepairDAOImpl implements RepairDAO{
+public class RepairDAOImpl implements RepairDAO {
     @Override
     public boolean save(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into repair values (?,?,?,?,?,?,?,?,?,?,?)";

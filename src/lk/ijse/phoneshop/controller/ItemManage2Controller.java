@@ -12,13 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.phoneshop.dao.CrudDAO;
-import lk.ijse.phoneshop.dao.ItemDAO;
-import lk.ijse.phoneshop.dao.ItemDAOImpl;
+import lk.ijse.phoneshop.dao.custom.ItemDAO;
+import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.dto.Item;
 
-import javax.mail.FetchProfile;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

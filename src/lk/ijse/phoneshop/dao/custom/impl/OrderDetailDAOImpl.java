@@ -1,5 +1,6 @@
-package lk.ijse.phoneshop.dao;
+package lk.ijse.phoneshop.dao.custom.impl;
 
+import lk.ijse.phoneshop.dao.custom.OrderDetailDAO;
 import lk.ijse.phoneshop.dto.CartDetail;
 
 import java.sql.SQLException;

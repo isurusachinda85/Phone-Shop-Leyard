@@ -1,5 +1,7 @@
-package lk.ijse.phoneshop.dao;
+package lk.ijse.phoneshop.dao.custom.impl;
 
+import lk.ijse.phoneshop.dao.SQLUtil;
+import lk.ijse.phoneshop.dao.custom.OrderDAO;
 import lk.ijse.phoneshop.dto.Order;
 
 import java.sql.ResultSet;

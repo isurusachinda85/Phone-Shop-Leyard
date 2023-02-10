@@ -10,8 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import lk.ijse.phoneshop.dao.CrudDAO;
-import lk.ijse.phoneshop.dao.CustomerDAO;
-import lk.ijse.phoneshop.dao.CustomerDAOImpl;
+import lk.ijse.phoneshop.dao.custom.CustomerDAO;
+import lk.ijse.phoneshop.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.phoneshop.dto.Customer;
 import lk.ijse.phoneshop.tm.CustomerTM;
 

@@ -14,9 +14,8 @@ import javafx.event.ActionEvent;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import lk.ijse.phoneshop.dao.CrudDAO;
-import lk.ijse.phoneshop.dao.ItemDAO;
-import lk.ijse.phoneshop.dao.ItemDAOImpl;
+import lk.ijse.phoneshop.dao.custom.ItemDAO;
+import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.dto.Item;
 

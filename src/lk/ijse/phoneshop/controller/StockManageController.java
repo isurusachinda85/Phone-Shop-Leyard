@@ -10,9 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.phoneshop.dao.CrudDAO;
-import lk.ijse.phoneshop.dao.ItemDAO;
-import lk.ijse.phoneshop.dao.ItemDAOImpl;
+import lk.ijse.phoneshop.dao.custom.ItemDAO;
+import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.dto.Item;
 
