@@ -1,6 +1,6 @@
-package lk.ijse.phoneshop.bo;
+package lk.ijse.phoneshop.bo.custom.impl;
 
-import lk.ijse.phoneshop.dao.SQLUtil;
+import lk.ijse.phoneshop.bo.custom.RepairBO;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.RepairDAO;
@@ -11,7 +11,6 @@ import lk.ijse.phoneshop.dto.Customer;
 import lk.ijse.phoneshop.dto.Item;
 import lk.ijse.phoneshop.dto.Repair;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

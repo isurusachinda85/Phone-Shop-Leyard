@@ -8,10 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.phoneshop.bo.EmployeeBO;
-import lk.ijse.phoneshop.bo.EmployeeBOImpl;
-import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
-import lk.ijse.phoneshop.dao.custom.impl.EmployeeDAOImpl;
+import lk.ijse.phoneshop.bo.custom.EmployeeBO;
+import lk.ijse.phoneshop.bo.custom.impl.EmployeeBOImpl;
 import lk.ijse.phoneshop.tm.EmployeeTM;
 import lk.ijse.phoneshop.dto.Employee;
 

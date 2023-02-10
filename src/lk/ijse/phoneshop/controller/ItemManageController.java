@@ -12,10 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.phoneshop.bo.ItemBO;
-import lk.ijse.phoneshop.bo.ItemBOImpl;
-import lk.ijse.phoneshop.dao.custom.ItemDAO;
-import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
+import lk.ijse.phoneshop.bo.custom.ItemBO;
+import lk.ijse.phoneshop.bo.custom.impl.ItemBOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
 import lk.ijse.phoneshop.dto.Item;
 

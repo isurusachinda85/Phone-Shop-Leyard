@@ -18,16 +18,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import lk.ijse.phoneshop.bo.PlaceOrderBO;
-import lk.ijse.phoneshop.bo.PlaceOrderBOImpl;
-import lk.ijse.phoneshop.dao.custom.CustomerDAO;
-import lk.ijse.phoneshop.dao.custom.ItemDAO;
-import lk.ijse.phoneshop.dao.custom.OrderDAO;
-import lk.ijse.phoneshop.dao.custom.impl.CustomerDAOImpl;
-import lk.ijse.phoneshop.dao.custom.impl.ItemDAOImpl;
-import lk.ijse.phoneshop.dao.custom.impl.OrderDAOImpl;
+import lk.ijse.phoneshop.bo.custom.PlaceOrderBO;
+import lk.ijse.phoneshop.bo.custom.impl.PlaceOrderBOImpl;
 import lk.ijse.phoneshop.dto.*;
-import lk.ijse.phoneshop.model.PlaceOrderM;
 import lk.ijse.phoneshop.tm.PlaceOrderTM;
 import org.controlsfx.control.Notifications;
 

@@ -1,6 +1,6 @@
-package lk.ijse.phoneshop.bo;
+package lk.ijse.phoneshop.bo.custom.impl;
 
-import lk.ijse.phoneshop.dao.SQLUtil;
+import lk.ijse.phoneshop.bo.custom.AttendanceBO;
 import lk.ijse.phoneshop.dao.custom.AttendanceDAO;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
 import lk.ijse.phoneshop.dao.custom.impl.AttendanceDAOImpl;
@@ -8,11 +8,10 @@ import lk.ijse.phoneshop.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.phoneshop.dto.Attendance;
 import lk.ijse.phoneshop.dto.Employee;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AttendanceBOImpl implements AttendanceBO{
+public class AttendanceBOImpl implements AttendanceBO {
     private AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
     private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 

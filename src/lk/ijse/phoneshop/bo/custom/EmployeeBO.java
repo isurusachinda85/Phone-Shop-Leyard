@@ -1,4 +1,4 @@
-package lk.ijse.phoneshop.bo;
+package lk.ijse.phoneshop.bo.custom;
 
 import lk.ijse.phoneshop.dto.Employee;
 

@@ -1,7 +1,6 @@
-package lk.ijse.phoneshop.bo;
+package lk.ijse.phoneshop.bo.custom.impl;
 
-import lk.ijse.phoneshop.dao.CrudDAO;
-import lk.ijse.phoneshop.dao.SQLUtil;
+import lk.ijse.phoneshop.bo.custom.PlaceOrderBO;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.OrderDAO;
@@ -18,7 +17,6 @@ import lk.ijse.phoneshop.dto.PlaceOrder;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.model.OrderDetailM;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
