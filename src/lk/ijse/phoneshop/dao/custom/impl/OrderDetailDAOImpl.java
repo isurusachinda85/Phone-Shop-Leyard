@@ -1,5 +1,6 @@
 package lk.ijse.phoneshop.dao.custom.impl;
 
+import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.OrderDetailDAO;
 import lk.ijse.phoneshop.dto.CartDetail;
 
@@ -8,8 +9,9 @@ import java.util.ArrayList;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
-    public boolean save(CartDetail dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean save(CartDetail cartDetail) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO OrderDetail VALUES(?, ?, ?, ?,?)";
+        return SQLUtil.execute(sql, cartDetail.getOrderId(), cartDetail.getCode(), cartDetail.getItemName(),cartDetail.getQty(), cartDetail.getUnitPrice());
     }
 
     @Override
@@ -41,16 +43,5 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     public String getNextId(String s) {
         return null;
     }
-    /*public static boolean saveOrderDetails(ArrayList<CartDetail> cartDetails) throws SQLException, ClassNotFoundException {
-        for (CartDetail cartDetail : cartDetails) {
-            if (!saveOrderDetail(cartDetail)) {
-                return false;
-            }
-        }
-        return true;
-    }
-    public static boolean saveOrderDetail(CartDetail cartDetail) throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO OrderDetail VALUES(?, ?, ?, ?,?)";
-        return SQLUtil.execute(sql, cartDetail.getOrderId(), cartDetail.getCode(), cartDetail.getItemName(),cartDetail.getQty(), cartDetail.getUnitPrice());
-    }*/
+
 }

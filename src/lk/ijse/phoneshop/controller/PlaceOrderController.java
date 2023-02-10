@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.phoneshop.bo.PlaceOrderBOImpl;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.OrderDAO;
@@ -248,7 +249,8 @@ public class PlaceOrderController {
             cartDetails.add(new CartDetail(orderId,tm.getCode(),tm.getQty(),tm.getItemName(),tm.getUnitPrice(),tm.getCategory()));
         }
         PlaceOrder placeOrder = new PlaceOrder(cusId,orderId,cartDetails);
-
+        PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
+        placeOrderBO.placeOrder(cusId,orderId,cartDetails);
         try {
             boolean order = PlaceOrderM.placeOrder(placeOrder);
             loadNextOrderId();
@@ -280,7 +282,8 @@ public class PlaceOrderController {
     public void cmbCustomerIdOnAction(ActionEvent actionEvent){
         String cusId = cmbCustomerId.getValue();
         try {
-            Customer customer =customerDAO.search(cusId);
+            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
+            Customer customer = placeOrderBO.searchCustomer(cusId);
             fileCustomer(customer);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -290,7 +293,8 @@ public class PlaceOrderController {
     void cmbItemOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            Item item = itemDAO.search(itemCode);
+            PlaceOrderBOImpl placeOrderBO = new PlaceOrderBOImpl();
+            Item item = placeOrderBO.searchItem(itemCode);
             filItem(item);
             txtQty.requestFocus();
         } catch (SQLException | ClassNotFoundException e) {
