@@ -32,7 +32,7 @@
          <children>
             <ImageView fitHeight="498.0" fitWidth="451.0" layoutY="-5.0" pickOnBounds="true">
                <image>
-                  <Image url="@../image/phone2.jpg" />
+                  <Image url="@image/phone2.jpg" />
                </image>
             </ImageView>
          </children>

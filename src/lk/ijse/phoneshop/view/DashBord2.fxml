@@ -16,18 +16,18 @@
          <children>
             <ImageView fitHeight="253.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/2e4fd3fd8f2aff9c26b15c1f1c23b11e-removebg-preview.png" />
+                  <Image url="@image/2e4fd3fd8f2aff9c26b15c1f1c23b11e-removebg-preview.png" />
                </image></ImageView>
             <Label text="Welcom Casiar">
                <font>
                   <Font name="System Bold" size="39.0" />
                </font>
             </Label>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" onAction="#overViewOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Dash Board" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" onAction="#overViewOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Dash Board" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/home.png" />
+                        <Image url="@image/home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -38,11 +38,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="226.0" onAction="#orderOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Place Order" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="226.0" onAction="#orderOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Place Order" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/Pay.png" />
+                        <Image url="@image/Pay.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -53,11 +53,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="275.0" onAction="#customerOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Customer Manage" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="275.0" onAction="#customerOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Customer Manage" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/customer.png" />
+                        <Image url="@image/customer.png" />
                      </image></ImageView>
                </graphic>
                <cursor>
@@ -67,11 +67,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="177.0" onAction="#stockOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Check Stock" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="177.0" onAction="#stockOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Check Stock" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/360_F_421455125_uq2szZSTeL8LoFZ6QJPBt95Hz8xDgECQ-removebg-preview.png" />
+                        <Image url="@image/360_F_421455125_uq2szZSTeL8LoFZ6QJPBt95Hz8xDgECQ-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -82,11 +82,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="324.0" onAction="#itemOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Item Manage" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="324.0" onAction="#itemOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Item Manage" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/20221013_1665640447_698101-removebg-preview.png" />
+                        <Image url="@image/20221013_1665640447_698101-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -97,11 +97,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="422.0" onAction="#reportOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Reports" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="422.0" onAction="#reportOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Reports" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/report.png" />
+                        <Image url="@image/report.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -112,11 +112,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="471.0" onAction="#returnOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Return Item" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="471.0" onAction="#returnOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Return Item" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/1440524-removebg-preview.png" />
+                        <Image url="@image/1440524-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -127,11 +127,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" onAction="#repairOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Repair Phone" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" onAction="#repairOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Repair Phone" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/png-clipart-smartphone-repair-illustration-smartphone-samsung-galaxy-computer-mobile-repair-electronics-gadget-removebg-preview.png" />
+                        <Image url="@image/png-clipart-smartphone-repair-illustration-smartphone-samsung-galaxy-computer-mobile-repair-electronics-gadget-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -142,11 +142,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="422.0" onAction="#signOutOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@../style/style.css" text="Sign Out" textFill="WHITE">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="422.0" onAction="#signOutOnAction" prefHeight="59.0" prefWidth="272.0" stylesheets="@style/style.css" text="Sign Out" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/logout.png" />
+                        <Image url="@image/logout.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -166,7 +166,7 @@
          <children>
             <ImageView fitHeight="1000.0" fitWidth="1645.0" pickOnBounds="true">
                <image>
-                  <Image url="@../image/CwCFbeQS9JeCC6WunpFgYD.jpg" />
+                  <Image url="@image/CwCFbeQS9JeCC6WunpFgYD.jpg" />
                </image>
             </ImageView>
             <Label layoutX="239.0" layoutY="294.0" text="Welcome">

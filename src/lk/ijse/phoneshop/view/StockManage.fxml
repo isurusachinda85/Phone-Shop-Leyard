@@ -34,7 +34,7 @@
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+                        <Image url="@image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -44,7 +44,7 @@
             </JFXButton>
             <ImageView fitHeight="39.0" fitWidth="50.0" layoutX="-39.0" layoutY="-248.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+                  <Image url="@image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
                </image>
             </ImageView>
             <JFXTextField layoutX="1190.0" layoutY="350.0" promptText="Search" />
@@ -70,7 +70,7 @@
       </Label>
       <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="53.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/phone.png" />
+            <Image url="@image/phone.png" />
          </image>
       </ImageView>
       <Separator layoutX="65.0" layoutY="208.0" prefHeight="2.0" prefWidth="816.0" />
@@ -78,7 +78,7 @@
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/Phone-Accessories-removebg-preview.png" />
+                  <Image url="@image/Phone-Accessories-removebg-preview.png" />
                </image>
             </ImageView>
          </graphic>
@@ -96,7 +96,7 @@
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/306-3061829_png-file-mobile-repair-png-icon-clipart-removebg-preview.png" />
+                  <Image url="@image/306-3061829_png-file-mobile-repair-png-icon-clipart-removebg-preview.png" />
                </image>
             </ImageView>
          </graphic>
