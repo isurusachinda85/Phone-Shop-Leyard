@@ -2,7 +2,6 @@ package lk.ijse.phoneshop.dao.custom.impl;
 
 import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.OrderDetailDAO;
-import lk.ijse.phoneshop.dto.CartDetail;
 import lk.ijse.phoneshop.entity.OrderDetail;
 
 import java.sql.SQLException;
@@ -31,7 +30,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     }
 
     @Override
-    public boolean update(OrderDetail dto) throws SQLException, ClassNotFoundException {
+    public boolean update(OrderDetail detail) throws SQLException, ClassNotFoundException {
         return false;
     }
 

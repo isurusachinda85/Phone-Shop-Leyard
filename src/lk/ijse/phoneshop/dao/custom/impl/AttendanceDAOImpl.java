@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class AttendanceDAOImpl implements AttendanceDAO {
     @Override
-    public boolean save(lk.ijse.phoneshop.entity.Attendance attendance) throws SQLException, ClassNotFoundException {
+    public boolean save(Attendance attendance) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into attendance values (?,?,?,?,?,?,?)";
         return SQLUtil.execute(sql,attendance.getAid(),attendance.getEmployeeName(),attendance.getDate(),
                 attendance.getInTime(),attendance.getOutTime(),attendance.getSate(),attendance.getEid());
@@ -60,11 +60,22 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 
     @Override
     public Attendance search(String id) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT  * FROM attendance WHERE aid = ?", id);
+        while (resultSet.next()) {
+            return new Attendance(resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6),
+                    resultSet.getString(7));
+        }
         return null;
     }
 
     @Override
-    public boolean update(Attendance dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(Attendance attendance) throws SQLException, ClassNotFoundException {
+        String sql = "Update attendance set employeeName=?,date=?,inTime=?,outTime=?,state=? where eid=?";
+        return SQLUtil.execute(sql,attendance.getEmployeeName(),attendance.getDate(),attendance.getInTime(),attendance.getOutTime(),attendance.getSate(),attendance.getEid());
     }
 }

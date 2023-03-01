@@ -236,13 +236,13 @@ public class PlaceOrderController {
         String orderId = lblNextOrderId.getText();
         String cusId = cmbCustomerId.getValue();
 
-        ArrayList<CartDetail>cartDetails = new ArrayList<>();
+        ArrayList<OrderDetailDTO> orderDetailDTOS = new ArrayList<>();
 
         for(int i=0;i<tblOrderCart.getItems().size();i++){
             PlaceOrderTM tm = list.get(i);
-            cartDetails.add(new CartDetail(orderId,tm.getCode(),tm.getQty(),tm.getItemName(),tm.getUnitPrice(),tm.getCategory()));
+            orderDetailDTOS.add(new OrderDetailDTO(orderId,tm.getCode(),tm.getQty(),tm.getItemName(),tm.getUnitPrice(),tm.getCategory()));
         }
-        PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cusId,orderId,cartDetails);
+        PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cusId,orderId, orderDetailDTOS);
 
 
         try {

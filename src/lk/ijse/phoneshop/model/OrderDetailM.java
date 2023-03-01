@@ -1,22 +1,22 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.dto.CartDetail;
+import lk.ijse.phoneshop.dto.OrderDetailDTO;
 import lk.ijse.phoneshop.dao.SQLUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderDetailM {
-    public static boolean saveOrderDetails(ArrayList<CartDetail> cartDetails) throws SQLException, ClassNotFoundException {
-        for (CartDetail cartDetail : cartDetails) {
-            if (!saveOrderDetail(cartDetail)) {
+    public static boolean saveOrderDetails(ArrayList<OrderDetailDTO> orderDetailDTOS) throws SQLException, ClassNotFoundException {
+        for (OrderDetailDTO orderDetailDTO : orderDetailDTOS) {
+            if (!saveOrderDetail(orderDetailDTO)) {
                 return false;
             }
         }
         return true;
     }
-    public static boolean saveOrderDetail(CartDetail cartDetail) throws SQLException, ClassNotFoundException {
+    public static boolean saveOrderDetail(OrderDetailDTO orderDetailDTO) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO OrderDetail VALUES(?, ?, ?, ?,?)";
-        return SQLUtil.execute(sql, cartDetail.getOrderId(), cartDetail.getCode(), cartDetail.getItemName(),cartDetail.getQty(), cartDetail.getUnitPrice());
+        return SQLUtil.execute(sql, orderDetailDTO.getOrderId(), orderDetailDTO.getCode(), orderDetailDTO.getItemName(), orderDetailDTO.getQty(), orderDetailDTO.getUnitPrice());
     }
 }

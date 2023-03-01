@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.dto.CartDetail;
+import lk.ijse.phoneshop.dto.OrderDetailDTO;
 import lk.ijse.phoneshop.dto.ItemDTO;
 import lk.ijse.phoneshop.dao.SQLUtil;
 
@@ -47,9 +47,9 @@ public class ItemM {
         }
         return null;
     }
-    public static boolean updateQty(ArrayList<CartDetail> cartDetails) throws SQLException, ClassNotFoundException {
-        for (CartDetail cartDetail : cartDetails) {
-            if (!updateQty(new ItemDTO(cartDetail.getCode(),cartDetail.getItemName(),cartDetail.getUnitPrice(),cartDetail.getCategory()))) {
+    public static boolean updateQty(ArrayList<OrderDetailDTO> orderDetailDTOS) throws SQLException, ClassNotFoundException {
+        for (OrderDetailDTO orderDetailDTO : orderDetailDTOS) {
+            if (!updateQty(new ItemDTO(orderDetailDTO.getCode(), orderDetailDTO.getItemName(), orderDetailDTO.getUnitPrice(), orderDetailDTO.getCategory()))) {
                 return false;
             }
         }

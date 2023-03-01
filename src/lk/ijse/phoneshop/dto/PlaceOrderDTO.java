@@ -9,7 +9,7 @@ public class PlaceOrderDTO {
     String paymentType;
     String billNo;
 
-    private ArrayList<CartDetail>orderDetail = new ArrayList<>();
+    private ArrayList<OrderDetailDTO>orderDetail = new ArrayList<>();
 
     public PlaceOrderDTO(String customerId, String orderId, double amount, String paymentType, String billNo) {
         this.customerId = customerId;
@@ -19,7 +19,7 @@ public class PlaceOrderDTO {
         this.billNo = billNo;
     }
 
-    public PlaceOrderDTO(String customerId, String orderId, ArrayList<CartDetail> orderDetail) {
+    public PlaceOrderDTO(String customerId, String orderId, ArrayList<OrderDetailDTO> orderDetail) {
         this.customerId = customerId;
         this.orderId = orderId;
         this.orderDetail = orderDetail;
@@ -44,11 +44,11 @@ public class PlaceOrderDTO {
         this.orderId = orderId;
     }
 
-    public ArrayList<CartDetail> getOrderDetail() {
+    public ArrayList<OrderDetailDTO> getOrderDetail() {
         return orderDetail;
     }
 
-    public void setOrderDetail(ArrayList<CartDetail> orderDetail) {
+    public void setOrderDetail(ArrayList<OrderDetailDTO> orderDetail) {
         this.orderDetail = orderDetail;
     }
 

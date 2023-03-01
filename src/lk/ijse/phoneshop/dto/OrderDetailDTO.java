@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.dto;
 
-public class CartDetail {
+public class OrderDetailDTO {
     private String orderId;
     private String code;
     private int qty;
@@ -8,10 +8,10 @@ public class CartDetail {
     private double unitPrice;
     private String category;
 
-    public CartDetail() {
+    public OrderDetailDTO() {
     }
 
-    public CartDetail(String orderId, String code, int qty, String itemName, double unitPrice, String category) {
+    public OrderDetailDTO(String orderId, String code, int qty, String itemName, double unitPrice, String category) {
         this.orderId = orderId;
         this.code = code;
         this.qty = qty;
