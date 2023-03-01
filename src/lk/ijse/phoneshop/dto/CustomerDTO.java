@@ -1,16 +1,16 @@
 package lk.ijse.phoneshop.dto;
 
-public class Customer {
+public class CustomerDTO {
     private String id;
     private String name;
     private String address;
     private String phoneNo;
     private String email;
 
-    public Customer() {
+    public CustomerDTO() {
     }
 
-    public Customer(String id, String name, String address, String phoneNo, String email) {
+    public CustomerDTO(String id, String name, String address, String phoneNo, String email) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -18,7 +18,7 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(String id) {
+    public CustomerDTO(String id) {
         this.id=id;
     }
 

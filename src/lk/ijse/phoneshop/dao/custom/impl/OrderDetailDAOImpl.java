@@ -3,19 +3,20 @@ package lk.ijse.phoneshop.dao.custom.impl;
 import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.OrderDetailDAO;
 import lk.ijse.phoneshop.dto.CartDetail;
+import lk.ijse.phoneshop.entity.OrderDetail;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
-    public boolean save(CartDetail cartDetail) throws SQLException, ClassNotFoundException {
+    public boolean save(OrderDetail cartDetail) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO OrderDetail VALUES(?, ?, ?, ?,?)";
-        return SQLUtil.execute(sql, cartDetail.getOrderId(), cartDetail.getCode(), cartDetail.getItemName(),cartDetail.getQty(), cartDetail.getUnitPrice());
+        return SQLUtil.execute(sql, cartDetail.getOrderId(), cartDetail.getItemCode(), cartDetail.getItemName(),cartDetail.getQty(), cartDetail.getUnitPrice());
     }
 
     @Override
-    public ArrayList<CartDetail> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderDetail> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -25,12 +26,12 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     }
 
     @Override
-    public CartDetail search(String s) throws SQLException, ClassNotFoundException {
+    public OrderDetail search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean update(CartDetail dto) throws SQLException, ClassNotFoundException {
+    public boolean update(OrderDetail dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 

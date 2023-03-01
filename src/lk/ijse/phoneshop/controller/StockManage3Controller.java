@@ -13,9 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.ItemBO;
-import lk.ijse.phoneshop.bo.custom.impl.ItemBOImpl;
+import lk.ijse.phoneshop.dto.ItemDTO;
 import lk.ijse.phoneshop.tm.ItemTM;
-import lk.ijse.phoneshop.dto.Item;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,8 +63,8 @@ public class StockManage3Controller implements Initializable {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ArrayList<Item> allParts = itemBO.getAllItem();
-            for (Item it : allParts){
+            ArrayList<ItemDTO> allParts = itemBO.getAllItem();
+            for (ItemDTO it : allParts){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
                 itemList.add(tm);
             }

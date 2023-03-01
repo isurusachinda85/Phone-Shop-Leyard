@@ -133,7 +133,7 @@
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/306-3061829_png-file-mobile-repair-png-icon-clipart-removebg-preview.png" />
+                        <Image url="@image/306-3061829_png-file-mobile-repairDTO-png-icon-clipart-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -163,7 +163,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <Label layoutX="591.0" layoutY="14.0" text="item Manage">
+      <Label layoutX="591.0" layoutY="14.0" text="itemDTO Manage">
          <font>
             <Font name="Algerian" size="75.0" />
          </font>

@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.dto;
 
-public class Repair {
+public class RepairDTO {
     private String repairNo;
     private String customerId;
     private String customerName;
@@ -14,10 +14,10 @@ public class Repair {
     private String state;
     private String date;
 
-    public Repair() {
+    public RepairDTO() {
     }
 
-    public Repair(String repairNo, String customerId, String customerName, int phoneNo, String itemCode, String deviceName, String deviceProblem, double price, double amount, double due, String state, String date) {
+    public RepairDTO(String repairNo, String customerId, String customerName, int phoneNo, String itemCode, String deviceName, String deviceProblem, double price, double amount, double due, String state, String date) {
         this.repairNo = repairNo;
         this.customerId = customerId;
         this.customerName = customerName;
@@ -32,7 +32,7 @@ public class Repair {
         this.date = date;
     }
 
-    public Repair(String repairNo, String customerName, int phoneNo, String deviceName, String deviceProblem, double price, double amount, double due, String state) {
+    public RepairDTO(String repairNo, String customerName, int phoneNo, String deviceName, String deviceProblem, double price, double amount, double due, String state) {
         this.repairNo = repairNo;
         this.customerName = customerName;
         this.phoneNo = phoneNo;
@@ -44,7 +44,7 @@ public class Repair {
         this.state = state;
     }
 
-    public Repair(String repairNo, double amount, double due, String state) {
+    public RepairDTO(String repairNo, double amount, double due, String state) {
         this.repairNo = repairNo;
         this.amount = amount;
         this.due = due;

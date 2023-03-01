@@ -3,7 +3,7 @@ package lk.ijse.phoneshop.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Order {
+public class OrderDTO {
     private String orderId;
     private LocalDate orderDate;
     private LocalTime orderTime;
@@ -11,10 +11,10 @@ public class Order {
 
 
 
-    public Order() {
+    public OrderDTO() {
     }
 
-    public Order(String orderId, LocalDate orderDate, LocalTime orderTime, String customerId) {
+    public OrderDTO(String orderId, LocalDate orderDate, LocalTime orderTime, String customerId) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.orderTime = orderTime;

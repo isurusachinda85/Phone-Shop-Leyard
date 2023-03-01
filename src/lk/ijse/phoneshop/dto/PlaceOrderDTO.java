@@ -2,7 +2,7 @@ package lk.ijse.phoneshop.dto;
 
 import java.util.ArrayList;
 
-public class PlaceOrder {
+public class PlaceOrderDTO {
     private String customerId;
     private String orderId;
     double amount;
@@ -11,7 +11,7 @@ public class PlaceOrder {
 
     private ArrayList<CartDetail>orderDetail = new ArrayList<>();
 
-    public PlaceOrder(String customerId, String orderId, double amount, String paymentType, String billNo) {
+    public PlaceOrderDTO(String customerId, String orderId, double amount, String paymentType, String billNo) {
         this.customerId = customerId;
         this.orderId = orderId;
         this.amount = amount;
@@ -19,13 +19,13 @@ public class PlaceOrder {
         this.billNo = billNo;
     }
 
-    public PlaceOrder(String customerId, String orderId, ArrayList<CartDetail> orderDetail) {
+    public PlaceOrderDTO(String customerId, String orderId, ArrayList<CartDetail> orderDetail) {
         this.customerId = customerId;
         this.orderId = orderId;
         this.orderDetail = orderDetail;
     }
 
-    public PlaceOrder() {
+    public PlaceOrderDTO() {
     }
 
     public String getCustomerId() {

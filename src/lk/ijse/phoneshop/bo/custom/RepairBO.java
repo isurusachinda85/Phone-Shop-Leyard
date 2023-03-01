@@ -1,31 +1,31 @@
 package lk.ijse.phoneshop.bo.custom;
 
 import lk.ijse.phoneshop.bo.SuperBO;
-import lk.ijse.phoneshop.dto.Customer;
-import lk.ijse.phoneshop.dto.Item;
-import lk.ijse.phoneshop.dto.Repair;
+import lk.ijse.phoneshop.dto.CustomerDTO;
+import lk.ijse.phoneshop.dto.ItemDTO;
+import lk.ijse.phoneshop.dto.RepairDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface RepairBO extends SuperBO {
-    boolean saveRepair(Repair repair) throws SQLException, ClassNotFoundException ;
+    boolean saveRepair(RepairDTO repairDTO) throws SQLException, ClassNotFoundException ;
 
-    ArrayList<Repair> getAllRepair() throws SQLException, ClassNotFoundException ;
+    ArrayList<RepairDTO> getAllRepair() throws SQLException, ClassNotFoundException ;
 
     boolean deleteRepair(String rid) throws SQLException, ClassNotFoundException ;
 
-    ArrayList<Item> getAllItem() throws SQLException, ClassNotFoundException ;
+    ArrayList<ItemDTO> getAllItem() throws SQLException, ClassNotFoundException ;
 
-    ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException ;
+    ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException ;
 
-    Customer searchCustomer(String id) throws SQLException, ClassNotFoundException ;
+    CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException ;
 
-    Item searchItem(String code) throws SQLException, ClassNotFoundException ;
+    ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException ;
 
-    Repair searchRepair(String id) throws SQLException, ClassNotFoundException ;
+    RepairDTO searchRepair(String id) throws SQLException, ClassNotFoundException ;
 
-    boolean updateRepair(Repair repair) throws SQLException, ClassNotFoundException ;
+    boolean updateRepair(RepairDTO repairDTO) throws SQLException, ClassNotFoundException ;
 
     String getNextRepairId() throws SQLException, ClassNotFoundException ;
 

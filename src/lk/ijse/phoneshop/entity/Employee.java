@@ -9,6 +9,7 @@ public class Employee {
     private String dateOfBirth;
     private String jobRole;
     private String userName;
+    private String password;
 
     public Employee(String eid, String name, String address, int phoneNo, String email, String dateOfBirth, String jobRole, String userName, String password) {
         this.eid = eid;
@@ -94,5 +95,4 @@ public class Employee {
         this.password = password;
     }
 
-    private String password;
 }

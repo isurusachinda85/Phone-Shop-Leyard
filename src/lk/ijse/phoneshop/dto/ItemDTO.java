@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.dto;
 
-public class Item {
+public class ItemDTO {
     private String itemCode;
     private String brand;
     private String modalNo;
@@ -10,7 +10,7 @@ public class Item {
     private int qty;
     private String category;
 
-    public Item(String itemCode, String brand, String modalNo, String name, double price, String warranty, int qty, String category) {
+    public ItemDTO(String itemCode, String brand, String modalNo, String name, double price, String warranty, int qty, String category) {
         this.itemCode = itemCode;
         this.brand = brand;
         this.modalNo = modalNo;
@@ -21,10 +21,10 @@ public class Item {
         this.category = category;
     }
 
-    public Item() {
+    public ItemDTO() {
     }
 
-    public Item(String itemCode, String name, double price, String category) {
+    public ItemDTO(String itemCode, String name, double price, String category) {
         this.itemCode = itemCode;
         this.name = name;
         this.price = price;

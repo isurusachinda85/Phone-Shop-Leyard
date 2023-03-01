@@ -26,7 +26,7 @@
             </Label>
             <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="52.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/306-3061829_png-file-mobile-repair-png-icon-clipart-removebg-preview.png" />
+                  <Image url="@image/306-3061829_png-file-mobile-repairDTO-png-icon-clipart-removebg-preview.png" />
                </image>
             </ImageView>
             <Separator layoutX="64.0" layoutY="159.0" prefHeight="0.0" prefWidth="1003.0" />
@@ -34,7 +34,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/backArrow.png" />
+                        <Image url="@image/backArrow.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -124,7 +124,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <Label layoutX="538.0" layoutY="14.0" text="item Manage">
+      <Label layoutX="538.0" layoutY="14.0" text="itemDTO Manage">
          <font>
             <Font name="Algerian" size="75.0" />
          </font>
@@ -149,7 +149,7 @@
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+                  <Image url="@image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
                </image>
             </ImageView>
          </graphic>

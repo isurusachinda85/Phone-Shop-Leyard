@@ -2,7 +2,7 @@ package lk.ijse.phoneshop.dao.custom.impl;
 
 import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
-import lk.ijse.phoneshop.dto.Item;
+import lk.ijse.phoneshop.entity.Item;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class ItemDAOImpl implements ItemDAO {
     @Override
     public boolean save(Item item) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO item VALUES (?,?,?,?,?,?,?,?)";
-        return SQLUtil.execute(sql,item.getItemCode(),item.getBrand(),item.getModalNo(),item.getName(),item.getPrice(),
+        return SQLUtil.execute(sql,item.getItemCode(),item.getBrand(),item.getModalNo(),item.getItemName(),item.getPrice(),
                 item.getWarranty(),item.getQty(),item.getCategory());
     }
     @Override

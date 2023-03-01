@@ -2,7 +2,7 @@ package lk.ijse.phoneshop.dao.custom.impl;
 
 import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
-import lk.ijse.phoneshop.dto.Customer;
+import lk.ijse.phoneshop.entity.Customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into customer values (?,?,?,?,?)";
-        return SQLUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
+        return SQLUtil.execute(sql,customer.getCusId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "Update Customer set name=?,address=?,phoneNo=?,email=? where cusId=?";
-        return SQLUtil.execute(sql,customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail(),customer.getId());
+        return SQLUtil.execute(sql,customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail(),customer.getCusId());
     }
 
     @Override

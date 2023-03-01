@@ -12,9 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.ItemBO;
-import lk.ijse.phoneshop.bo.custom.impl.ItemBOImpl;
 import lk.ijse.phoneshop.tm.ItemTM;
-import lk.ijse.phoneshop.dto.Item;
+import lk.ijse.phoneshop.dto.ItemDTO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -60,8 +59,8 @@ public class StockManageController {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ArrayList<Item> allPhone = itemBO.getAllItem();
-            for (Item it : allPhone){
+            ArrayList<ItemDTO> allPhone = itemBO.getAllItem();
+            for (ItemDTO it : allPhone){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
                 itemList.add(tm);
                 tblPhoneStock.setItems(itemList);

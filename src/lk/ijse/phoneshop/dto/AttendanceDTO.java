@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.dto;
 
-public class Attendance {
+public class AttendanceDTO {
     private String attendanceId;
     private String employeeId;
     private String name;
@@ -9,10 +9,10 @@ public class Attendance {
     private String inTime;
     private String outTime;
 
-    public Attendance() {
+    public AttendanceDTO() {
     }
 
-    public Attendance(String attendanceId, String employeeId, String name, String date, String sate, String inTime, String outTime) {
+    public AttendanceDTO(String attendanceId, String employeeId, String name, String date, String sate, String inTime, String outTime) {
         this.attendanceId = attendanceId;
         this.employeeId = employeeId;
         this.name = name;

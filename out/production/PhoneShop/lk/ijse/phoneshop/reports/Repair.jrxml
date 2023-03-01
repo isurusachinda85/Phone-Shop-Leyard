@@ -4,47 +4,47 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report"/>
 	<queryString language="SQL">
-		<![CDATA[select repId,customerName,phoneNo,devicename,problem,repairprice,state,date from repair]]>
+		<![CDATA[select repId,customerName,phoneNo,devicename,problem,repairprice,state,date from repairDTO]]>
 	</queryString>
 	<field name="repId" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="repId"/>
 		<property name="com.jaspersoft.studio.field.label" value="repId"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<field name="customerName" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="customerName"/>
 		<property name="com.jaspersoft.studio.field.label" value="customerName"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<field name="phoneNo" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="phoneNo"/>
 		<property name="com.jaspersoft.studio.field.label" value="phoneNo"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<field name="devicename" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="devicename"/>
 		<property name="com.jaspersoft.studio.field.label" value="devicename"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<field name="problem" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="problem"/>
 		<property name="com.jaspersoft.studio.field.label" value="problem"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<field name="repairprice" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.name" value="repairprice"/>
 		<property name="com.jaspersoft.studio.field.label" value="repairprice"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<field name="state" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="state"/>
 		<property name="com.jaspersoft.studio.field.label" value="state"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<field name="date" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="date"/>
 		<property name="com.jaspersoft.studio.field.label" value="date"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="repair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repairDTO"/>
 	</field>
 	<group name="repId">
 		<groupExpression><![CDATA[$F{repId}]]></groupExpression>

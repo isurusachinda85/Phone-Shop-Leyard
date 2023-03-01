@@ -2,7 +2,7 @@ package lk.ijse.phoneshop.dao.custom.impl;
 
 import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.OrderDAO;
-import lk.ijse.phoneshop.dto.Order;
+import lk.ijse.phoneshop.entity.Order;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

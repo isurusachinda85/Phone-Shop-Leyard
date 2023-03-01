@@ -32,7 +32,7 @@
                </font>
             </JFXTextField>
          </children></AnchorPane>
-      <Label layoutX="389.0" layoutY="14.0" text="Employee attendance">
+      <Label layoutX="389.0" layoutY="14.0" text="Employee attendanceDTO">
          <font>
             <Font name="Algerian" size="75.0" />
          </font>

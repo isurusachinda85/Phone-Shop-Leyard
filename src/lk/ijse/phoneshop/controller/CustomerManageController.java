@@ -11,8 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.CustomerBO;
-import lk.ijse.phoneshop.bo.custom.impl.CustomerBOImpl;
-import lk.ijse.phoneshop.dto.Customer;
+import lk.ijse.phoneshop.dto.CustomerDTO;
 import lk.ijse.phoneshop.tm.CustomerTM;
 
 import java.sql.SQLException;
@@ -115,7 +114,7 @@ public class CustomerManageController {
 
         patternPerform();
         try {
-            customerBO.saveCustomer(new Customer(id,name,address,phoneNo,email));
+            customerBO.saveCustomer(new CustomerDTO(id,name,address,phoneNo,email));
             loadNextCustomerId();
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.WARNING, "Pleas File All data  !").show();
@@ -132,9 +131,9 @@ public class CustomerManageController {
         customerList.clear();
         try {
 
-            ArrayList<Customer>allCustomer = customerBO.getAllCustomer();
+            ArrayList<CustomerDTO> allCustomerDTO = customerBO.getAllCustomer();
 
-            for (Customer c:allCustomer) {
+            for (CustomerDTO c: allCustomerDTO) {
                 Button button = new Button("Delete");
                 Button button1 = new Button("Up Date");
                 CustomerTM tm = new CustomerTM(c.getId(),c.getName(),c.getAddress(),c.getPhoneNo(),c.getEmail(),button1,button);
@@ -286,7 +285,7 @@ public class CustomerManageController {
 
         try {
 
-            boolean updateCustomer = customerBO.updateCustomer(new Customer(id, name, address, phoneNo, email));
+            boolean updateCustomer = customerBO.updateCustomer(new CustomerDTO(id, name, address, phoneNo, email));
 
             if (updateCustomer){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update customer !").show();
@@ -307,12 +306,12 @@ public class CustomerManageController {
         String id= txtcCusId.getText();
         try {
 
-            Customer customer = customerBO.searchCustomer(id);
-            if (customer!=null){
-                txtCusName.setText(customer.getName());
-                txtCusEmail.setText(customer.getEmail());
-                txtCusAddress.setText(customer.getAddress());
-                txtCusPhone.setText(customer.getPhoneNo());
+            CustomerDTO customerDTO = customerBO.searchCustomer(id);
+            if (customerDTO !=null){
+                txtCusName.setText(customerDTO.getName());
+                txtCusEmail.setText(customerDTO.getEmail());
+                txtCusAddress.setText(customerDTO.getAddress());
+                txtCusPhone.setText(customerDTO.getPhoneNo());
             }else {
                 new Alert(Alert.AlertType.WARNING, "Not Found Customer !").show();
             }

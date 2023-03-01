@@ -14,9 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.ItemBO;
-import lk.ijse.phoneshop.bo.custom.impl.ItemBOImpl;
+import lk.ijse.phoneshop.dto.ItemDTO;
 import lk.ijse.phoneshop.tm.ItemTM;
-import lk.ijse.phoneshop.dto.Item;
 
 import java.io.IOException;
 import java.net.URL;
@@ -104,7 +103,7 @@ public class ItemManage2Controller implements Initializable {
         String category = cmbCategory.getValue();
 
         try {
-            boolean itemAdd = itemBO.saveItem(new Item(itemCode,brand,modalNo,name,price,warranty,qty,category));
+            boolean itemAdd = itemBO.saveItem(new ItemDTO(itemCode,brand,modalNo,name,price,warranty,qty,category));
 
             if (!itemAdd){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -147,8 +146,8 @@ public class ItemManage2Controller implements Initializable {
         itemList.clear();
 
         try {
-            ArrayList<Item> allAccessories = itemBO.getAllItem();
-            for(Item it : allAccessories){
+            ArrayList<ItemDTO> allAccessories = itemBO.getAllItem();
+            for(ItemDTO it : allAccessories){
                 Button button = new Button("Delete");
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(),
                         it.getQty(),it.getCategory(),button);
@@ -217,15 +216,15 @@ public class ItemManage2Controller implements Initializable {
         String code = txtItemCode.getText();
 
         try {
-            Item item = itemBO.searchItem(code);
-            if (item != null) {
-                txtBrand.setText(item.getBrand());
-                txtModalNo.setText(item.getModalNo());
-                txtName.setText(item.getName());
-                txtPrice.setText(String.valueOf(item.getPrice()));
-                cmbWarranty.setValue(item.getWarranty());
-                txtQty.setText(String.valueOf(item.getQty()));
-                cmbCategory.setValue(item.getCategory());
+            ItemDTO itemDTO = itemBO.searchItem(code);
+            if (itemDTO != null) {
+                txtBrand.setText(itemDTO.getBrand());
+                txtModalNo.setText(itemDTO.getModalNo());
+                txtName.setText(itemDTO.getName());
+                txtPrice.setText(String.valueOf(itemDTO.getPrice()));
+                cmbWarranty.setValue(itemDTO.getWarranty());
+                txtQty.setText(String.valueOf(itemDTO.getQty()));
+                cmbCategory.setValue(itemDTO.getCategory());
             }else{
                 new Alert(Alert.AlertType.WARNING, "Not Item Customer !").show();
             }

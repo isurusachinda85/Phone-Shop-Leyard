@@ -12,10 +12,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.AttendanceBO;
-import lk.ijse.phoneshop.bo.custom.impl.AttendanceBOImpl;
+import lk.ijse.phoneshop.dto.AttendanceDTO;
+import lk.ijse.phoneshop.dto.EmployeeDTO;
 import lk.ijse.phoneshop.tm.AttendanceTM;
-import lk.ijse.phoneshop.dto.Attendance;
-import lk.ijse.phoneshop.dto.Employee;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -94,7 +93,7 @@ public class EmployeeAttendanceController {
 
         try {
 
-            boolean attendanceSave = attendanceBO.saveAttendance(new Attendance(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime)));
+            boolean attendanceSave = attendanceBO.saveAttendance(new AttendanceDTO(attendanceId,employeeId,employeeName,String.valueOf(date),state,String.valueOf(inTime),String.valueOf(outTime)));
             loadNextAttendanceId();
             if (!attendanceSave){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -110,11 +109,11 @@ public class EmployeeAttendanceController {
         attendanceList.clear();
         try {
 
-            ArrayList<Attendance> allAttendance = attendanceBO.getAllAttendance();
-            for(Attendance attendance : allAttendance){
+            ArrayList<AttendanceDTO> allAttendanceDTO = attendanceBO.getAllAttendance();
+            for(AttendanceDTO attendanceDTO : allAttendanceDTO){
                 Button button = new Button("Delete");
-                AttendanceTM tm = new AttendanceTM(attendance.getAttendanceId(),attendance.getEmployeeId(),attendance.getName(),
-                        attendance.getDate(),attendance.getSate(),attendance.getInTime(),attendance.getOutTime(),button);
+                AttendanceTM tm = new AttendanceTM(attendanceDTO.getAttendanceId(), attendanceDTO.getEmployeeId(), attendanceDTO.getName(),
+                        attendanceDTO.getDate(), attendanceDTO.getSate(), attendanceDTO.getInTime(), attendanceDTO.getOutTime(),button);
                 attendanceList.add(tm);
                 tblAttendance.setItems(attendanceList);
 
@@ -154,9 +153,9 @@ public class EmployeeAttendanceController {
     public void loadEmployeeId(){
         try {
             ObservableList<String>data = FXCollections.observableArrayList();
-            ArrayList<Employee> allEmployee = attendanceBO.getAllEmployee();
-            for (Employee employee : allEmployee) {
-                data.add(employee.getId());
+            ArrayList<EmployeeDTO> allEmployeeDTO = attendanceBO.getAllEmployee();
+            for (EmployeeDTO employeeDTO : allEmployeeDTO) {
+                data.add(employeeDTO.getId());
                 cmbEmployeeId.setItems(data);
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -192,16 +191,16 @@ public class EmployeeAttendanceController {
         String id = cmbEmployeeId.getValue();
         try {
 
-            Employee employee = attendanceBO.searchEmployee(id);
+            EmployeeDTO employeeDTO = attendanceBO.searchEmployee(id);
 
-            filName(employee);
+            filName(employeeDTO);
             txtDate.requestFocus();
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
         }
     }
-    public void filName(Employee employee){
-        lblName.setText(employee.getName());
+    public void filName(EmployeeDTO employeeDTO){
+        lblName.setText(employeeDTO.getName());
     }
 
     private void loadNextAttendanceId(){

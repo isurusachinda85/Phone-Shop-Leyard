@@ -1,10 +1,7 @@
 package lk.ijse.phoneshop.dao.custom;
 
 import lk.ijse.phoneshop.dao.CrudDAO;
-import lk.ijse.phoneshop.dto.Employee;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
+import lk.ijse.phoneshop.entity.Employee;
 
 public interface EmployeeDAO extends CrudDAO<Employee,String> {
 

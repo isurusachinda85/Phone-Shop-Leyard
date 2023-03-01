@@ -4,42 +4,42 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report"/>
 	<queryString language="SQL">
-		<![CDATA[select * from attendance]]>
+		<![CDATA[select * from attendanceDTO]]>
 	</queryString>
 	<field name="aid" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="aid"/>
 		<property name="com.jaspersoft.studio.field.label" value="aid"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendanceDTO"/>
 	</field>
 	<field name="employeeName" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="employeeName"/>
 		<property name="com.jaspersoft.studio.field.label" value="employeeName"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendanceDTO"/>
 	</field>
 	<field name="date" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="date"/>
 		<property name="com.jaspersoft.studio.field.label" value="date"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendanceDTO"/>
 	</field>
 	<field name="inTime" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="inTime"/>
 		<property name="com.jaspersoft.studio.field.label" value="inTime"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendanceDTO"/>
 	</field>
 	<field name="outTime" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="outTime"/>
 		<property name="com.jaspersoft.studio.field.label" value="outTime"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendanceDTO"/>
 	</field>
 	<field name="state" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="state"/>
 		<property name="com.jaspersoft.studio.field.label" value="state"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendanceDTO"/>
 	</field>
 	<field name="eid" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="eid"/>
 		<property name="com.jaspersoft.studio.field.label" value="eid"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendanceDTO"/>
 	</field>
 	<group name="aid">
 		<groupExpression><![CDATA[$F{aid}]]></groupExpression>

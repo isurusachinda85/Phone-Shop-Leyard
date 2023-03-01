@@ -33,7 +33,7 @@
       </Label>
       <ImageView fitHeight="184.0" fitWidth="161.0" layoutX="1311.0" layoutY="73.0" pickOnBounds="true">
          <image>
-            <Image url="@image/kissclipart-phone-repair-icon-clipart-emmecumxy-communications-2480ee4559ac38d8-removebg-preview.png" />
+            <Image url="@image/kissclipart-phone-repairDTO-icon-clipart-emmecumxy-communications-2480ee4559ac38d8-removebg-preview.png" />
          </image>
       </ImageView>
       <Label layoutX="1126.0" layoutY="200.0" text="Parts" textFill="#908c8c">

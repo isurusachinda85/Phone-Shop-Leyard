@@ -181,7 +181,7 @@
         </JFXButton>
       <AnchorPane prefHeight="166.0" prefWidth="1645.0" style="-fx-background-color: #C9C9C9; -fx-background-radius: 10;">
          <children>
-            <Label layoutX="580.0" layoutY="24.0" text="place order">
+            <Label layoutX="580.0" layoutY="24.0" text="place orderDTO">
                <font>
                   <Font name="Algerian" size="75.0" />
                </font>

@@ -2,7 +2,7 @@ package lk.ijse.phoneshop.dao.custom.impl;
 
 import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.EmployeeDAO;
-import lk.ijse.phoneshop.dto.Employee;
+import lk.ijse.phoneshop.entity.Employee;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public boolean save(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into employee values (?,?,?,?,?,?,?,?,?)";
-        return SQLUtil.execute(sql,employee.getId(),employee.getName(),employee.getAddress(),employee.getEmail(),
+        return SQLUtil.execute(sql,employee.getEid(),employee.getName(),employee.getAddress(),employee.getEmail(),
                 employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword());
     }
     @Override
@@ -79,6 +79,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public boolean update(Employee employee) throws SQLException, ClassNotFoundException {
         String sql = "Update employee set name=?,address=?,email=?,phoneNo=?,dateOfBirth=?,jobRole=?,userName=? where eId=?";
-        return SQLUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getId());
+        return SQLUtil.execute(sql,employee.getName(),employee.getAddress(),employee.getEmail(),employee.getPhoneNo(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getEid());
     }
 }

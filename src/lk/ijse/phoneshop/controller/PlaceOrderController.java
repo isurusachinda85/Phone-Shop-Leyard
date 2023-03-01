@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.PlaceOrderBO;
-import lk.ijse.phoneshop.bo.custom.impl.PlaceOrderBOImpl;
 import lk.ijse.phoneshop.dto.*;
 import lk.ijse.phoneshop.tm.PlaceOrderTM;
 import org.controlsfx.control.Notifications;
@@ -126,9 +125,9 @@ public class PlaceOrderController {
         ObservableList<String>customerIdList = FXCollections.observableArrayList();
         try {
 
-            ArrayList<Customer> all = placeOrderBO.loadCustomerId();
-            for (Customer customer : all) {
-                customerIdList.add(customer.getId());
+            ArrayList<CustomerDTO> all = placeOrderBO.loadCustomerId();
+            for (CustomerDTO customerDTO : all) {
+                customerIdList.add(customerDTO.getId());
                 cmbCustomerId.setItems(customerIdList);
             }
 
@@ -139,9 +138,9 @@ public class PlaceOrderController {
     private void loadItemCode(){
         ObservableList<String>itemIdList = FXCollections.observableArrayList();
         try {
-            ArrayList<Item> all = placeOrderBO.loadItemCode();
-            for (Item item : all) {
-                itemIdList.add(item.getItemCode());
+            ArrayList<ItemDTO> all = placeOrderBO.loadItemCode();
+            for (ItemDTO itemDTO : all) {
+                itemIdList.add(itemDTO.getItemCode());
                 cmbItemCode.setItems(itemIdList);
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -243,11 +242,11 @@ public class PlaceOrderController {
             PlaceOrderTM tm = list.get(i);
             cartDetails.add(new CartDetail(orderId,tm.getCode(),tm.getQty(),tm.getItemName(),tm.getUnitPrice(),tm.getCategory()));
         }
-        PlaceOrder placeOrder = new PlaceOrder(cusId,orderId,cartDetails);
+        PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cusId,orderId,cartDetails);
 
 
         try {
-            boolean order = placeOrderBO.placeOrder(placeOrder);
+            boolean order = placeOrderBO.placeOrder(placeOrderDTO);
             loadNextOrderId();
             if (order){
                 list.clear();
@@ -277,8 +276,8 @@ public class PlaceOrderController {
     public void cmbCustomerIdOnAction(ActionEvent actionEvent){
         String cusId = cmbCustomerId.getValue();
         try {
-            Customer customer = placeOrderBO.searchCustomer(cusId);
-            fileCustomer(customer);
+            CustomerDTO customerDTO = placeOrderBO.searchCustomer(cusId);
+            fileCustomer(customerDTO);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
         }
@@ -287,22 +286,22 @@ public class PlaceOrderController {
     void cmbItemOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
         try {
-            Item item = placeOrderBO.searchItem(itemCode);
-            filItem(item);
+            ItemDTO itemDTO = placeOrderBO.searchItem(itemCode);
+            filItem(itemDTO);
             txtQty.requestFocus();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-    public void fileCustomer(Customer customer){
-        lblCusName.setText(customer.getName());
-        lblCusMobile.setText(customer.getPhoneNo());
+    public void fileCustomer(CustomerDTO customerDTO){
+        lblCusName.setText(customerDTO.getName());
+        lblCusMobile.setText(customerDTO.getPhoneNo());
     }
-    public void filItem(Item item){
-        lblItemName.setText(item.getName());
-        lblPrice.setText(String.valueOf(item.getPrice()));
-        lblCategory.setText(item.getCategory());
-        lblQty.setText(String.valueOf(item.getQty()));
+    public void filItem(ItemDTO itemDTO){
+        lblItemName.setText(itemDTO.getName());
+        lblPrice.setText(String.valueOf(itemDTO.getPrice()));
+        lblCategory.setText(itemDTO.getCategory());
+        lblQty.setText(String.valueOf(itemDTO.getQty()));
     }
     @FXML
     void txtQtyOnAction(ActionEvent event) {

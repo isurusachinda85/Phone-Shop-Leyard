@@ -1,6 +1,6 @@
 package lk.ijse.phoneshop.dto;
 
-public class Employee {
+public class EmployeeDTO {
     private String id;
     private String name;
     private String address;
@@ -11,7 +11,7 @@ public class Employee {
     private String userName;
     private String password;
 
-    public Employee(String id, String name, String address, int phoneNo, String email, String dateOfBirth, String jobRole, String userName, String password) {
+    public EmployeeDTO(String id, String name, String address, int phoneNo, String email, String dateOfBirth, String jobRole, String userName, String password) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -23,7 +23,7 @@ public class Employee {
         this.password = password;
     }
 
-    public Employee(String name) {
+    public EmployeeDTO(String name) {
         this.name=name;
     }
 

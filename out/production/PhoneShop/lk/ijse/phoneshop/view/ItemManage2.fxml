@@ -19,7 +19,7 @@
    <children>
       <AnchorPane layoutX="31.0" layoutY="10.0" prefHeight="974.0" prefWidth="1573.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <Label layoutX="538.0" layoutY="14.0" text="item Manage">
+            <Label layoutX="538.0" layoutY="14.0" text="itemDTO Manage">
                <font>
                   <Font name="Algerian" size="75.0" />
                </font>
@@ -39,7 +39,7 @@
             </Label>
             <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="43.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/Phone-Accessories-removebg-preview.png" />
+                  <Image url="@image/Phone-Accessories-removebg-preview.png" />
                </image>
             </ImageView>
             <Separator layoutX="55.0" layoutY="161.0" prefHeight="0.0" prefWidth="1003.0" />
@@ -47,7 +47,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/backArrow.png" />
+                        <Image url="@image/backArrow.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -149,7 +149,7 @@
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+                  <Image url="@image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
                </image>
             </ImageView>
          </graphic>

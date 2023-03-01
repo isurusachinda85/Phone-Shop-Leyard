@@ -7,10 +7,11 @@ import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.OrderDAO;
 import lk.ijse.phoneshop.dao.custom.OrderDetailDAO;
 import lk.ijse.phoneshop.db.DBConnection;
-import lk.ijse.phoneshop.dto.Customer;
-import lk.ijse.phoneshop.dto.Item;
-import lk.ijse.phoneshop.dto.Order;
-import lk.ijse.phoneshop.dto.PlaceOrder;
+import lk.ijse.phoneshop.dto.CustomerDTO;
+import lk.ijse.phoneshop.dto.ItemDTO;
+import lk.ijse.phoneshop.dto.OrderDTO;
+import lk.ijse.phoneshop.dto.PlaceOrderDTO;
+import lk.ijse.phoneshop.entity.Order;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.model.OrderDetailM;
 
@@ -27,14 +28,14 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
     private OrderDetailDAO orderDetailDAO = (OrderDetailDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.ORDERDETAILS);
 
     @Override
-    public  boolean placeOrder(PlaceOrder placeOrder) throws SQLException, ClassNotFoundException {
+    public  boolean placeOrder(PlaceOrderDTO placeOrderDTO) throws SQLException, ClassNotFoundException {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
-            boolean saveOrder = orderDAO.save(new Order(placeOrder.getOrderId(), LocalDate.now(), LocalTime.now(), placeOrder.getCustomerId()));
+            boolean saveOrder = orderDAO.save(new Order(placeOrderDTO.getOrderId(), LocalDate.now(), LocalTime.now(), placeOrderDTO.getCustomerId()));
             if (saveOrder){
-                boolean updateQty = ItemM.updateQty(placeOrder.getOrderDetail());
+                boolean updateQty = ItemM.updateQty(placeOrderDTO.getOrderDetail());
                 if (updateQty){
-                    boolean saveOrderDetails = OrderDetailM.saveOrderDetails(placeOrder.getOrderDetail());
+                    boolean saveOrderDetails = OrderDetailM.saveOrderDetails(placeOrderDTO.getOrderDetail());
                     if (saveOrderDetails){
                         DBConnection.getInstance().getConnection().commit();
                         return true;
@@ -48,23 +49,27 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
         }
     }
     @Override
-    public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
+    public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
         return customerDAO.search(id);
+
     }
     @Override
-    public Item searchItem(String code) throws SQLException, ClassNotFoundException {
+    public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
         return itemDAO.search(code);
+
     }
     @Override
     public String getNextOrderId() throws SQLException, ClassNotFoundException {
         return orderDAO.getNextId();
     }
     @Override
-    public ArrayList<Customer> loadCustomerId() throws SQLException, ClassNotFoundException {
+    public ArrayList<CustomerDTO> loadCustomerId() throws SQLException, ClassNotFoundException {
         return customerDAO.getAll();
+
     }
     @Override
-    public ArrayList<Item> loadItemCode() throws SQLException, ClassNotFoundException {
+    public ArrayList<ItemDTO> loadItemCode() throws SQLException, ClassNotFoundException {
         return itemDAO.getAll();
+
     }
 }

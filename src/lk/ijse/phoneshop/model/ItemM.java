@@ -1,7 +1,7 @@
 package lk.ijse.phoneshop.model;
 
 import lk.ijse.phoneshop.dto.CartDetail;
-import lk.ijse.phoneshop.dto.Item;
+import lk.ijse.phoneshop.dto.ItemDTO;
 import lk.ijse.phoneshop.dao.SQLUtil;
 
 import java.sql.ResultSet;
@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ItemM {
-    public static boolean itemAdd(Item item) throws SQLException, ClassNotFoundException {
+    public static boolean itemAdd(ItemDTO itemDTO) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO item VALUES (?,?,?,?,?,?,?,?)";
-        return SQLUtil.execute(sql,item.getItemCode(),item.getBrand(),item.getModalNo(),item.getName(),item.getPrice(),
-                item.getWarranty(),item.getQty(),item.getCategory());
+        return SQLUtil.execute(sql, itemDTO.getItemCode(), itemDTO.getBrand(), itemDTO.getModalNo(), itemDTO.getName(), itemDTO.getPrice(),
+                itemDTO.getWarranty(), itemDTO.getQty(), itemDTO.getCategory());
     }
     public static ResultSet loadAllPhone() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * from item where itemCode like 'P%'";
@@ -31,11 +31,11 @@ public class ItemM {
         String sql = "SELECT itemCode from item";
         return SQLUtil.execute(sql);
     }
-    public static Item searchItem(String id) throws SQLException, ClassNotFoundException {
+    public static ItemDTO searchItem(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT  * FROM item WHERE itemCode  = ?";
         ResultSet resultSet = SQLUtil.execute(sql, id);
         while (resultSet.next()){
-            return new Item(
+            return new ItemDTO(
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
@@ -49,14 +49,14 @@ public class ItemM {
     }
     public static boolean updateQty(ArrayList<CartDetail> cartDetails) throws SQLException, ClassNotFoundException {
         for (CartDetail cartDetail : cartDetails) {
-            if (!updateQty(new Item(cartDetail.getCode(),cartDetail.getItemName(),cartDetail.getUnitPrice(),cartDetail.getCategory()))) {
+            if (!updateQty(new ItemDTO(cartDetail.getCode(),cartDetail.getItemName(),cartDetail.getUnitPrice(),cartDetail.getCategory()))) {
                 return false;
             }
         }
         return true;
     }
-    public static boolean updateQty(Item item) throws SQLException, ClassNotFoundException {
+    public static boolean updateQty(ItemDTO itemDTO) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE Item SET qty = qty - ? WHERE itemCode = ?";
-        return SQLUtil.execute(sql,item.getQty(),item.getItemCode());
+        return SQLUtil.execute(sql, itemDTO.getQty(), itemDTO.getItemCode());
     }
 }

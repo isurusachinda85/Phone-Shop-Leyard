@@ -4,47 +4,47 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT * from item where itemCode like 'P%']]>
+		<![CDATA[SELECT * from itemDTO where itemCode like 'P%']]>
 	</queryString>
 	<field name="itemCode" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="itemCode"/>
 		<property name="com.jaspersoft.studio.field.label" value="itemCode"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="brand" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="brand"/>
 		<property name="com.jaspersoft.studio.field.label" value="brand"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="modalNo" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="modalNo"/>
 		<property name="com.jaspersoft.studio.field.label" value="modalNo"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="itemName" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="itemName"/>
 		<property name="com.jaspersoft.studio.field.label" value="itemName"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="price" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.name" value="price"/>
 		<property name="com.jaspersoft.studio.field.label" value="price"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="warranty" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="warranty"/>
 		<property name="com.jaspersoft.studio.field.label" value="warranty"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="qty" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="qty"/>
 		<property name="com.jaspersoft.studio.field.label" value="qty"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="category" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="category"/>
 		<property name="com.jaspersoft.studio.field.label" value="category"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<group name="itemCode">
 		<groupExpression><![CDATA[$F{itemCode}]]></groupExpression>

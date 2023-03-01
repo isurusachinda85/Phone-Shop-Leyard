@@ -5,9 +5,10 @@ import lk.ijse.phoneshop.dao.DAOFactory;
 import lk.ijse.phoneshop.dao.custom.CustomerDAO;
 import lk.ijse.phoneshop.dao.custom.ItemDAO;
 import lk.ijse.phoneshop.dao.custom.RepairDAO;
-import lk.ijse.phoneshop.dto.Customer;
-import lk.ijse.phoneshop.dto.Item;
-import lk.ijse.phoneshop.dto.Repair;
+import lk.ijse.phoneshop.dto.CustomerDTO;
+import lk.ijse.phoneshop.dto.ItemDTO;
+import lk.ijse.phoneshop.dto.RepairDTO;
+import lk.ijse.phoneshop.entity.Repair;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,40 +19,41 @@ public class RepairBOImpl implements RepairBO {
     private CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.CUSTOMER);
 
     @Override
-    public boolean saveRepair(Repair repair) throws SQLException, ClassNotFoundException {
-        return repairDAO.save(repair);
+    public boolean saveRepair(RepairDTO repairDTO) throws SQLException, ClassNotFoundException {
+        return repairDAO.save(repairDTO);
+
     }
     @Override
-    public ArrayList<Repair> getAllRepair() throws SQLException, ClassNotFoundException {
-        return repairDAO.getAll();
+    public ArrayList<RepairDTO> getAllRepair() throws SQLException, ClassNotFoundException {
+
     }
     @Override
     public boolean deleteRepair(String  rid) throws SQLException, ClassNotFoundException {
         return repairDAO.delete(rid);
     }
     @Override
-    public ArrayList<Item> getAllItem() throws SQLException, ClassNotFoundException {
-        return itemDAO.getAll();
+    public ArrayList<ItemDTO> getAllItem() throws SQLException, ClassNotFoundException {
+
     }
     @Override
-    public ArrayList<Customer> getAllCustomer() throws SQLException, ClassNotFoundException {
-        return customerDAO.getAll();
+    public ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
+
     }
     @Override
-    public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        return customerDAO.search(id);
+    public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
+
     }
     @Override
-    public  Item searchItem(String code) throws SQLException, ClassNotFoundException {
-        return itemDAO.search(code);
+    public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
+
     }
     @Override
-    public Repair searchRepair(String id) throws SQLException, ClassNotFoundException {
-        return repairDAO.search(id);
+    public RepairDTO searchRepair(String id) throws SQLException, ClassNotFoundException {
+
     }
     @Override
-    public boolean updateRepair(Repair repair) throws SQLException, ClassNotFoundException {
-        return repairDAO.update(repair);
+    public boolean updateRepair(RepairDTO repairDTO) throws SQLException, ClassNotFoundException {
+
     }
     @Override
     public  String getNextRepairId() throws SQLException, ClassNotFoundException {

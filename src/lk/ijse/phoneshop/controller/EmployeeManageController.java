@@ -10,9 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.phoneshop.bo.BOFactory;
 import lk.ijse.phoneshop.bo.custom.EmployeeBO;
-import lk.ijse.phoneshop.bo.custom.impl.EmployeeBOImpl;
+import lk.ijse.phoneshop.dto.EmployeeDTO;
 import lk.ijse.phoneshop.tm.EmployeeTM;
-import lk.ijse.phoneshop.dto.Employee;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -119,7 +118,7 @@ public class EmployeeManageController implements Initializable {
 
         try {
 
-            boolean saveEmployee = employeeBO.saveEmployee(new Employee(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
+            boolean saveEmployee = employeeBO.saveEmployee(new EmployeeDTO(id,name,address,phoneNo,email,String.valueOf(date),jobRole,userName,password));
             loadNextEmployeeId();
             if (!saveEmployee){
                 new Alert(Alert.AlertType.WARNING, "Added Fail !").show();
@@ -144,7 +143,7 @@ public class EmployeeManageController implements Initializable {
 
         try {
 
-            boolean updateEmployee = employeeBO.updateEmployee(new Employee(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
+            boolean updateEmployee = employeeBO.updateEmployee(new EmployeeDTO(id, name, address, Integer.parseInt(phoneNo), email, String.valueOf(birth), jobRole, userName, password));
             if (updateEmployee){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update employee !").show();
             }else {
@@ -162,15 +161,15 @@ public class EmployeeManageController implements Initializable {
         String id = txtEmployee.getText();
         try {
 
-            Employee employee = employeeBO.searchEmployee(id);
-            if(employee!=null){
-                txtName.setText(employee.getName());
-                txtAddress.setText(employee.getAddress());
-                txtPhoneNo.setText(String.valueOf(employee.getPhoneNo()));
-                txtEmail.setText(employee.getEmail());
-                txtDate.setValue(LocalDate.parse(employee.getDateOfBirth()));
-                cmbJobRole.setValue(employee.getJobRole());
-                txtUserName.setText(employee.getUserName());
+            EmployeeDTO employeeDTO = employeeBO.searchEmployee(id);
+            if(employeeDTO !=null){
+                txtName.setText(employeeDTO.getName());
+                txtAddress.setText(employeeDTO.getAddress());
+                txtPhoneNo.setText(String.valueOf(employeeDTO.getPhoneNo()));
+                txtEmail.setText(employeeDTO.getEmail());
+                txtDate.setValue(LocalDate.parse(employeeDTO.getDateOfBirth()));
+                cmbJobRole.setValue(employeeDTO.getJobRole());
+                txtUserName.setText(employeeDTO.getUserName());
             }else {
                 new Alert(Alert.AlertType.WARNING, "Not Found Employee !").show();
             }
@@ -185,9 +184,9 @@ public class EmployeeManageController implements Initializable {
 
         try {
 
-            ArrayList<Employee> allEmployee = employeeBO.getAllEmployee();
+            ArrayList<EmployeeDTO> allEmployeeDTO = employeeBO.getAllEmployee();
 
-            for(Employee em : allEmployee){
+            for(EmployeeDTO em : allEmployeeDTO){
                 Button button = new Button("Delete");
                 EmployeeTM tm = new EmployeeTM(em.getId(),em.getName(),em.getAddress(),em.getPhoneNo(),em.getEmail(),em.getDateOfBirth(),
                         em.getJobRole(),em.getUserName(),em.getPassword(),button);

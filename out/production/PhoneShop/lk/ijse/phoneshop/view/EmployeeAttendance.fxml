@@ -32,7 +32,7 @@
                </font>
             </JFXTextField>
          </children></AnchorPane>
-      <Label layoutX="389.0" layoutY="14.0" text="Employee attendance">
+      <Label layoutX="389.0" layoutY="14.0" text="Employee attendanceDTO">
          <font>
             <Font name="Algerian" size="75.0" />
          </font>
@@ -117,7 +117,7 @@
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
+                  <Image url="@image/search_FILL0_wght400_GRAD0_opsz48%20(1).png" />
                </image>
             </ImageView>
          </graphic>
@@ -133,7 +133,7 @@
       </Label>
       <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="45.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Calander2.png" />
+            <Image url="@image/Calander2.png" />
          </image>
       </ImageView>
       <Separator layoutX="57.0" layoutY="168.0" prefHeight="0.0" prefWidth="1003.0" />

@@ -1,15 +1,15 @@
 package lk.ijse.phoneshop.model;
 
-import lk.ijse.phoneshop.dto.Order;
+import lk.ijse.phoneshop.dto.OrderDTO;
 import lk.ijse.phoneshop.dao.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class OrderM {
-    public static boolean saveOrder(Order order) throws SQLException, ClassNotFoundException {
+    public static boolean saveOrder(OrderDTO orderDTO) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO orders VALUES(?, ?, ?,?)";
-        return SQLUtil.execute(sql, order.getOrderId(), order.getOrderDate(),order.getOrderTime(), order.getCustomerId());
+        return SQLUtil.execute(sql, orderDTO.getOrderId(), orderDTO.getOrderDate(), orderDTO.getOrderTime(), orderDTO.getCustomerId());
     }
     public static String getNextOrderId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";

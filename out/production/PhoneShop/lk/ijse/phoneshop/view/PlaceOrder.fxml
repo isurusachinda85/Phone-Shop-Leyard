@@ -138,7 +138,7 @@
             <graphic>
                 <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../image/cart.png" />
+                        <Image url="@image/cart.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -153,7 +153,7 @@
             <graphic>
                 <ImageView fitHeight="28.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../image/place_order.png" />
+                        <Image url="@image/place_order.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -168,7 +168,7 @@
             <graphic>
                 <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../image/create.png" />
+                        <Image url="@image/create.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -181,7 +181,7 @@
         </JFXButton>
       <AnchorPane prefHeight="166.0" prefWidth="1645.0" style="-fx-background-color: #C9C9C9; -fx-background-radius: 10;">
          <children>
-            <Label layoutX="580.0" layoutY="24.0" text="place order">
+            <Label layoutX="580.0" layoutY="24.0" text="place orderDTO">
                <font>
                   <Font name="Algerian" size="75.0" />
                </font>

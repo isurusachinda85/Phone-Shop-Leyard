@@ -2,7 +2,7 @@ package lk.ijse.phoneshop.dao.custom.impl;
 
 import lk.ijse.phoneshop.dao.SQLUtil;
 import lk.ijse.phoneshop.dao.custom.RepairDAO;
-import lk.ijse.phoneshop.dto.Repair;
+import lk.ijse.phoneshop.entity.Repair;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,9 +12,9 @@ public class RepairDAOImpl implements RepairDAO {
     @Override
     public boolean save(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "INSERT Into repair values (?,?,?,?,?,?,?,?,?,?,?)";
-        return SQLUtil.execute(sql,repair.getRepairNo(),repair.getCustomerName(),repair.getPhoneNo(),repair.getDeviceName(),
-                repair.getDeviceProblem(),repair.getPrice(),repair.getAmount(),repair.getDue(),repair.getState(),
-                repair.getDate(),repair.getCustomerId());
+        return SQLUtil.execute(sql,repair.getRepId(),repair.getCustomerName(),repair.getPhoneNo(),repair.getDeviceName(),
+                repair.getProblem(),repair.getRepairPrice(),repair.getAmount(),repair.getDue(),repair.getState(),
+                repair.getDate(),repair.getCusId());
     }
     @Override
     public ArrayList<Repair> getAll() throws SQLException, ClassNotFoundException {
@@ -59,7 +59,7 @@ public class RepairDAOImpl implements RepairDAO {
     @Override
     public boolean update(Repair repair) throws SQLException, ClassNotFoundException {
         String sql = "Update repair set amount=?,due=?,state=? where repId=?";
-        return SQLUtil.execute(sql,repair.getAmount(),repair.getDue(),repair.getState(),repair.getRepairNo());
+        return SQLUtil.execute(sql,repair.getAmount(),repair.getDue(),repair.getState(),repair.getRepId());
     }
     @Override
     public  String getNextId() throws SQLException, ClassNotFoundException {
