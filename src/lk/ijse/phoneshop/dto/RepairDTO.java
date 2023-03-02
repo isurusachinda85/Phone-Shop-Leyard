@@ -17,6 +17,10 @@ public class RepairDTO {
     public RepairDTO() {
     }
 
+    public RepairDTO(String repairNo) {
+        this.repairNo = repairNo;
+    }
+
     public RepairDTO(String repairNo, String customerId, String customerName, int phoneNo, String itemCode, String deviceName, String deviceProblem, double price, double amount, double due, String state, String date) {
         this.repairNo = repairNo;
         this.customerId = customerId;

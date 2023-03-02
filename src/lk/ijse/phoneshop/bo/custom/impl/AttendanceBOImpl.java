@@ -18,35 +18,40 @@ public class AttendanceBOImpl implements AttendanceBO {
 
     @Override
     public boolean saveAttendance(AttendanceDTO dto) throws SQLException, ClassNotFoundException {
-        return attendanceDAO.save(new Attendance(dto.getAttendanceId(),dto.getName(),dto.getDate(),dto.getInTime(),dto.getOutTime(),dto.getSate(),dto.getEmployeeId()));
+        return attendanceDAO.save(new Attendance(dto.getAttendanceId(), dto.getName(), dto.getDate(), dto.getInTime(), dto.getOutTime(), dto.getSate(), dto.getEmployeeId()));
     }
+
     @Override
     public ArrayList<AttendanceDTO> getAllAttendance() throws SQLException, ClassNotFoundException {
         ArrayList<AttendanceDTO> allAttendance = new ArrayList<>();
         ArrayList<Attendance> all = attendanceDAO.getAll();
         for (Attendance attendance : all) {
-            allAttendance.add(new AttendanceDTO(attendance.getAid(),attendance.getEid(),attendance.getEmployeeName(),attendance.getDate(),attendance.getSate(),attendance.getInTime(),attendance.getOutTime()));
+            allAttendance.add(new AttendanceDTO(attendance.getAid(), attendance.getEid(), attendance.getEmployeeName(), attendance.getDate(), attendance.getSate(), attendance.getInTime(), attendance.getOutTime()));
         }
         return allAttendance;
     }
+
     @Override
     public boolean deleteAttendance(String id) throws SQLException, ClassNotFoundException {
         return attendanceDAO.delete(id);
     }
+
     @Override
     public ArrayList<EmployeeDTO> getAllEmployee() throws SQLException, ClassNotFoundException {
         ArrayList<EmployeeDTO> allEmployee = new ArrayList<>();
         ArrayList<Employee> all = employeeDAO.getAll();
         for (Employee employee : all) {
-            allEmployee.add(new EmployeeDTO(employee.getEid(),employee.getName(),employee.getAddress(),employee.getPhoneNo(),employee.getEmail(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword()));
+            allEmployee.add(new EmployeeDTO(employee.getEid(), employee.getName(), employee.getAddress(), employee.getPhoneNo(), employee.getEmail(), employee.getDateOfBirth(), employee.getJobRole(), employee.getUserName(), employee.getPassword()));
         }
         return allEmployee;
     }
+
     @Override
     public EmployeeDTO searchEmployee(String id) throws SQLException, ClassNotFoundException {
         Employee employee = employeeDAO.search(id);
         return new EmployeeDTO(employee.getEid());
     }
+
     @Override
     public String getNextAttendanceId() throws SQLException, ClassNotFoundException {
         return attendanceDAO.getNextId();

@@ -14,8 +14,7 @@ public class Repair {
     private String date;
 
 
-
-    public Repair(String repId, String customerName, int phoneNo, String deviceName, String problem, double repairPrice, double amount, double due, String state) {
+    public Repair(String repId, String customerName, int phoneNo, String deviceName, String problem, double repairPrice, double amount, double due, String state, String cusId, String date) {
         this.repId = repId;
         this.customerName = customerName;
         this.phoneNo = phoneNo;
@@ -25,7 +24,8 @@ public class Repair {
         this.amount = amount;
         this.due = due;
         this.state = state;
-
+        this.cusId = cusId;
+        this.date = date;
     }
 
     public String getRepId() {
