@@ -18,7 +18,7 @@ public class AttendanceBOImpl implements AttendanceBO {
 
     @Override
     public boolean saveAttendance(AttendanceDTO dto) throws SQLException, ClassNotFoundException {
-        return attendanceDAO.save(new Attendance(dto.getAttendanceId(),dto.getEmployeeId(),dto.getName(),dto.getDate(),dto.getSate(),dto.getInTime(),dto.getOutTime()));
+        return attendanceDAO.save(new Attendance(dto.getAttendanceId(),dto.getName(),dto.getDate(),dto.getInTime(),dto.getOutTime(),dto.getSate(),dto.getEmployeeId()));
     }
     @Override
     public ArrayList<AttendanceDTO> getAllAttendance() throws SQLException, ClassNotFoundException {
@@ -35,12 +35,12 @@ public class AttendanceBOImpl implements AttendanceBO {
     }
     @Override
     public ArrayList<EmployeeDTO> getAllEmployee() throws SQLException, ClassNotFoundException {
-        ArrayList<EmployeeDTO> allAttendance = new ArrayList<>();
+        ArrayList<EmployeeDTO> allEmployee = new ArrayList<>();
         ArrayList<Employee> all = employeeDAO.getAll();
         for (Employee employee : all) {
-            allAttendance.add(new EmployeeDTO(employee.getEid(),employee.getName(),employee.getAddress(),employee.getPhoneNo(),employee.getEmail(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword()));
+            allEmployee.add(new EmployeeDTO(employee.getEid(),employee.getName(),employee.getAddress(),employee.getPhoneNo(),employee.getEmail(),employee.getDateOfBirth(),employee.getJobRole(),employee.getUserName(),employee.getPassword()));
         }
-        return allAttendance;
+        return allEmployee;
     }
     @Override
     public EmployeeDTO searchEmployee(String id) throws SQLException, ClassNotFoundException {

@@ -62,7 +62,7 @@ public class RepairDAOImpl implements RepairDAO {
         return SQLUtil.execute(sql,repair.getAmount(),repair.getDue(),repair.getState(),repair.getRepId());
     }
     @Override
-    public String getNextId() throws SQLException, ClassNotFoundException {
+    public  String getNextId() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT repId FROM repair ORDER BY repId DESC LIMIT 1;");
         if (resultSet.next()){
             return getNextId(resultSet.getString(1));

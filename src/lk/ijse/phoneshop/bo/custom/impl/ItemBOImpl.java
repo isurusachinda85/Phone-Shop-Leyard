@@ -17,14 +17,14 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean saveItem(ItemDTO dto) throws SQLException, ClassNotFoundException {
-        return itemDAO.save(new Item(dto.getItemCode(),dto.getBrand(),dto.getModalNo(),dto.getCategory(),dto.getPrice(),dto.getBrand(),dto.getQty(),dto.getCategory()));
+        return itemDAO.save(new Item(dto.getItemCode(),dto.getBrand(),dto.getModalNo(),dto.getName(),dto.getPrice(),dto.getWarranty(),dto.getQty(),dto.getCategory()));
     }
     @Override
     public ArrayList<ItemDTO> getAllItem() throws SQLException, ClassNotFoundException {
         ArrayList<ItemDTO> allItem = new ArrayList<>();
         ArrayList<Item> all = itemDAO.getAll();
         for (Item item: all) {
-            //allItem.add(new EmployeeDTO(item.getItemCode(),item.getBrand(),item.getModalNo(),item.getBrand(),item.getCategory(),item.getPrice(),item.getQty(),item.getCategory(),item.getCategory()));
+            allItem.add(new ItemDTO(item.getItemCode(),item.getBrand(),item.getModalNo(),item.getItemName(),item.getPrice(),item.getWarranty(),item.getQty(),item.getCategory()));
         }
         return allItem;
     }
@@ -34,7 +34,8 @@ public class ItemBOImpl implements ItemBO {
     }
     @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
-
+        Item search = itemDAO.search(code);
+        return new ItemDTO(search.getItemCode());
     }
 
 }
