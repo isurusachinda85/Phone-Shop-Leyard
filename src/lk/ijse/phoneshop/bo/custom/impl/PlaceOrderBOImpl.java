@@ -11,6 +11,8 @@ import lk.ijse.phoneshop.dto.CustomerDTO;
 import lk.ijse.phoneshop.dto.ItemDTO;
 import lk.ijse.phoneshop.dto.OrderDTO;
 import lk.ijse.phoneshop.dto.PlaceOrderDTO;
+import lk.ijse.phoneshop.entity.Customer;
+import lk.ijse.phoneshop.entity.Item;
 import lk.ijse.phoneshop.entity.Order;
 import lk.ijse.phoneshop.model.ItemM;
 import lk.ijse.phoneshop.model.OrderDetailM;
@@ -50,12 +52,13 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
     }
     @Override
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        return customerDAO.search(id);
-
+        Customer search = customerDAO.search(id);
+        return new CustomerDTO(search.getCusId());
     }
     @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
-        return itemDAO.search(code);
+        Item search = itemDAO.search(code);
+        return new ItemDTO(search.getItemCode());
 
     }
     @Override
@@ -64,12 +67,20 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
     }
     @Override
     public ArrayList<CustomerDTO> loadCustomerId() throws SQLException, ClassNotFoundException {
-        return customerDAO.getAll();
-
+        ArrayList<CustomerDTO> allCustomer = new ArrayList<>();
+        ArrayList<Customer> all = customerDAO.getAll();
+        for (Customer customer : all) {
+            allCustomer.add(new CustomerDTO(customer.getCusId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail()));
+        }
+        return allCustomer;
     }
     @Override
     public ArrayList<ItemDTO> loadItemCode() throws SQLException, ClassNotFoundException {
-        return itemDAO.getAll();
-
+        ArrayList<ItemDTO> allItem = new ArrayList<>();
+        ArrayList<Item> all = itemDAO.getAll();
+        for (Item item: all) {
+            allItem.add(new ItemDTO(item.getItemCode(),item.getBrand(),item.getModalNo(),item.getItemName(),item.getPrice(),item.getWarranty(),item.getQty(),item.getCategory()));
+        }
+        return allItem;
     }
 }
