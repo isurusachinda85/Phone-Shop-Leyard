@@ -28,6 +28,18 @@ public class Repair {
         this.date = date;
     }
 
+    public Repair(String repId, String customerName, int phoneNo, String deviceName, String problem, double repairPrice, double amount, double due, String state) {
+        this.repId = repId;
+        this.customerName = customerName;
+        this.phoneNo = phoneNo;
+        this.deviceName = deviceName;
+        this.problem = problem;
+        this.repairPrice = repairPrice;
+        this.amount = amount;
+        this.due = due;
+        this.state = state;
+    }
+
     public String getRepId() {
         return repId;
     }

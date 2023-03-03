@@ -5,5 +5,5 @@ import lk.ijse.phoneshop.entity.Attendance;
 
 
 
-public interface AttendanceDAO extends CrudDAO<Attendance,String> {
+public interface AttendanceDAO extends CrudDAO<Attendance> {
 }

@@ -18,9 +18,6 @@ public class CustomerDTO {
         this.email = email;
     }
 
-    public CustomerDTO(String id) {
-        this.id=id;
-    }
 
     public String getId() {
         return id;

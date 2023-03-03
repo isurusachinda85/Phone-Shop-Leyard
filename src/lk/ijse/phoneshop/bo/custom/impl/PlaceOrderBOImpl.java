@@ -52,8 +52,8 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
     }
     @Override
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        Customer search = customerDAO.search(id);
-        return new CustomerDTO(search.getCusId());
+        Customer customer = customerDAO.search(id);
+        return new CustomerDTO(customer.getCusId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
     }
     @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {

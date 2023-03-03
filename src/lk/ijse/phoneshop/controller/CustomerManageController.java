@@ -26,7 +26,7 @@ public class CustomerManageController {
     public JFXTextField txtCusAddress;
     public JFXTextField txtCusPhone;
     public JFXTextField txtCusEmail;
-    public TableView<CustomerTM>tblCustomer;
+    public TableView<CustomerTM> tblCustomer;
 
     public TableColumn colName;
     public TableColumn colAddress;
@@ -50,7 +50,7 @@ public class CustomerManageController {
 
     private CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
 
-    public void setPattern(){
+    public void setPattern() {
         Pattern namePattern = Pattern.compile("^[a-z.\\sA-Z.\\s]{4,}$");
         nameMatcher = namePattern.matcher(txtCusName.getText());
 
@@ -63,33 +63,35 @@ public class CustomerManageController {
         Pattern mobilePattern = Pattern.compile("^(?:7|0|(?:\\+94))[0-9]{9,10}$");
         phoneNoMatcher = mobilePattern.matcher(txtCusPhone.getText());
     }
-    public void patternPerform(){
-        if(nameMatcher.matches()) {
-            if(emailMatcher.matches()) {
-                if(addressMatcher.matches()) {
-                    if(phoneNoMatcher.matches()) {
-                        } else {
-                            txtCusPhone.requestFocus();
-                            txtCusPhone.setFocusColor(Paint.valueOf("Red"));
-                            lblMobileError.setText("Invalid Mobile");
-                        }
+
+    public void patternPerform() {
+        if (nameMatcher.matches()) {
+            if (emailMatcher.matches()) {
+                if (addressMatcher.matches()) {
+                    if (phoneNoMatcher.matches()) {
                     } else {
-                        txtCusAddress.requestFocus();
-                        txtCusAddress.setFocusColor(Paint.valueOf("Red"));
-                        lblAddressError.setText("Invalid Address");
+                        txtCusPhone.requestFocus();
+                        txtCusPhone.setFocusColor(Paint.valueOf("Red"));
+                        lblMobileError.setText("Invalid Mobile");
                     }
                 } else {
-                    txtCusEmail.requestFocus();
-                    txtCusEmail.setFocusColor(Paint.valueOf("Red"));
-                    lblEmailError.setText("Invalid Email");
+                    txtCusAddress.requestFocus();
+                    txtCusAddress.setFocusColor(Paint.valueOf("Red"));
+                    lblAddressError.setText("Invalid Address");
                 }
             } else {
-                txtCusName.requestFocus();
-                txtCusName.setFocusColor(Paint.valueOf("Red"));
-                lblNameError.setText("Invalid Name");
+                txtCusEmail.requestFocus();
+                txtCusEmail.setFocusColor(Paint.valueOf("Red"));
+                lblEmailError.setText("Invalid Email");
             }
+        } else {
+            txtCusName.requestFocus();
+            txtCusName.setFocusColor(Paint.valueOf("Red"));
+            lblNameError.setText("Invalid Name");
+        }
     }
-    public void initialize()  {
+
+    public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -104,7 +106,7 @@ public class CustomerManageController {
     }
 
     //Save Customer
-    public void customerSaveOnAction(ActionEvent actionEvent){
+    public void customerSaveOnAction(ActionEvent actionEvent) {
         String id = txtcCusId.getText();
         String name = txtCusName.getText();
         String address = txtCusAddress.getText();
@@ -114,7 +116,7 @@ public class CustomerManageController {
 
         patternPerform();
         try {
-            customerBO.saveCustomer(new CustomerDTO(id,name,address,phoneNo,email));
+            customerBO.saveCustomer(new CustomerDTO(id, name, address, phoneNo, email));
             loadNextCustomerId();
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.WARNING, "Pleas File All data  !").show();
@@ -127,20 +129,20 @@ public class CustomerManageController {
 
     //load Customer
     public void loadData() {
-        ObservableList <CustomerTM> customerList = FXCollections.observableArrayList();
+        ObservableList<CustomerTM> customerList = FXCollections.observableArrayList();
         customerList.clear();
         try {
 
             ArrayList<CustomerDTO> allCustomerDTO = customerBO.getAllCustomer();
 
-            for (CustomerDTO c: allCustomerDTO) {
+            for (CustomerDTO c : allCustomerDTO) {
                 Button button = new Button("Delete");
                 Button button1 = new Button("Up Date");
-                CustomerTM tm = new CustomerTM(c.getId(),c.getName(),c.getAddress(),c.getPhoneNo(),c.getEmail(),button1,button);
+                CustomerTM tm = new CustomerTM(c.getId(), c.getName(), c.getAddress(), c.getPhoneNo(), c.getEmail(), button1, button);
                 customerList.add(tm);
                 tblCustomer.setItems(customerList);
 
-                button.setOnAction((e->{
+                button.setOnAction((e -> {
                     ButtonType ok = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ok, no);
@@ -153,10 +155,10 @@ public class CustomerManageController {
                     //delete Customer
                     try {
                         boolean deleteCustomer = customerBO.deleteCustomer(id);
-                        if (deleteCustomer){
+                        if (deleteCustomer) {
                             loadNextCustomerId();
                             System.out.println("Delete");
-                        }else {
+                        } else {
                             System.out.println("No");
                         }
                     } catch (SQLException | ClassNotFoundException throwables) {
@@ -166,7 +168,7 @@ public class CustomerManageController {
                 }));
             }
 
-        } catch (ClassNotFoundException |SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
     }
@@ -178,7 +180,7 @@ public class CustomerManageController {
         txtCusEmail.clear();
     }
 
-    private void loadNextCustomerId(){
+    private void loadNextCustomerId() {
         try {
             String cusId = customerBO.getNextCustomerId();
             txtcCusId.setText(cusId);
@@ -186,7 +188,6 @@ public class CustomerManageController {
             System.out.println(e);
         }
     }
-
 
 
     public void nameOnAction(ActionEvent actionEvent) {
@@ -207,6 +208,7 @@ public class CustomerManageController {
 
     public void searchOnAction(ActionEvent actionEvent) {
     }
+
     @FXML
     void emailOnKeReles(KeyEvent event) {
         lblEmailError.setText("");
@@ -215,14 +217,13 @@ public class CustomerManageController {
         Pattern emailPattern = Pattern.compile("^([a-z0-9]{2,})([@])([a-z]{2,9})([.])([a-z]{2,})$");
         emailMatcher = emailPattern.matcher(txtCusEmail.getText());
 
-        if (!emailMatcher.matches()){
+        if (!emailMatcher.matches()) {
             txtCusEmail.requestFocus();
             txtCusEmail.setFocusColor(Paint.valueOf("Red"));
             lblEmailError.setText("Invalid Email");
         }
     }
 
-    
 
     @FXML
     void nameOnKeyRelese(KeyEvent event) {
@@ -232,7 +233,7 @@ public class CustomerManageController {
         Pattern namePattern = Pattern.compile("^[a-z.\\sA-Z.\\s]{4,}$");
         nameMatcher = namePattern.matcher(txtCusName.getText());
 
-        if (!nameMatcher.matches()){
+        if (!nameMatcher.matches()) {
             txtCusName.requestFocus();
             txtCusName.setFocusColor(Paint.valueOf("Red"));
             lblNameError.setText("Invalid Name");
@@ -247,7 +248,7 @@ public class CustomerManageController {
         Pattern mobilePattern = Pattern.compile("^(?:7|0|(?:\\+94))[0-9]{9,10}$");
         phoneNoMatcher = mobilePattern.matcher(txtCusPhone.getText());
 
-        if (!phoneNoMatcher.matches()){
+        if (!phoneNoMatcher.matches()) {
             txtCusPhone.requestFocus();
             txtCusPhone.setFocusColor(Paint.valueOf("Red"));
             lblMobileError.setText("Invalid Mobile");
@@ -263,7 +264,7 @@ public class CustomerManageController {
         Pattern addressPattern = Pattern.compile("^[a-z.\\sA-Z.\\s]{4,}$");
         addressMatcher = addressPattern.matcher(txtCusAddress.getText());
 
-        if (!addressMatcher.matches()){
+        if (!addressMatcher.matches()) {
             txtCusAddress.requestFocus();
             txtCusAddress.setFocusColor(Paint.valueOf("Red"));
             lblAddressError.setText("Invalid Address");
@@ -287,9 +288,9 @@ public class CustomerManageController {
 
             boolean updateCustomer = customerBO.updateCustomer(new CustomerDTO(id, name, address, phoneNo, email));
 
-            if (updateCustomer){
-                new Alert(Alert.AlertType.CONFIRMATION,"Update customer !").show();
-            }else {
+            if (updateCustomer) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Update customer !").show();
+            } else {
                 new Alert(Alert.AlertType.WARNING, "No Customer !").show();
             }
 
@@ -303,16 +304,16 @@ public class CustomerManageController {
 
     //search customer
     public void txtCusId(ActionEvent actionEvent) {
-        String id= txtcCusId.getText();
+        String id = txtcCusId.getText();
         try {
 
             CustomerDTO customerDTO = customerBO.searchCustomer(id);
-            if (customerDTO !=null){
+            if (customerDTO != null) {
                 txtCusName.setText(customerDTO.getName());
                 txtCusEmail.setText(customerDTO.getEmail());
                 txtCusAddress.setText(customerDTO.getAddress());
                 txtCusPhone.setText(customerDTO.getPhoneNo());
-            }else {
+            } else {
                 new Alert(Alert.AlertType.WARNING, "Not Found Customer !").show();
             }
         } catch (SQLException | ClassNotFoundException e) {

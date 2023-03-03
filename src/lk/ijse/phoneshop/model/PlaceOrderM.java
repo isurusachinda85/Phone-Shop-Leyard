@@ -11,10 +11,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class PlaceOrderM {
-    public static boolean placeOrder(PlaceOrderDTO placeOrderDTO) throws SQLException, ClassNotFoundException {
+    /*public static boolean placeOrder(PlaceOrderDTO placeOrderDTO) throws SQLException, ClassNotFoundException {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
-//            CrudDAO<OrderDTO,String> orderDAO = new OrderDAOImpl();
+     CrudDAO<OrderDTO,String> orderDAO = new OrderDAOImpl();
             boolean saveOrder = orderDAO.save(new OrderDTO(placeOrderDTO.getOrderId(), LocalDate.now(), LocalTime.now(), placeOrderDTO.getCustomerId()));
             if (saveOrder){
                 boolean updateQty = ItemM.updateQty(placeOrderDTO.getOrderDetail());
@@ -31,5 +31,5 @@ public class PlaceOrderM {
         } finally {
             DBConnection.getInstance().getConnection().setAutoCommit(true);
         }
-    }
+    }*/
 }

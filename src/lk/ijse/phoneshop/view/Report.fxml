@@ -19,7 +19,7 @@
                <graphic>
                   <ImageView fitHeight="241.0" fitWidth="264.0" pickOnBounds="true">
                      <image>
-                        <Image url="@image/employeeDTO-attendanceDTO-concept-icon-vector-33927581-removebg-preview.png" />
+                        <Image url="@image/employee-attendance-concept-icon-vector-33927581-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -71,7 +71,7 @@
                <graphic>
                   <ImageView fitHeight="149.0" fitWidth="153.0" pickOnBounds="true">
                      <image>
-                        <Image url="@image/png-transparent-phone-repairDTO-logo-iphone-samsung-galaxy-telephone-maintenance-smartphone-repairDTO-gadget-electronics-repairDTO-removebg-preview.png" />
+                        <Image url="@image/png-transparent-phone-repair-logo-iphone-samsung-galaxy-telephone-maintenance-smartphone-repair-gadget-electronics-repair-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>

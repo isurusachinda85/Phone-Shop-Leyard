@@ -63,7 +63,7 @@
       </Label>
       <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="71.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/306-3061829_png-file-mobile-repairDTO-png-icon-clipart-removebg-preview.png" />
+            <Image url="@image/306-3061829_png-file-mobile-repair-png-icon-clipart-removebg-preview.png" />
          </image>
       </ImageView>
       <JFXButton buttonType="RAISED" layoutX="63.0" layoutY="38.0" onAction="#backOnAction" prefHeight="31.0" prefWidth="65.0" style="-fx-background-radius: 10;" textFill="WHITE">

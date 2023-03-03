@@ -57,7 +57,7 @@
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/customerDTO.png" />
+                        <Image url="@image/customer.png" />
                      </image></ImageView>
                </graphic>
                <cursor>
@@ -131,7 +131,7 @@
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/png-clipart-smartphone-repairDTO-illustration-smartphone-samsung-galaxy-computer-mobile-repairDTO-electronics-gadget-removebg-preview.png" />
+                        <Image url="@image/png-clipart-smartphone-repair-illustration-smartphone-samsung-galaxy-computer-mobile-repair-electronics-gadget-removebg-preview.png" />
                      </image>
                   </ImageView>
                </graphic>

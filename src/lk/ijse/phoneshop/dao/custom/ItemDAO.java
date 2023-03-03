@@ -5,6 +5,6 @@ import lk.ijse.phoneshop.entity.Item;
 
 
 
-public interface ItemDAO extends CrudDAO<Item,String> {
+public interface ItemDAO extends CrudDAO<Item> {
 
 }

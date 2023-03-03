@@ -238,7 +238,7 @@
       </Label>
       <ImageView fitHeight="64.0" fitWidth="72.0" layoutX="59.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/kissclipart-phone-repairDTO-icon-clipart-emmecumxy-communications-2480ee4559ac38d8-removebg-preview.png" />
+            <Image url="@image/kissclipart-phone-repair-icon-clipart-emmecumxy-communications-2480ee4559ac38d8-removebg-preview.png" />
          </image>
       </ImageView>
       <Separator layoutX="64.0" layoutY="160.0" prefHeight="0.0" prefWidth="1003.0" />
