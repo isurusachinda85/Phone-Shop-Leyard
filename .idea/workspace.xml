@@ -2,77 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fbad48c-a227-48c8-8e57-aac0120fd40d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/PhoneShop.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Jasper_lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/entity/CustomEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Jasper_lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Jasper_lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/controlsfx_8_40_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_11.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Jasper_lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/batik_anim.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Jasper_lib1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PhoneShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PhoneShop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/AppInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/AppInitializer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/AttendanceBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/AttendanceBOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/CustomerBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/CustomerBOImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/EmployeeBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/EmployeeBOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/PlaceOrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/PlaceOrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/CrudDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/CrudDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/AttendanceDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/AttendanceDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/CustomerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/CustomerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/EmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/EmployeeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/ItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/ItemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/OrderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/OrderDetailDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/OrderDetailDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/RepairDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/RepairDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/AttendanceDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/AttendanceDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/CustomerDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/CustomerDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/EmployeeDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/EmployeeDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/ItemDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/ItemDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/OrderDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/OrderDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/OrderDetailDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/OrderDetailDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/RepairDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dao/custom/impl/RepairDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/CartDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/CustomerDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/CustomerDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/ItemBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/ItemBOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/PlaceOrderBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/PlaceOrderBOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/RepairBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/bo/custom/impl/RepairBOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/CustomerManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/CustomerManageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/EmployeeManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/EmployeeManageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/RepairManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/RepairManageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/ReportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/controller/ReportController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/EmployeeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/EmployeeDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/ItemDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/ItemDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/PlaceOrderDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/PlaceOrderDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/RepairDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/dto/RepairDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/entity/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/entity/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/entity/Repair.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/entity/Repair.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/model/ItemM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/model/ItemM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/model/OrderDetailM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/model/OrderDetailM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/DashBord1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/DashBord1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/DashBord2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/DashBord2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/ItemManage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/ItemManage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/ItemManage3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/ItemManage3.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/RepairManage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/RepairManage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/Report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/Report.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/StockManage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/StockManage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/StockManage3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PhoneShop/lk/ijse/phoneshop/view/StockManage3.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/CustomerBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/CustomerBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/AppInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/ItemBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/ItemBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/AttendanceBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/AttendanceBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/EmployeeBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/EmployeeBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/ItemBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/ItemBOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/PlaceOrderBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/PlaceOrderBOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/RepairBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/bo/custom/impl/RepairBOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/CustomerManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/CustomerManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/CrudDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/CrudDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/AttendanceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/AttendanceDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/EmployeeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/EmployeeManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/EmployeeManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ItemManage2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ItemManage2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ItemManage3Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ItemManage3Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ItemManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ItemManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/RepairManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/RepairManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/StockManage2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/StockManage2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/StockManage3Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/StockManage3Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/StockManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/controller/StockManageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/ItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/ItemDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/OrderDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/OrderDetailDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/RepairDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/RepairDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/CustomerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/entity/Repair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/entity/Repair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/model/PlaceOrderM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/model/PlaceOrderM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/DashBord1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/DashBord1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/DashBord2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/DashBord2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/ItemManage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/ItemManage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/ItemManage3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/ItemManage3.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/RepairManage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/RepairManage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/Report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/Report.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/StockManage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/StockManage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/StockManage3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/view/StockManage3.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/impl/ItemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dao/custom/impl/ItemDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/EmployeeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/ItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/ItemDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/RepairDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/ijse/phoneshop/dto/RepairDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,12 +63,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lk/ijse/phoneshop/lib/Jasper-lib/xml-apis.jar" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.15503876" />
   </component>
   <component name="RunManager">
     <configuration name="AppInitializer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -105,17 +85,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -134,11 +103,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677845372879</updated>
-      <workItem from="1677845374653" duration="470000" />
+      <workItem from="1677845374653" duration="5712000" />
+      <workItem from="1677864938661" duration="7060000" />
+      <workItem from="1677902554481" duration="35000" />
+      <workItem from="1677903776971" duration="595000" />
+      <workItem from="1677997932911" duration="1023000" />
+      <workItem from="1677999002312" duration="1006000" />
+      <workItem from="1678000911766" duration="1768000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PhoneShop$AppInitializer.ic" NAME="AppInitializer Coverage Results" MODIFIED="1677856064962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>lk.ijse.phoneshop.*</FILTER>
+    </SUITE>
   </component>
 </project>

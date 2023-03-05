@@ -122,7 +122,7 @@ public class ItemManageController implements Initializable {
         itemList.clear();
 
         try {
-            ArrayList<ItemDTO> allPhone = itemBO.getAllItem();
+            ArrayList<ItemDTO> allPhone = itemBO.getAllPhone();
 
             for(ItemDTO it : allPhone){
                 Button button = new Button("Delete");

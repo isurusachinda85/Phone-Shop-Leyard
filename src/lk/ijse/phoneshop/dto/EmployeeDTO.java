@@ -23,11 +23,6 @@ public class EmployeeDTO {
         this.password = password;
     }
 
-    public EmployeeDTO(String name) {
-        this.name=name;
-    }
-
-
     public String getId() {
         return id;
     }

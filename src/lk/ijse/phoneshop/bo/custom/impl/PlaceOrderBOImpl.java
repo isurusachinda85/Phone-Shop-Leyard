@@ -30,15 +30,15 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
     private OrderDetailDAO orderDetailDAO = (OrderDetailDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOType.ORDERDETAILS);
 
     @Override
-    public  boolean placeOrder(PlaceOrderDTO placeOrderDTO) throws SQLException, ClassNotFoundException {
+    public boolean placeOrder(PlaceOrderDTO placeOrderDTO) throws SQLException, ClassNotFoundException {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
             boolean saveOrder = orderDAO.save(new Order(placeOrderDTO.getOrderId(), LocalDate.now(), LocalTime.now(), placeOrderDTO.getCustomerId()));
-            if (saveOrder){
+            if (saveOrder) {
                 boolean updateQty = ItemM.updateQty(placeOrderDTO.getOrderDetail());
-                if (updateQty){
+                if (updateQty) {
                     boolean saveOrderDetails = OrderDetailM.saveOrderDetails(placeOrderDTO.getOrderDetail());
-                    if (saveOrderDetails){
+                    if (saveOrderDetails) {
                         DBConnection.getInstance().getConnection().commit();
                         return true;
                     }
@@ -50,36 +50,42 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
             DBConnection.getInstance().getConnection().setAutoCommit(true);
         }
     }
+
     @Override
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
         Customer customer = customerDAO.search(id);
-        return new CustomerDTO(customer.getCusId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail());
+        return new CustomerDTO(customer.getCusId(), customer.getName(), customer.getAddress(), customer.getPhoneNo(), customer.getEmail());
     }
+
     @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
-        Item search = itemDAO.search(code);
-        return new ItemDTO(search.getItemCode());
+        Item item = itemDAO.search(code);
+        return new ItemDTO(item.getItemCode(),item.getBrand(),item.getModalNo(),item.getItemName(),item.getPrice(),item.getWarranty(),item.getQty(),item.getCategory());
+
 
     }
+
     @Override
     public String getNextOrderId() throws SQLException, ClassNotFoundException {
         return orderDAO.getNextId();
     }
+
     @Override
     public ArrayList<CustomerDTO> loadCustomerId() throws SQLException, ClassNotFoundException {
         ArrayList<CustomerDTO> allCustomer = new ArrayList<>();
         ArrayList<Customer> all = customerDAO.getAll();
         for (Customer customer : all) {
-            allCustomer.add(new CustomerDTO(customer.getCusId(),customer.getName(),customer.getAddress(),customer.getPhoneNo(),customer.getEmail()));
+            allCustomer.add(new CustomerDTO(customer.getCusId(), customer.getName(), customer.getAddress(), customer.getPhoneNo(), customer.getEmail()));
         }
         return allCustomer;
     }
+
     @Override
     public ArrayList<ItemDTO> loadItemCode() throws SQLException, ClassNotFoundException {
         ArrayList<ItemDTO> allItem = new ArrayList<>();
         ArrayList<Item> all = itemDAO.getAll();
-        for (Item item: all) {
-            allItem.add(new ItemDTO(item.getItemCode(),item.getBrand(),item.getModalNo(),item.getItemName(),item.getPrice(),item.getWarranty(),item.getQty(),item.getCategory()));
+        for (Item item : all) {
+            allItem.add(new ItemDTO(item.getItemCode(), item.getBrand(), item.getModalNo(), item.getItemName(), item.getPrice(), item.getWarranty(), item.getQty(), item.getCategory()));
         }
         return allItem;
     }

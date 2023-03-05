@@ -69,14 +69,15 @@ public class RepairBOImpl implements RepairBO {
 
     @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
-        Item search = itemDAO.search(code);
-        return new ItemDTO(search.getItemCode());
+        Item item = itemDAO.search(code);
+        return new ItemDTO(item.getItemCode(),item.getBrand(),item.getModalNo(),item.getItemName(),item.getPrice(),item.getWarranty(),item.getQty(),item.getCategory());
+
     }
 
     @Override
     public RepairDTO searchRepair(String id) throws SQLException, ClassNotFoundException {
-        Repair search = repairDAO.search(id);
-        return new RepairDTO(search.getRepId());
+        Repair repair = repairDAO.search(id);
+        return new RepairDTO(repair.getRepId(),repair.getCustomerName(),repair.getPhoneNo(),repair.getDeviceName(),repair.getProblem(),repair.getRepairPrice(),repair.getAmount(),repair.getDue(),repair.getState());
     }
 
     @Override

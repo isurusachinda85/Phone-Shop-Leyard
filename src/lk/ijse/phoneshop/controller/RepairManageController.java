@@ -108,7 +108,7 @@ public class RepairManageController implements Initializable {
     @FXML
     private Label lblTime;
 
-    private RepairBO repairBO = (RepairBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.REPAIR);
+    private final RepairBO repairBO = (RepairBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.REPAIR);
 
 
     @Override
@@ -122,14 +122,13 @@ public class RepairManageController implements Initializable {
         setCellValueFactory();
         getNextRepairID();
     }
+
     @FXML
-    //add repair
+        //add repair
     void repairOnAction(ActionEvent event) {
         String repairId = txtRepairNo.getText();
-        String customerId = cmbCusId.getValue();
         String customerName = txtCustomerName.getText();
         int mobile = Integer.parseInt(txtCusMobil.getText());
-        String itemCode = cmbItemCode.getValue();
         String deviceName = txtDiviceName.getText();
         String problem = txtProblem.getText();
         double price = Double.parseDouble(txtPrice.getText());
@@ -137,43 +136,45 @@ public class RepairManageController implements Initializable {
         double due = Double.parseDouble(lblDue.getText());
         String state = cmbState.getValue();
         LocalDate date = LocalDate.now();
+        String cusId = cmbCusId.getValue();
 
         try {
 
-            boolean saveRepair = repairBO.saveRepair(new RepairDTO(repairId,customerId,customerName,mobile,itemCode,deviceName,problem,price,amount,due,state,String.valueOf(date)));
+            boolean saveRepair = repairBO.saveRepair(new RepairDTO(repairId, customerName, mobile, deviceName, problem, price, amount, due, state, String.valueOf(date),cusId));
 
-            if (saveRepair){
+            if (saveRepair) {
                 Notifications notification = Notifications.create().title("Success").text("Repair Added Success").graphic(null)
                         .hideAfter(Duration.seconds(8))
                         .position(Pos.BOTTOM_RIGHT);
                 notification.showConfirm();
-            }else{
+            } else {
                 System.out.println("Fail");
             }
 
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
         loadData();
         clearTextOnAction(event);
         getNextRepairID();
     }
+
     //get all repair data
-    public void loadData(){
-        ObservableList <RepairTM> repairList = FXCollections.observableArrayList();
+    public void loadData() {
+        ObservableList<RepairTM> repairList = FXCollections.observableArrayList();
         repairList.clear();
 
         try {
             ArrayList<RepairDTO> allRepairDTO = repairBO.getAllRepair();
-            for(RepairDTO repairs : allRepairDTO){
+            for (RepairDTO repairs : allRepairDTO) {
                 Button button = new Button("Delete");
-                RepairTM tm = new RepairTM(repairs.getRepairNo(),repairs.getCustomerName(),repairs.getPhoneNo(),
-                        repairs.getDeviceName(),repairs.getDeviceProblem(),repairs.getPrice(),repairs.getAmount(),
-                        repairs.getDue(),repairs.getState(),button);
+                RepairTM tm = new RepairTM(repairs.getRepairNo(), repairs.getCustomerName(), repairs.getPhoneNo(),
+                        repairs.getDeviceName(), repairs.getDeviceProblem(), repairs.getPrice(), repairs.getAmount(),
+                        repairs.getDue(), repairs.getState(), button);
                 repairList.add(tm);
                 tblRepair.setItems(repairList);
 
-                button.setOnAction((e->{
+                button.setOnAction((e -> {
                     ButtonType ok = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ok, no);
@@ -183,13 +184,13 @@ public class RepairManageController implements Initializable {
                         tblRepair.getItems().removeAll(tblRepair.getSelectionModel().getSelectedItem());
                     }
                     //delete repair
-                    String rid =repairs.getRepairNo();
+                    String rid = repairs.getRepairNo();
                     try {
                         boolean deleteRepair = repairBO.deleteRepair(rid);
                         if (deleteRepair) {
                             getNextRepairID();
                             System.out.println("delete");
-                        }else {
+                        } else {
                             System.out.println("no");
                         }
                     } catch (SQLException | ClassNotFoundException throwables) {
@@ -201,7 +202,8 @@ public class RepairManageController implements Initializable {
             System.out.println(e);
         }
     }
-    public void setCellValueFactory(){
+
+    public void setCellValueFactory() {
         colNo.setCellValueFactory(new PropertyValueFactory<>("repairNo"));
         colName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         colPhone.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
@@ -213,16 +215,18 @@ public class RepairManageController implements Initializable {
         colState.setCellValueFactory(new PropertyValueFactory<>("state"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("delete"));
     }
+
     @FXML
     void amountOnKeReleased(KeyEvent event) {
         double repairPrice = Double.parseDouble(txtPrice.getText());
-        double balance = repairPrice-Double.parseDouble(txtAmount.getText());
+        double balance = repairPrice - Double.parseDouble(txtAmount.getText());
         lblDue.setText(String.valueOf(balance));
     }
+
     private void loadTime() {
-        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e->{
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
-            lblTime.setText(currentTime.getHour()+":"+currentTime.getMinute()+":"+currentTime.getSecond());
+            lblTime.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
         }),
                 new KeyFrame(Duration.seconds(1))
         );
@@ -236,14 +240,14 @@ public class RepairManageController implements Initializable {
     }
 
     private void loadState() {
-        ObservableList<String>state = FXCollections.observableArrayList();
+        ObservableList<String> state = FXCollections.observableArrayList();
         state.add("Complete");
         state.add("Activate");
         cmbState.setItems(state);
     }
 
     private void loadItemCode() {
-        ObservableList<String>itemIdList = FXCollections.observableArrayList();
+        ObservableList<String> itemIdList = FXCollections.observableArrayList();
         try {
             ArrayList<ItemDTO> allPhone = repairBO.getAllItem();
             for (ItemDTO itemDTO : allPhone) {
@@ -281,6 +285,7 @@ public class RepairManageController implements Initializable {
         txtAmount.clear();
         lblDue.setText("");
         cmbState.getSelectionModel().clearSelection();
+        getNextRepairID();
     }
 
     @FXML
@@ -301,10 +306,12 @@ public class RepairManageController implements Initializable {
             System.out.println(e);
         }
     }
-    public void fileCustomer(CustomerDTO customerDTO){
+
+    public void fileCustomer(CustomerDTO customerDTO) {
         txtCustomerName.setText(customerDTO.getName());
         txtCusMobil.setText(customerDTO.getPhoneNo());
     }
+
     @FXML
     void itemCodeOnAction(ActionEvent event) {
         String itemCode = cmbItemCode.getValue();
@@ -319,12 +326,13 @@ public class RepairManageController implements Initializable {
     private void filItem(ItemDTO itemDTO) {
         txtDiviceName.setText(itemDTO.getName());
     }
+
     @FXML
     void txtSearch(ActionEvent event) {
         String id = txtRepairNo.getText();
         try {
             RepairDTO repairDTO = repairBO.searchRepair(id);
-            if (repairDTO !=null){
+            if (repairDTO != null) {
                 txtCustomerName.setText(repairDTO.getCustomerName());
                 txtCusMobil.setText(String.valueOf(repairDTO.getPhoneNo()));
                 txtDiviceName.setText(repairDTO.getDeviceName());
@@ -332,14 +340,15 @@ public class RepairManageController implements Initializable {
                 txtPrice.setText(String.valueOf(repairDTO.getPrice()));
                 txtAmount.setText(String.valueOf(repairDTO.getAmount()));
                 lblDue.setText(String.valueOf(repairDTO.getDue()));
-
-            }else {
+                cmbState.setValue(repairDTO.getState());
+            } else {
                 new Alert(Alert.AlertType.WARNING, "Not Found Repair !").show();
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     void updateOnAction(ActionEvent event) {
         String id = txtRepairNo.getText();
@@ -347,13 +356,13 @@ public class RepairManageController implements Initializable {
         double due = Double.parseDouble(lblDue.getText());
         String state = cmbState.getValue();
         try {
-            boolean updateRepair = repairBO.updateRepair(new RepairDTO(id,amount,due,state));
-            if (updateRepair){
+            boolean updateRepair = repairBO.updateRepair(new RepairDTO(id, amount, due, state));
+            if (updateRepair) {
                 Notifications notification = Notifications.create().title("Success").text("Repair Update Success").graphic(null)
                         .hideAfter(Duration.seconds(8))
                         .position(Pos.BOTTOM_RIGHT);
                 notification.showConfirm();
-            }else{
+            } else {
                 System.out.println("NotUpdate");
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -363,7 +372,8 @@ public class RepairManageController implements Initializable {
         clearTextOnAction(event);
         getNextRepairID();
     }
-    private void getNextRepairID(){
+
+    private void getNextRepairID() {
         try {
             String repairID = repairBO.getNextRepairId();
             txtRepairNo.setText(repairID);

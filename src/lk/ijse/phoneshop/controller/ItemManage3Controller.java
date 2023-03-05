@@ -122,7 +122,7 @@ public class ItemManage3Controller implements Initializable {
         itemList.clear();
 
         try {
-            ArrayList<ItemDTO> allParts = itemBO.getAllItem();
+            ArrayList<ItemDTO> allParts = itemBO.getAllParts();
             for(ItemDTO it : allParts){
                 Button button = new Button("Delete");
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(),

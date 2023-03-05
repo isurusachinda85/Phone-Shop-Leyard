@@ -178,6 +178,7 @@ public class CustomerManageController {
         txtCusAddress.clear();
         txtCusPhone.clear();
         txtCusEmail.clear();
+        loadNextCustomerId();
     }
 
     private void loadNextCustomerId() {
@@ -313,11 +314,12 @@ public class CustomerManageController {
                 txtCusEmail.setText(customerDTO.getEmail());
                 txtCusAddress.setText(customerDTO.getAddress());
                 txtCusPhone.setText(customerDTO.getPhoneNo());
-            } else {
+            }else {
                 new Alert(Alert.AlertType.WARNING, "Not Found Customer !").show();
             }
+
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 }

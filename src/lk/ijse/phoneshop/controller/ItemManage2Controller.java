@@ -146,7 +146,7 @@ public class ItemManage2Controller implements Initializable {
         itemList.clear();
 
         try {
-            ArrayList<ItemDTO> allAccessories = itemBO.getAllItem();
+            ArrayList<ItemDTO> allAccessories = itemBO.getAllAccessories();
             for(ItemDTO it : allAccessories){
                 Button button = new Button("Delete");
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(),

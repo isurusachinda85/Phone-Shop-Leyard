@@ -63,7 +63,7 @@ public class StockManage3Controller implements Initializable {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ArrayList<ItemDTO> allParts = itemBO.getAllItem();
+            ArrayList<ItemDTO> allParts = itemBO.getAllParts();
             for (ItemDTO it : allParts){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
                 itemList.add(tm);

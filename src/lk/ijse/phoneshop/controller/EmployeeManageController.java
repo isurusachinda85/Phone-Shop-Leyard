@@ -101,6 +101,7 @@ public class EmployeeManageController implements Initializable {
         txtPassword.clear();
         txtDate.getEditor().clear();
         cmbJobRole.getSelectionModel().clearSelection();
+        loadNextEmployeeId();
     }
 
     //save employee
@@ -170,6 +171,7 @@ public class EmployeeManageController implements Initializable {
                 txtDate.setValue(LocalDate.parse(employeeDTO.getDateOfBirth()));
                 cmbJobRole.setValue(employeeDTO.getJobRole());
                 txtUserName.setText(employeeDTO.getUserName());
+                txtPassword.setText(employeeDTO.getPassword());
             }else {
                 new Alert(Alert.AlertType.WARNING, "Not Found Employee !").show();
             }

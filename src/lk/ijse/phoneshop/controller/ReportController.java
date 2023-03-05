@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class ReportController {
     public void attendanceOnAction(ActionEvent actionEvent) {
-        InputStream resource = this.getClass().getResourceAsStream("/lk/ijse/phoneshop/reports/Attendane.jrxml");
+        InputStream resource = this.getClass().getResourceAsStream("lk/ijse/phoneshop/reports/Attendane.jrxml");
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(resource);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());

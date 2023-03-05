@@ -5,7 +5,6 @@ public class RepairDTO {
     private String customerId;
     private String customerName;
     private int phoneNo;
-    private String itemCode;
     private String deviceName;
     private String deviceProblem;
     private double price;
@@ -16,17 +15,10 @@ public class RepairDTO {
 
     public RepairDTO() {
     }
-
-    public RepairDTO(String repairNo) {
+    public RepairDTO(String repairNo, String customerName, int phoneNo, String deviceName, String deviceProblem, double price, double amount, double due, String state, String date, String customerId) {
         this.repairNo = repairNo;
-    }
-
-    public RepairDTO(String repairNo, String customerId, String customerName, int phoneNo, String itemCode, String deviceName, String deviceProblem, double price, double amount, double due, String state, String date) {
-        this.repairNo = repairNo;
-        this.customerId = customerId;
         this.customerName = customerName;
         this.phoneNo = phoneNo;
-        this.itemCode = itemCode;
         this.deviceName = deviceName;
         this.deviceProblem = deviceProblem;
         this.price = price;
@@ -34,6 +26,8 @@ public class RepairDTO {
         this.due = due;
         this.state = state;
         this.date = date;
+        this.customerId = customerId;
+
     }
 
     public RepairDTO(String repairNo, String customerName, int phoneNo, String deviceName, String deviceProblem, double price, double amount, double due, String state) {
@@ -54,7 +48,6 @@ public class RepairDTO {
         this.due = due;
         this.state = state;
     }
-
 
     public String getRepairNo() {
         return repairNo;
@@ -86,14 +79,6 @@ public class RepairDTO {
 
     public void setPhoneNo(int phoneNo) {
         this.phoneNo = phoneNo;
-    }
-
-    public String getItemCode() {
-        return itemCode;
-    }
-
-    public void setItemCode(String itemCode) {
-        this.itemCode = itemCode;
     }
 
     public String getDeviceName() {
@@ -150,23 +135,5 @@ public class RepairDTO {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "Repair{" +
-                "repairNo='" + repairNo + '\'' +
-                ", customerId='" + customerId + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", phoneNo=" + phoneNo +
-                ", itemCode='" + itemCode + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", deviceProblem='" + deviceProblem + '\'' +
-                ", price=" + price +
-                ", amount=" + amount +
-                ", due=" + due +
-                ", state='" + state + '\'' +
-                ", date=" + date +
-                '}';
     }
 }

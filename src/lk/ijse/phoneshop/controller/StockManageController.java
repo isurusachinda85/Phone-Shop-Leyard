@@ -59,7 +59,7 @@ public class StockManageController {
     private void loadData() {
         ObservableList<ItemTM> itemList = FXCollections.observableArrayList();
         try {
-            ArrayList<ItemDTO> allPhone = itemBO.getAllItem();
+            ArrayList<ItemDTO> allPhone = itemBO.getAllPhone();
             for (ItemDTO it : allPhone){
                 ItemTM tm = new ItemTM(it.getItemCode(),it.getBrand(),it.getModalNo(),it.getName(),it.getPrice(),it.getWarranty(), it.getQty(),it.getCategory());
                 itemList.add(tm);
